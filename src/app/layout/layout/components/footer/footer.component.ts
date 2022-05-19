@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IRoute } from 'src/app/shared/interfaces/i-route';
+import { NavLinksService } from '../header/services/nav-links.service';
 import { IFooterInfo } from './interfaces/i-footer-info';
+import { IFooterOtherLink } from './interfaces/i-footer-other-link';
+import { FooterInfoService } from './services/footer-info.service';
+import { OtherLinksService } from './services/other-links.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,52 +13,53 @@ import { IFooterInfo } from './interfaces/i-footer-info';
 })
 export class FooterComponent implements OnInit {
 
-  footerInfo: IFooterInfo[] = [
-    {
-      icon: "fas fa-map-marker-alt",
-      text: "123 Street, New York, USA"
-    },
-    {
-      icon: "fa fa-phone",
-      text: "+012 345 67890"
-    },
-    {
-      icon: "fa fa-envelope",
-      text: "info@pizzavilla.com"
-    }
-  ];
-  quickLinks: IRoute[] = [
-    {
-      name: "Home",
-      path: "/home"
-    },
-    {
-      name: "Contact",
-      path: "/contact"
-    }
-  ];
-  otherLinks: any = [
-    {
-      name: "Documentation",
-      url: "./assets/data/nav-links.json"
-    },
-    {
-      name: "Facebook",
-      url: "https://www.facebook.com/bojan.maksimovic.908"
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/bojanm___/"
-    },
-    {
-      name: "Twitter",
-      url: "https://twitter.com/bojanm_"
-    }
-  ];
+  footerInfo: IFooterInfo[] = [];
+  quickLinks: IRoute[] = [];
+  otherLinks: IFooterOtherLink[] = [];
 
-  constructor() { }
+  constructor(
+    private navLinksService: NavLinksService,
+    private otherLinksService: OtherLinksService,
+    private footerInfoService: FooterInfoService
+  ) { }
 
   ngOnInit(): void {
+    this.loadFooterInfo();
+    this.loadQuickLinks();
+    this.loadOtherLInks();
+  }
+
+  loadFooterInfo(): void {
+    this.footerInfoService.getAll().subscribe({
+      next: (data) => {
+        this.footerInfo = data;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
+  loadQuickLinks(): void {
+    this.navLinksService.getAll().subscribe({
+      next: (data) => {
+        this.quickLinks = data;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
+  loadOtherLInks(): void {
+    this.otherLinksService.getAll().subscribe({
+      next: (data) => {
+        this.otherLinks = data;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
   }
 
 }

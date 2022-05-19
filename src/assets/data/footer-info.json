@@ -1,0 +1,14 @@
+[
+    {
+      "icon": "fas fa-map-marker-alt",
+      "text": "123 Street, New York, USA"
+    },
+    {
+      "icon": "fa fa-phone",
+      "text": "+012 345 67890"
+    },
+    {
+      "icon": "fa fa-envelope",
+      "text": "info@pizzavilla.com"
+    }
+]

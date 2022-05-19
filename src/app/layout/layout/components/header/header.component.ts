@@ -1,6 +1,7 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IRoute } from 'src/app/shared/interfaces/i-route';
+import { NavLinksService } from './services/nav-links.service';
 
 @Component({
   selector: 'app-header',
@@ -13,16 +14,7 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
   isTransparent: boolean = false;
   routesWithTransparency: string[] = ['/home'];
 
-  navLinks: IRoute[] = [
-    {
-      name: "Home",
-      path: "/home"
-    },
-    {
-      name: "Contact",
-      path: "/contact"
-    }
-  ];
+  navLinks: IRoute[] = [];
 
   @ViewChild('navbar') navbar: ElementRef
 
@@ -32,14 +24,27 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
   }
 
   constructor(
-    private changeDetector : ChangeDetectorRef,
-    private router: Router
+    private changeDetector: ChangeDetectorRef,
+    private router: Router,
+    private navLinksService: NavLinksService
     ) { }
 
   ngOnInit(): void {
+    this.loadNavLinks();
     this.router.events.subscribe(() => {
       this.updateCanBeTransparent();
       this.updateTransparency();
+    });
+  }
+
+  loadNavLinks(): void {
+    this.navLinksService.getAll().subscribe({
+      next: (data) => {
+        this.navLinks = data;
+      },
+      error: (err) => {
+        console.error(err);
+      }
     });
   }
 

@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { LayoutModule } from './layout/layout.module';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     SharedModule,
     RouterModule.forRoot(routes),
     LayoutModule
