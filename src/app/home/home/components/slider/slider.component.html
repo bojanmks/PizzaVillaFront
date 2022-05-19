@@ -1,0 +1,17 @@
+<ng-container *ngIf="images.length">
+    <mdb-carousel id="slider">
+        <ng-container *ngFor="let i of images">
+            <mdb-carousel-item>
+                <div appSlide [image]="i.path" class="slide"></div>
+            </mdb-carousel-item>
+        </ng-container>
+        <div id="slider-cover">
+            <div id="slider-text" class="text-center">
+                <h2 class="font-xxl"><span class="text-primary">Pizza</span> Done Right</h2>
+                <p class="font-medium">All natural, fresh ingredients, housemade by pro chefs, no preservatives.</p>
+                <br/>
+                <button type="button" class="btn btn-primary" routerLink="/menu">View Menu</button>
+            </div>
+        </div>
+    </mdb-carousel>
+</ng-container>

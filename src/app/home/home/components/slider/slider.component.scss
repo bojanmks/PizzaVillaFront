@@ -1,0 +1,29 @@
+@import "../../../../shared/css/variable";
+
+#slider {
+    height: 100vh;
+    position: relative;
+}
+
+.slide {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#slider-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: $color-black-t;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#slider-text {
+    color: $color-white;
+}

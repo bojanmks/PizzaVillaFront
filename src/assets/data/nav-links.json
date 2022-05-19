@@ -4,6 +4,10 @@
         "path": "/home"
     },
     {
+        "name": "Menu",
+        "path": "/menu"
+    },
+    {
         "name": "Contact",
         "path": "/contact"
     }

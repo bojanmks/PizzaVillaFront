@@ -71,7 +71,7 @@ a {
 }
 
 .font-xxl {
-    font-size: 60px;
+    font-size: 50px;
     @media screen and (max-width: $screen-sm) {
         font-size: 40px;
     }
@@ -116,11 +116,14 @@ a {
     background-color: $color-grey !important;
 }
 
-#content {
-    min-height: 100vh;
-}
-
 body {
     background-color: $color-white;
     color: $color-black;
+}
+
+.btn-primary {
+    background-color: $color-primary;
+    &:hover {
+        background-color: $color-primary-dark;
+    }
 }
