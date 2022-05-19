@@ -1,0 +1,28 @@
+<nav #navbar id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top" [ngClass]="{'transparent-navbar' : isTransparent}">
+    <div class="container">
+      <a class="navbar-brand font-large text-primary" routerLink="/home">Pizza<span class="text-secondary">Villa</span></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        (click)="basicNav.toggle()"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="navbarNav"
+        mdbCollapse
+        #basicNav="mdbCollapse"
+      >
+        <ul class="navbar-nav">
+          <ng-container *ngFor="let l of navLinks">
+            <li class="nav-item">
+              <a class="nav-link font-medium" aria-current="page" [routerLink]="l.path" routerLinkActive="active">{{ l.name }}</a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </nav>

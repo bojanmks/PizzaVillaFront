@@ -5,6 +5,8 @@
  
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 
+@import "./app/shared/css/variable";
+
 @font-face {
     src: url("./assets/fonts/Nunito.ttf");
     font-family: "Nunito";
@@ -22,4 +24,94 @@ ul {
 
 a {
     text-decoration: none;
+}
+
+.font-xs {
+    font-size: 12px;
+    @media screen and (max-width: $screen-sm) {
+        font-size: 10px;
+    }
+}
+
+.font-small {
+    font-size: 16px;
+    @media screen and (max-width: $screen-sm) {
+        font-size: 14px;
+    }
+}
+
+.font-medium {
+    font-size: 19px;
+    @media screen and (max-width: $screen-sm) {
+        font-size: 17px;
+    }
+}
+
+.font-large {
+    font-size: 30px;
+    @media screen and (max-width: $screen-sm) {
+        font-size: 25px;
+    }
+}
+
+.font-xl {
+    font-size: 40px;
+    @media screen and (max-width: $screen-sm) {
+        font-size: 30px;
+    }
+}
+
+.font-xxl {
+    font-size: 60px;
+    @media screen and (max-width: $screen-sm) {
+        font-size: 40px;
+    }
+}
+
+.text-primary {
+    color: $color-primary !important;
+}
+
+.bg-primary {
+    background-color: $color-primary !important;
+}
+
+.text-secondary {
+    color: $color-secondary !important;
+}
+
+.bg-secondary {
+    background-color: $color-secondary !important;
+}
+
+.text-black {
+    color: $color-black !important;
+}
+
+.bg-black {
+    background-color: $color-black !important;
+}
+
+.text-white {
+    color: $color-white !important;
+}
+
+.bg-white {
+    background-color: $color-white !important;
+}
+.text-grey {
+    color: $color-grey !important ;
+}
+
+.bg-grey {
+    background-color: $color-grey !important;
+}
+
+#content {
+    min-height: 100vh;
+}
+
+body {
+    background-color: $color-white;
+    color: $color-black;
 }

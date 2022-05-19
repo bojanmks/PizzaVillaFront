@@ -1,0 +1,27 @@
+@import "../../../../shared/css/variable";
+
+#navbar {
+    background-color: $color-white;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    transition: all .2s;
+}
+
+.nav-link {
+    &.active {
+        color: $color-primary !important;
+    }
+    &:hover {
+        color: $color-primary !important;
+    }
+}
+
+.transparent-navbar {
+    background-color: rgba(0, 0, 0, 0) !important;
+    box-shadow: none !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    .nav-link {
+        color: $color-white;
+    }
+}
