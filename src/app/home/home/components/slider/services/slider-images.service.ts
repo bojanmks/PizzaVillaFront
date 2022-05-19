@@ -7,7 +7,7 @@ import { ISliderImage } from '../interfaces/i-slider-image';
 @Injectable({
   providedIn: 'root'
 })
-export class SliderImagesService extends ApiService<ISliderImage[]> {
+export class SliderImagesService extends ApiService<ISliderImage> {
 
   constructor(
     http: HttpClient

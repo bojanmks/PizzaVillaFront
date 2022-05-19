@@ -7,7 +7,7 @@ import { IFooterInfo } from '../interfaces/i-footer-info';
 @Injectable({
   providedIn: 'root'
 })
-export class FooterInfoService extends ApiService<IFooterInfo[]> {
+export class FooterInfoService extends ApiService<IFooterInfo> {
 
   constructor(
     http: HttpClient

@@ -7,7 +7,7 @@ import { IFooterOtherLink } from '../interfaces/i-footer-other-link';
 @Injectable({
   providedIn: 'root'
 })
-export class OtherLinksService extends ApiService<IFooterOtherLink[]>  {
+export class OtherLinksService extends ApiService<IFooterOtherLink>  {
 
   constructor(
     http: HttpClient

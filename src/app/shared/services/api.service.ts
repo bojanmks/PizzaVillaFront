@@ -15,8 +15,8 @@ export abstract class ApiService<T> {
 
   private apiPrefix = this.apiPath.endsWith(".json") ? CONFIG.LOCAL : CONFIG.SERVER;
   
-  getAll(): Observable<T> {
-    return this.http.get<T>(this.apiPrefix + this.apiPath);
+  getAll(): Observable<T[]> {
+    return this.http.get<T[]>(this.apiPrefix + this.apiPath);
   }
 
   get(id: number | string): Observable<T> {

@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class NavLinksService extends ApiService<IRoute[]> {
+export class NavLinksService extends ApiService<IRoute> {
 
   constructor(
     http: HttpClient
