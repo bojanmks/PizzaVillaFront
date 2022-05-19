@@ -20,6 +20,8 @@
 
 ul {
     list-style: none;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 a {
@@ -44,6 +46,13 @@ a {
     font-size: 19px;
     @media screen and (max-width: $screen-sm) {
         font-size: 17px;
+    }
+}
+
+.font-xm {
+    font-size: 25px;
+    @media screen and (max-width: $screen-sm) {
+        font-size: 22px;
     }
 }
 
