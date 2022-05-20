@@ -10,5 +10,9 @@
     {
         "name": "Contact",
         "path": "/contact"
+    },
+    {
+        "name": "Author",
+        "path": "/author"
     }
 ]
