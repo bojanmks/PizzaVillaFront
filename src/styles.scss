@@ -77,6 +77,13 @@ a {
     }
 }
 
+.font-xxxl {
+    font-size: 70px;
+    @media screen and (max-width: $screen-sm) {
+        font-size: 60px;
+    }
+}
+
 .text-primary {
     color: $color-primary !important;
 }
@@ -123,7 +130,7 @@ body {
 
 .btn-primary {
     background-color: $color-primary;
-    &:hover {
+    &:hover, &:active, &:focus {
         background-color: $color-primary-dark;
     }
 }

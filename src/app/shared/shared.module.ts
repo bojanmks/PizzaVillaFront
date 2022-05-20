@@ -17,12 +17,14 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     NotFoundComponent
   ],
   imports: [
+    RouterModule,
     CommonModule,
     MdbAccordionModule,
     MdbCarouselModule,
