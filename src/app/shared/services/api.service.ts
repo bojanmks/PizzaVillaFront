@@ -23,11 +23,11 @@ export abstract class ApiService<T> {
     return this.http.get<T>(this.apiPrefix + this.apiPath + "/" + id);
   }
 
-  create(dataToSend: any): Observable<T> {
+  create(dataToSend: T): Observable<T> {
     return this.http.post<T>(this.apiPrefix + this.apiPath, dataToSend);
   }
 
-  update(id: number | string, dataToSend: any): Observable<T>  {
+  update(id: number | string, dataToSend: T): Observable<T>  {
     return this.http.patch<T>(this.apiPrefix + this.apiPath + "/" + id, dataToSend);
   }
 
