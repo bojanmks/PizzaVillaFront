@@ -6,7 +6,7 @@ import { FooterInfoService } from '../../services/footer-info.service';
 @Component({
   selector: 'app-contact-info',
   templateUrl: './contact-info.component.html',
-  styleUrls: ['./contact-info.component.scss']
+  styleUrls: ['./contact-info.component.scss', '../../footer.component.scss']
 })
 export class ContactInfoComponent extends ComponentWithServiceDataComponent<IFooterInfo> {
 

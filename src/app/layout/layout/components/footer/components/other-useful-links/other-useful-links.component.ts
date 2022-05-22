@@ -6,7 +6,7 @@ import { OtherLinksService } from '../../services/other-links.service';
 @Component({
   selector: 'app-other-useful-links',
   templateUrl: './other-useful-links.component.html',
-  styleUrls: ['./other-useful-links.component.scss']
+  styleUrls: ['./other-useful-links.component.scss', '../../footer.component.scss']
 })
 export class OtherUsefulLinksComponent extends ComponentWithServiceDataComponent<IFooterOtherLink> {
 
