@@ -23,15 +23,15 @@ export abstract class ApiService<T> {
     return this.http.get<T>(this.apiPrefix + this.apiPath + "/" + id);
   }
 
-  create(dataToSend: T): Observable<T> {
+  create(dataToSend: T): Observable<any> {
     return this.http.post<T>(this.apiPrefix + this.apiPath, dataToSend);
   }
 
-  update(id: number | string, dataToSend: T): Observable<T>  {
+  update(id: number | string, dataToSend: T): Observable<any>  {
     return this.http.patch<T>(this.apiPrefix + this.apiPath + "/" + id, dataToSend);
   }
 
-  delete(id: number | string): Observable<T>  {
+  delete(id: number | string): Observable<any>  {
     return this.http.delete<T>(this.apiPrefix + this.apiPath + "/" + id);
   }
 
