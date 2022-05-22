@@ -1,0 +1,18 @@
+[
+    {
+        "url": "https://www.facebook.com/bojan.maksimovic.908",
+        "icon": "fa-brands fa-facebook-f"
+    },
+    {
+        "url": "https://www.instagram.com/bojanm___/",
+        "icon": "fab fa-twitter"
+    },
+    {
+        "url": "https://twitter.com/bojanm_",
+        "icon": "fab fa-instagram"
+    },
+    {
+        "url": "https://github.com/bojanmks",
+        "icon": "fab fa-github"
+    }
+]

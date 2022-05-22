@@ -1,0 +1,11 @@
+<div id="social-links" class="d-flex">
+    <ul class="d-flex mx-auto ms-md-0 me-md-0">
+        <ng-container *ngFor="let l of serviceData">
+            <li>
+                <a [href]="l.url" target="_blank" class="btn btn-primary d-flex align-items-center justify-content-center rounded me-1 font-small">
+                    <i [ngClass]="l.icon"></i>
+                </a>
+            </li>
+        </ng-container>
+    </ul>
+</div>

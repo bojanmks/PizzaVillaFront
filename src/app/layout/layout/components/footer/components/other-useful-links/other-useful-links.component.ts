@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ComponentWithServiceDataComponent } from 'src/app/shared/components/component-with-service-data/component-with-service-data.component';
-import { IFooterOtherLink } from '../../interfaces/i-footer-other-link';
+import { ILinkText } from 'src/app/shared/interfaces/i-link';
 import { OtherLinksService } from '../../services/other-links.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { OtherLinksService } from '../../services/other-links.service';
   templateUrl: './other-useful-links.component.html',
   styleUrls: ['./other-useful-links.component.scss', '../../footer.component.scss']
 })
-export class OtherUsefulLinksComponent extends ComponentWithServiceDataComponent<IFooterOtherLink> {
+export class OtherUsefulLinksComponent extends ComponentWithServiceDataComponent<ILinkText> {
 
   constructor(
     private otherLinksService: OtherLinksService

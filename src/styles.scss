@@ -128,9 +128,17 @@ body {
     color: $color-black;
 }
 
+#content {
+    min-height: $content-height;
+}
+
 .btn-primary {
     background-color: $color-primary;
     &:hover, &:active, &:focus {
         background-color: $color-primary-dark;
     }
+}
+
+.header-padding {
+    padding-top: 7.5rem;
 }
