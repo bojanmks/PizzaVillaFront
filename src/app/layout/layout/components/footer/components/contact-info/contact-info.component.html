@@ -1,0 +1,9 @@
+<h2 class="footer-section-header font-xm">Contact Info</h2>
+<div class="footer-header-underline mb-4"></div>
+<ul id="footerInfo" class="font-small">
+    <ng-container *ngFor="let i of serviceData">
+        <li>
+            <i [ngClass]="i.icon"></i>&nbsp;<span>{{ i.text }}</span>
+        </li>
+    </ng-container>
+</ul>

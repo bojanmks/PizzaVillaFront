@@ -7,13 +7,19 @@ import { HeaderComponent } from './layout/components/header/header.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import { ScrollTopComponent } from './layout/components/scroll-top/scroll-top.component';
+import { ContactInfoComponent } from './layout/components/footer/components/contact-info/contact-info.component';
+import { QuickLinksComponent } from './layout/components/footer/components/quick-links/quick-links.component';
+import { OtherUsefulLinksComponent } from './layout/components/footer/components/other-useful-links/other-useful-links.component';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    ScrollTopComponent
+    ScrollTopComponent,
+    ContactInfoComponent,
+    QuickLinksComponent,
+    OtherUsefulLinksComponent
   ],
   imports: [
     CommonModule,

@@ -2,37 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-                <h2 class="footer-section-header font-xm">Contact Info</h2>
-                <div class="footer-header-underline mb-4"></div>
-                <ul id="footerInfo" class="font-small">
-                    <ng-container *ngFor="let i of footerInfo">
-                        <li>
-                            <i [ngClass]="i.icon"></i>&nbsp;<span>{{ i.text }}</span>
-                        </li>
-                    </ng-container>
-                </ul>
+                <app-contact-info></app-contact-info>
             </div>
             <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-                <h2 class="footer-section-header font-xm">Quick Links</h2>
-                <div class="footer-header-underline mb-4"></div>
-                <ul id="quickLinks" class="font-small">
-                    <ng-container *ngFor="let l of quickLinks">
-                        <li>
-                            <a [routerLink]="l.path"><i class="fas fa-angle-right"></i>&nbsp;{{ l.name }}</a>
-                        </li>
-                    </ng-container>
-                </ul>
+                <app-quick-links></app-quick-links>
             </div>
             <div class="col-12 col-sm-6 col-md-4">
-                <h2 class="footer-section-header font-xm">Other useful links</h2>
-                <div class="footer-header-underline mb-4"></div>
-                <ul id="otherLinks">
-                    <ng-container *ngFor="let l of otherLinks">
-                        <li>
-                            <a [href]="l.url" target="_blank"><i class="fas fa-angle-right"></i>&nbsp;{{ l.name }}</a>
-                        </li>
-                    </ng-container>
-                </ul>
+                <app-other-useful-links></app-other-useful-links>
             </div>
         </div>
     </div>

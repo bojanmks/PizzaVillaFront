@@ -18,10 +18,12 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { ComponentWithServiceDataComponent } from './components/component-with-service-data/component-with-service-data.component';
 
 @NgModule({
   declarations: [
-    NotFoundComponent
+    NotFoundComponent,
+    ComponentWithServiceDataComponent
   ],
   imports: [
     RouterModule,

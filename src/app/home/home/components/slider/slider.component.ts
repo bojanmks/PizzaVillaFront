@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComponentWithServiceDataComponent } from 'src/app/shared/components/component-with-service-data/component-with-service-data.component';
 import { ISliderImage } from './interfaces/i-slider-image';
 import { SliderImagesService } from './services/slider-images.service';
 
@@ -7,27 +8,12 @@ import { SliderImagesService } from './services/slider-images.service';
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit {
-
-  images: ISliderImage[] = [];
+export class SliderComponent extends ComponentWithServiceDataComponent<ISliderImage> {
 
   constructor(
     private sliderImagesService: SliderImagesService
-  ) { }
-
-  ngOnInit(): void {
-    this.loadSliderImages();
-  }
-
-  loadSliderImages(): void {
-    this.sliderImagesService.getAll().subscribe({
-      next: (data) => {
-        this.images = data;
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    });
+  ) {
+    super(sliderImagesService);
   }
 
 }

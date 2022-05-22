@@ -1,0 +1,9 @@
+<h2 class="footer-section-header font-xm">Other useful links</h2>
+<div class="footer-header-underline mb-4"></div>
+<ul id="otherLinks">
+    <ng-container *ngFor="let l of serviceData">
+        <li>
+            <a [href]="l.url" target="_blank"><i class="fas fa-angle-right"></i>&nbsp;{{ l.name }}</a>
+        </li>
+    </ng-container>
+</ul>

@@ -1,5 +1,6 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ComponentWithServiceDataComponent } from 'src/app/shared/components/component-with-service-data/component-with-service-data.component';
 import { IRoute } from 'src/app/shared/interfaces/i-route';
 import { NavLinksService } from './services/nav-links.service';
 
@@ -8,13 +9,11 @@ import { NavLinksService } from './services/nav-links.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, AfterViewChecked {
+export class HeaderComponent extends ComponentWithServiceDataComponent<IRoute> implements OnInit, AfterViewChecked {
 
   canBeTransparent: boolean = true;
   isTransparent: boolean = false;
   routesWithTransparency: string[] = ['/home'];
-
-  navLinks: IRoute[] = [];
 
   @ViewChild('navbar') navbar: ElementRef
 
@@ -27,24 +26,15 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
     private changeDetector: ChangeDetectorRef,
     private router: Router,
     private navLinksService: NavLinksService
-    ) { }
+    ) {
+      super(navLinksService);
+    }
 
-  ngOnInit(): void {
-    this.loadNavLinks();
+  override ngOnInit(): void {
+    super.ngOnInit();
     this.router.events.subscribe(() => {
       this.updateCanBeTransparent();
       this.updateTransparency();
-    });
-  }
-
-  loadNavLinks(): void {
-    this.navLinksService.getAll().subscribe({
-      next: (data) => {
-        this.navLinks = data;
-      },
-      error: (err) => {
-        console.error(err);
-      }
     });
   }
 
