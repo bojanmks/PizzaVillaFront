@@ -53,7 +53,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
     LayoutModule
   ],
   providers: [],
