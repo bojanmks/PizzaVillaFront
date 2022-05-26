@@ -11,6 +11,7 @@ export abstract class CustomTitleComponent implements OnInit, OnDestroy {
   abstract pageTitle: string;
   private titleService: Title = new Title(document);
 
+  constructor() { }
   // constructor(
   //   private titleService: Title
   // ) { }
