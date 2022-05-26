@@ -49,11 +49,13 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ComponentWithServiceDataComponent } from './components/component-with-service-data/component-with-service-data.component';
+import { CustomTitleComponent } from './components/custom-title/custom-title.component';
 
 @NgModule({
   declarations: [
     NotFoundComponent,
-    ComponentWithServiceDataComponent
+    ComponentWithServiceDataComponent,
+    CustomTitleComponent
   ],
   imports: [
     RouterModule,

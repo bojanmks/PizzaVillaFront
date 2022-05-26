@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { CustomTitleComponent } from 'src/app/shared/components/custom-title/custom-title.component';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent extends CustomTitleComponent {
 
-  constructor() { }
+  override pageTitle: string = "Contact";
 
-  ngOnInit(): void {
+  constructor(
+    titleService: Title
+  ) {
+    super(titleService);
   }
 
 }

@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { CustomTitleComponent } from 'src/app/shared/components/custom-title/custom-title.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent extends CustomTitleComponent {
 
-  constructor() { }
+  override pageTitle: string = "Home";
 
-  ngOnInit(): void {
+  constructor(
+    titleService: Title
+  ) {
+    super(titleService);
   }
 
 }

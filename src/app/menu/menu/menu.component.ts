@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { CustomTitleComponent } from 'src/app/shared/components/custom-title/custom-title.component';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent extends CustomTitleComponent {
 
-  constructor() { }
+  override pageTitle: string = "Menu";
 
-  ngOnInit(): void {
+  constructor(
+    titleService: Title
+  ) {
+    super(titleService);
   }
 
 }
