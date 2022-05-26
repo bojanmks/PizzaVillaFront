@@ -23,10 +23,10 @@
             </mat-form-field>
         </div>
         <div class="col-12 text-center">
-            <button mat-raised-button color="primary" class="font-small" [disabled]="contactFormService.form.invalid || contactFormService.buttonIsDisabled" (click)="contactFormService.submitForm()">Submit</button>
+            <button mat-raised-button color="primary" class="font-small" [disabled]="contactFormService.form.invalid || contactFormService.buttonIsDisabled" (click)="submit()">Submit</button>
         </div>
         <div class="col-12 mt-3">
-            <div id="contact-form-spinner" class="mx-auto d-none">
+            <div #spinner id="contact-form-spinner" class="mx-auto d-none">
                 <img src="../../../../../assets/images/loader.gif" alt="Loading..." class="img-fluid"/>
             </div>
         </div>

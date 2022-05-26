@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ContactFormService } from '../../services/forms/contact-form.service';
+import { ContactMessageDialogComponent } from '../contact-message-dialog/contact-message-dialog.component';
 
 @Component({
   selector: 'app-contact-form',
@@ -8,8 +10,11 @@ import { ContactFormService } from '../../services/forms/contact-form.service';
 })
 export class ContactFormComponent implements OnInit {
 
+  @ViewChild('spinner') spinner: ElementRef
+
   constructor(
-    public contactFormService: ContactFormService
+    public contactFormService: ContactFormService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -17,7 +22,23 @@ export class ContactFormComponent implements OnInit {
   }
 
   submit(): void {
-    this.contactFormService.submitForm();
+    this.spinner.nativeElement.classList.remove('d-none');
+
+    this.contactFormService.submitForm().subscribe({
+      next: () => {
+        this.dialog.open(ContactMessageDialogComponent);
+        this.contactFormService.initializeForm();
+
+        setTimeout(() => {
+          this.dialog.closeAll();
+        }, 3000);
+
+        this.spinner.nativeElement.classList.add('d-none');
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
   }
 
 }
