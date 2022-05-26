@@ -133,9 +133,17 @@ body {
 }
 
 .btn-primary, button[color="primary"] {
+    color: $color-white;
     background-color: $color-primary !important;
     &:hover, &:active, &:focus {
-        background-color: $color-primary-dark !important;
+        &[disabled="false"] {
+            color: $color-white;
+            background-color: $color-primary-dark !important;
+        }
+    }
+    &[disabled="true"] {
+        color: $color-white !important;
+        opacity: .7;
     }
 }
 

@@ -6,9 +6,11 @@ import { FormGroup } from '@angular/forms';
 })
 export abstract class BaseFormService {
 
+  buttonIsDisabled: boolean = false;
   form: FormGroup = null;
 
   constructor() {
+    this.initializeForm();
   }
 
   validateForm(): void {
@@ -16,4 +18,6 @@ export abstract class BaseFormService {
   }
 
   abstract initializeForm(): void;
+
+  abstract submitForm(): void;
 }
