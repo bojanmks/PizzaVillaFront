@@ -16,6 +16,8 @@ export class HeaderComponent extends ComponentWithServiceDataComponent<IRoute> i
   routesWithTransparency: string[] = ['/home'];
 
   @ViewChild('navbar') navbar: ElementRef
+  @ViewChild('navbarNav') navbarNav: ElementRef
+  @ViewChild('navbarToggler') navbarToggler: ElementRef
 
   @HostListener("window:scroll", [])
   onWindowScroll(): void {
@@ -35,6 +37,9 @@ export class HeaderComponent extends ComponentWithServiceDataComponent<IRoute> i
     this.router.events.subscribe(() => {
       this.updateCanBeTransparent();
       this.updateTransparency();
+
+      if(this.navbarNav.nativeElement.classList.contains('show')) // closing the expanded navbar on route change
+        this.navbarToggler.nativeElement.click();
     });
   }
 

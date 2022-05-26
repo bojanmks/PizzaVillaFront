@@ -2,6 +2,7 @@
     <div class="container">
       <a class="navbar-brand font-large text-primary" routerLink="/home">Pizza<span class="text-secondary">Villa</span></a>
       <button
+        #navbarToggler
         class="navbar-toggler"
         type="button"
         (click)="basicNav.toggle()"
@@ -11,6 +12,7 @@
         <i id="hamburger-menu" class="fas fa-bars"></i>
       </button>
       <div
+        #navbarNav
         class="collapse navbar-collapse justify-content-end"
         id="navbarNav"
         mdbCollapse
