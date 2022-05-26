@@ -7,7 +7,7 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './component-with-service-data.component.html',
   styleUrls: ['./component-with-service-data.component.scss']
 })
-export class ComponentWithServiceDataComponent<T> implements OnInit, OnDestroy {
+export abstract class ComponentWithServiceDataComponent<T> implements OnInit, OnDestroy {
 
   public serviceData: T[] = [];
 

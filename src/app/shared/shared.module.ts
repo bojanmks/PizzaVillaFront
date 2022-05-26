@@ -47,14 +47,12 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-import { ComponentWithServiceDataComponent } from './components/component-with-service-data/component-with-service-data.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
   declarations: [
-    NotFoundComponent,
-    ComponentWithServiceDataComponent
+    NotFoundComponent
   ],
   imports: [
     RouterModule,
