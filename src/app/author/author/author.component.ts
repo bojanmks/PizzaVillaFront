@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 import { CustomTitleComponent } from 'src/app/shared/components/custom-title/custom-title.component';
 
 @Component({
@@ -11,10 +10,8 @@ export class AuthorComponent extends CustomTitleComponent {
 
   override pageTitle: string = "Author";
 
-  constructor(
-    titleService: Title
-  ) {
-    super(titleService);
+  constructor() {
+    super();
   }
 
 }

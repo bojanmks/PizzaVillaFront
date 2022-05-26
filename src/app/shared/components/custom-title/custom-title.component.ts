@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -6,13 +6,14 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './custom-title.component.html',
   styleUrls: ['./custom-title.component.scss']
 })
-export class CustomTitleComponent implements OnInit {
+export abstract class CustomTitleComponent implements OnInit {
 
-  pageTitle: string;
+  abstract pageTitle: string;
+  private titleService: Title = new Title(document);
 
-  constructor(
-    private titleService: Title
-  ) { }
+  // constructor(
+  //   private titleService: Title
+  // ) { }
 
   ngOnInit(): void {
     this.updateTitle();
