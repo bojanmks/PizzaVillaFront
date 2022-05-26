@@ -50,6 +50,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ComponentWithServiceDataComponent } from './components/component-with-service-data/component-with-service-data.component';
 import { CustomTitleComponent } from './components/custom-title/custom-title.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { CustomTitleComponent } from './components/custom-title/custom-title.com
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
   ],
   exports: [
     MdbAccordionModule,
@@ -153,7 +155,8 @@ import { CustomTitleComponent } from './components/custom-title/custom-title.com
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

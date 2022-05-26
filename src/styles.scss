@@ -132,15 +132,19 @@ body {
     min-height: $content-height;
 }
 
-.btn-primary {
-    background-color: $color-primary;
+.btn-primary, button[color="primary"] {
+    background-color: $color-primary !important;
     &:hover, &:active, &:focus {
-        background-color: $color-primary-dark;
+        background-color: $color-primary-dark !important;
     }
 }
 
 .header-padding {
     padding-top: 7.5rem;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.full-width-form {
+    input, textarea, mat-form-field {
+        width: 100%;
+    }
+}
