@@ -136,7 +136,7 @@ body {
     color: $color-white;
     background-color: $color-primary !important;
     &:hover, &:active, &:focus {
-        &[disabled="false"] {
+        &:not([disabled="true"]) {
             color: $color-white;
             background-color: $color-primary-dark !important;
         }
