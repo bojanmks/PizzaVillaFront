@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ContactFormService } from '../../services/forms/contact-form.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -8,15 +9,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactFormComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    title: new FormControl('', [Validators.required]),
-    message: new FormControl('', [Validators.required])
-  });
+  //form: FormGroup = null;
 
-  constructor() { }
+  constructor(
+    public contactFormService: ContactFormService
+  ) { }
 
   ngOnInit(): void {
+    this.contactFormService.initializeForm();
   }
 
 }
