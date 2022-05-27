@@ -13,7 +13,7 @@ export class SocialLinksComponent extends ComponentWithServiceDataComponent<ILin
   constructor(
     private socialLinksService: SocialLinksService
   ) {
-    super(socialLinksService);
+    super(socialLinksService, true);
   }
 
 }
