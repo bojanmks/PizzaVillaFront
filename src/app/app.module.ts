@@ -22,19 +22,23 @@ const routes: Routes = [
       },
       {
         path: "home",
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+        data: { title: "Home" }
       },
       {
         path: "menu",
-        loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
+        loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule),
+        data: { title: "Menu" }
       },
       {
         path: "contact",
-        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
+        data: { title: "Contact" }
       },
       {
         path: "author",
-        loadChildren: () => import('./author/author.module').then(m => m.AuthorModule)
+        loadChildren: () => import('./author/author.module').then(m => m.AuthorModule),
+        data: { title: "Author" }
       }
     ]
   },
