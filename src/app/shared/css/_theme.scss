@@ -1,0 +1,82 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette0: (
+    50 : #fff5e6,
+    100 : #fee7c2,
+    200 : #fdd799,
+    300 : #fcc770,
+    400 : #fcbb51,
+    500 : #fbaf32,
+    600 : #faa82d,
+    700 : #fa9f26,
+    800 : #f9961f,
+    900 : #f88613,
+    A100 : #ffffff,
+    A200 : #fff9f3,
+    A400 : #ffddc0,
+    A700 : #ffd0a7,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette1: (
+    50 : #eef3e2,
+    100 : #d4e1b6,
+    200 : #b8cd85,
+    300 : #9cb854,
+    400 : #86a92f,
+    500 : #719a0a,
+    600 : #699209,
+    700 : #5e8807,
+    800 : #547e05,
+    900 : #426c03,
+    A100 : #d1ff9c,
+    A200 : #b9ff69,
+    A400 : #a2ff36,
+    A700 : #96ff1c,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$my-primary: mat.define-palette($md-mcgpalette0, 500);
+$my-accent: mat.define-palette($md-mcgpalette1, 500);
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent
+ )
+));
+
+@include mat.all-component-themes($my-theme);
