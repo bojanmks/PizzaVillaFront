@@ -3,5 +3,6 @@ export const API = {
     footerOtherLinks: "footer-other-links.json",
     footerInfo: "footer-info.json",
     sliderImages: "slider-images.json",
-    authorSocials: "author-socials.json"
+    authorSocials: "author-socials.json",
+    keyFeatures: "feature-items.json"
 };

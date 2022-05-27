@@ -7,6 +7,7 @@ import { SliderComponent } from './home/components/slider/slider.component';
 import { SharedModule } from '../shared/shared.module';
 import { SlideDirective } from './home/components/slider/directives/slide.directive';
 import { AboutUsComponent } from './home/components/about-us/about-us.component';
+import { OurKeyFeaturesComponent } from './home/components/our-key-features/our-key-features.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AboutUsComponent } from './home/components/about-us/about-us.component'
     HomeComponent,
     SliderComponent,
     SlideDirective,
-    AboutUsComponent
+    AboutUsComponent,
+    OurKeyFeaturesComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,12 @@
+<div class="container py-5">
+    <h3 class="font-medium text-secondary text-center">Why Choose Us</h3>
+    <h4 class="font-xxl text-center mb-5">Our Key Features</h4>
+    <div id="feature-items" class="row">
+        <ng-container *ngFor="let f of serviceData">
+            <div class="col-12 col-sm-6 col-md-4 mx-auto text-center mb-3">
+                <i class="features-icon" [ngClass]="f.icon"></i>
+                <h4 class="font-mx">{{ f.text }}</h4>
+            </div>
+        </ng-container>
+    </div>
+</div>

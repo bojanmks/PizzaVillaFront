@@ -1,0 +1,19 @@
+@import "../../../../shared/css/variable";
+
+.features-icon {
+    font-family: 'Flaticon';
+    position: relative;
+    display: block;
+    color: $color-secondary;
+    margin-bottom: 15px;
+    background-image: linear-gradient($color-secondary, $color-primary);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+    font-family: 'Flaticon';
+    font-size: 90px !important;
+    margin-left: 0 !important;
+}
