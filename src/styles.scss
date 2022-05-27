@@ -133,7 +133,7 @@ body {
     min-height: $content-height;
 }
 
-.btn-primary, button[color="primary"] {
+.btn-primary {
     color: $color-white;
     background-color: $color-primary !important;
     &:hover, &:active, &:focus {
@@ -156,4 +156,8 @@ body {
     input, textarea, mat-form-field {
         width: 100%;
     }
+}
+
+.mat-raised-button {
+    color: $color-white !important;
 }
