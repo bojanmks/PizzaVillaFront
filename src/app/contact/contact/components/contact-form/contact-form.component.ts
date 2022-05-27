@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
 import { ContactFormService } from '../../services/forms/contact-form.service';
 import { ContactMessageDialogComponent } from '../contact-message-dialog/contact-message-dialog.component';
 
@@ -22,10 +23,12 @@ export class ContactFormComponent implements OnInit {
   }
 
   submit(): void {
+    SpinnerFunctions.showSpinner();
     this.spinner.nativeElement.classList.remove('d-none');
 
     this.contactFormService.submitForm().subscribe({
       next: () => {
+        SpinnerFunctions.hideSpinner();
         this.dialog.open(ContactMessageDialogComponent);
         this.contactFormService.initializeForm();
 
