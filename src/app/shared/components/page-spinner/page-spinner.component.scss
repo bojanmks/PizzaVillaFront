@@ -7,10 +7,13 @@
     right: 0;
     bottom: 0;
     background-color: $color-white-t;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 99;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s linear, visibility 0s .2s;
 }
 
 #page-spinner-image {
@@ -18,5 +21,7 @@
 }
 
 .show-spinner {
-    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: none !important;
 }
