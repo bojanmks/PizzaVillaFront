@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Neapolitan pizza"
+    },
+    {
+        "id": 2,
+        "name": "Italian pizza"
+    },
+    {
+        "id": 3,
+        "name": "American pizza"
+    },
+    {
+        "id": 4,
+        "name": "Canadian pizza"
+    },
+    {
+        "id": 5,
+        "name": "Mexican pizza"
+    },
+    {
+        "id": 6,
+        "name": "Argentinean pizza"
+    },
+    {
+        "id": 7,
+        "name": "Bralilian pizza"
+    }
+]

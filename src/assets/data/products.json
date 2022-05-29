@@ -1,0 +1,142 @@
+[
+    {
+        "id": 1,
+        "name": "Marinara",
+        "image": "",
+        "category_id": 1,
+        "ingredients_ids": [1, 2, 3, 4, 5]
+    },
+    {
+        "id": 2,
+        "name": "Margherita",
+        "image": "",
+        "category_id": 1,
+        "ingredients_ids": [3, 6, 7]
+    },
+    {
+        "id": 3,
+        "name": "Aglio e olio",
+        "image": "",
+        "category_id": 2,
+        "ingredients_ids": [2, 3, 8]
+    },
+    {
+        "id": 4,
+        "name": "Cipolla",
+        "image": "",
+        "category_id": 2,
+        "ingredients_ids": [5, 8, 9, 10]
+    },
+    {
+        "id": 5,
+        "name": "Spinaci e Uovo",
+        "image": "",
+        "category_id": 2,
+        "ingredients_ids": [11, 12, 13, 8, 9, 14, 3]
+    },
+    {
+        "id": 6,
+        "name": "California Style",
+        "image": "",
+        "category_id": 3,
+        "ingredients_ids": [15, 16, 17, 18]
+    },
+    {
+        "id": 7,
+        "name": "Meatball",
+        "image": "",
+        "category_id": 3,
+        "ingredients_ids": [18, 19, 8, 21]
+    },
+    {
+        "id": 8,
+        "name": "Sicilian",
+        "image": "",
+        "category_id": 3,
+        "ingredients_ids": [8, 21]
+    },
+    {
+        "id": 9,
+        "name": "All-dressed",
+        "image": "",
+        "category_id": 4,
+        "ingredients_ids": [22, 10, 23, 24, 25]
+    },
+    {
+        "id": 10,
+        "name": "Canadian Pizza",
+        "image": "",
+        "category_id": 4,
+        "ingredients_ids": [8, 26, 23, 25, 27]
+    },
+    {
+        "id": 11,
+        "name": "Toronto Style",
+        "image": "",
+        "category_id": 4,
+        "ingredients_ids": [8, 9, 2, 28]
+    },
+    {
+        "id": 12,
+        "name": "Avocado",
+        "image": "",
+        "category_id": 5,
+        "ingredients_ids": [29, 30, 31]
+    },
+    {
+        "id": 13,
+        "name": "Chili con Carne Style",
+        "image": "",
+        "category_id": 5,
+        "ingredients_ids": [29, 32, 33, 34, 35, 2, 10, 13, 12, 36]
+    },
+    {
+        "id": 14,
+        "name": "Taco Style",
+        "image": "",
+        "category_id": 5,
+        "ingredients_ids": [32, 29, 37, 38, 46, 36, 39, 10, 2, 40, 41, 30, 42, 12]
+    },
+    {
+        "id": 15,
+        "name": "A la Parrilla",
+        "image": "",
+        "category_id": 6,
+        "ingredients_ids": [43, 21]
+    },
+    {
+        "id": 16,
+        "name": "Canchera",
+        "image": "",
+        "category_id": 6,
+        "ingredients_ids": [8, 2, 16]
+    },
+    {
+        "id": 17,
+        "name": "Longaniza",
+        "image": "",
+        "category_id": 6,
+        "ingredients_ids": [29, 44, 45]
+    },
+    {
+        "id": 18,
+        "name": "Brigadeiro",
+        "image": "",
+        "category_id": 7,
+        "ingredients_ids": [47, 48, 49]
+    },
+    {
+        "id": 19,
+        "name": "Mussarela",
+        "image": "",
+        "category_id": 7,
+        "ingredients_ids": [8, 9, 5]
+    },
+    {
+        "id": 20,
+        "name": "Romeu e Julieta",
+        "image": "",
+        "category_id": 7,
+        "ingredients_ids": [50, 51]
+    }
+]
