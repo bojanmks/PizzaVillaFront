@@ -1,5 +1,5 @@
 <ng-container *ngIf="serviceData.length; else emptySlider">
-    <mdb-carousel id="slider">
+    <mdb-carousel id="slider" animation="fade">
         <ng-container *ngFor="let i of serviceData">
             <mdb-carousel-item>
                 <div appSlide [image]="i.path" class="slide"></div>
