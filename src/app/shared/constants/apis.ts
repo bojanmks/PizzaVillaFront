@@ -4,5 +4,8 @@ export const API = {
     footerInfo: "footer-info.json",
     sliderImages: "slider-images.json",
     authorSocials: "author-socials.json",
-    keyFeatures: "feature-items.json"
+    keyFeatures: "feature-items.json",
+    products: "products.json",
+    productCategories: "product-categories.json",
+    ingredients: "ingredients.json"
 };

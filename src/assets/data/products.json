@@ -2,141 +2,161 @@
     {
         "id": 1,
         "name": "Marinara",
-        "image": "",
+        "image": "marinara.webp",
         "category_id": 1,
-        "ingredients_ids": [1, 2, 3, 4, 5]
+        "ingredients_ids": [1, 2, 3, 4, 5],
+        "price": 18.99
     },
     {
         "id": 2,
         "name": "Margherita",
-        "image": "",
+        "image": "margherita.webp",
         "category_id": 1,
-        "ingredients_ids": [3, 6, 7]
+        "ingredients_ids": [3, 6, 7],
+        "price": 15.99
     },
     {
         "id": 3,
         "name": "Aglio e olio",
-        "image": "",
+        "image": "aglio_e_olio.webp",
         "category_id": 2,
-        "ingredients_ids": [2, 3, 8]
+        "ingredients_ids": [2, 3, 8],
+        "price": 20.99
     },
     {
         "id": 4,
         "name": "Cipolla",
-        "image": "",
+        "image": "cipolla.webp",
         "category_id": 2,
-        "ingredients_ids": [5, 8, 9, 10]
+        "ingredients_ids": [5, 8, 9, 10],
+        "price": 21.99
     },
     {
         "id": 5,
         "name": "Spinaci e Uovo",
-        "image": "",
+        "image": "spinaci_e_uovo.webp",
         "category_id": 2,
-        "ingredients_ids": [11, 12, 13, 8, 9, 14, 3]
+        "ingredients_ids": [11, 12, 13, 8, 9, 14, 3],
+        "price": 17.99
     },
     {
         "id": 6,
         "name": "California Style",
-        "image": "",
+        "image": "california_style.webp",
         "category_id": 3,
-        "ingredients_ids": [15, 16, 17, 18]
+        "ingredients_ids": [15, 16, 17, 18],
+        "price": 16.99
     },
     {
         "id": 7,
         "name": "Meatball",
-        "image": "",
+        "image": "meatball.webp",
         "category_id": 3,
-        "ingredients_ids": [18, 19, 8, 21]
+        "ingredients_ids": [18, 19, 8, 21],
+        "price": 23.99
     },
     {
         "id": 8,
         "name": "Sicilian",
-        "image": "",
+        "image": "sicilian.webp",
         "category_id": 3,
-        "ingredients_ids": [8, 21]
+        "ingredients_ids": [8, 21],
+        "price": 18.99
     },
     {
         "id": 9,
         "name": "All-dressed",
-        "image": "",
+        "image": "all_dressed.webp",
         "category_id": 4,
-        "ingredients_ids": [22, 10, 23, 24, 25]
+        "ingredients_ids": [22, 10, 23, 24, 25],
+        "price": 18.99
     },
     {
         "id": 10,
         "name": "Canadian Pizza",
-        "image": "",
+        "image": "canadian.webp",
         "category_id": 4,
-        "ingredients_ids": [8, 26, 23, 25, 27]
+        "ingredients_ids": [8, 26, 23, 25, 27],
+        "price": 17.99
     },
     {
         "id": 11,
         "name": "Toronto Style",
-        "image": "",
+        "image": "toronto_style.webp",
         "category_id": 4,
-        "ingredients_ids": [8, 9, 2, 28]
+        "ingredients_ids": [8, 9, 2, 28],
+        "price": 19.99
     },
     {
         "id": 12,
         "name": "Avocado",
-        "image": "",
+        "image": "avocado.webp",
         "category_id": 5,
-        "ingredients_ids": [29, 30, 31]
+        "ingredients_ids": [29, 30, 31],
+        "price": 20.99
     },
     {
         "id": 13,
         "name": "Chili con Carne Style",
-        "image": "",
+        "image": "chili_con_carne_style.webp",
         "category_id": 5,
-        "ingredients_ids": [29, 32, 33, 34, 35, 2, 10, 13, 12, 36]
+        "ingredients_ids": [29, 32, 33, 34, 35, 2, 10, 13, 12, 36],
+        "price": 18.99
     },
     {
         "id": 14,
         "name": "Taco Style",
-        "image": "",
+        "image": "taco_style.webp",
         "category_id": 5,
-        "ingredients_ids": [32, 29, 37, 38, 46, 36, 39, 10, 2, 40, 41, 30, 42, 12]
+        "ingredients_ids": [32, 29, 37, 38, 46, 36, 39, 10, 2, 40, 41, 30, 42, 12],
+        "price": 17.99
     },
     {
         "id": 15,
         "name": "A la Parrilla",
-        "image": "",
+        "image": "a_la_parilla.webp",
         "category_id": 6,
-        "ingredients_ids": [43, 21]
+        "ingredients_ids": [43, 21],
+        "price": 20.99
     },
     {
         "id": 16,
         "name": "Canchera",
-        "image": "",
+        "image": "canchera.webp",
         "category_id": 6,
-        "ingredients_ids": [8, 2, 16]
+        "ingredients_ids": [8, 2, 16],
+        "price": 18.99
     },
     {
         "id": 17,
         "name": "Longaniza",
-        "image": "",
+        "image": "longaniza.webp",
         "category_id": 6,
-        "ingredients_ids": [29, 44, 45]
+        "ingredients_ids": [29, 44, 45],
+        "price": 19.99
     },
     {
         "id": 18,
         "name": "Brigadeiro",
-        "image": "",
+        "image": "brigadeiro.webp",
         "category_id": 7,
-        "ingredients_ids": [47, 48, 49]
+        "ingredients_ids": [47, 48, 49],
+        "price": 17.99
     },
     {
         "id": 19,
         "name": "Mussarela",
-        "image": "",
+        "image": "mussarela.webp",
         "category_id": 7,
-        "ingredients_ids": [8, 9, 5]
+        "ingredients_ids": [8, 9, 5],
+        "price": 18.99
     },
     {
         "id": 20,
         "name": "Romeu e Julieta",
-        "image": "",
+        "image": "romeu_e_julieta.webp",
         "category_id": 7,
-        "ingredients_ids": [50, 51]
+        "ingredients_ids": [50, 51],
+        "price": 20.99
     }
 ]

@@ -49,12 +49,14 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PageSpinnerComponent } from './components/page-spinner/page-spinner.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
 @NgModule({
   declarations: [
     NotFoundComponent,
-    PageSpinnerComponent
+    PageSpinnerComponent,
+    PaginatorComponent
   ],
   imports: [
     RouterModule,
@@ -155,7 +157,8 @@ import { PageSpinnerComponent } from './components/page-spinner/page-spinner.com
     MatSortModule,
     MatPaginatorModule,
     ReactiveFormsModule,
-    PageSpinnerComponent
+    PageSpinnerComponent,
+    PaginatorComponent
   ]
 })
 export class SharedModule { }

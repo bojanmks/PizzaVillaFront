@@ -1,0 +1,11 @@
+<div class="product-wrapper rounded overflow-hidden border">
+    <div class="product-text p-3">
+        <h2 class="font-medium fw-bold">{{ product.name }}</h2>
+        <p class="font-small m-0">{{ getProductIngerdientsAsString(product.id) }}</p>
+        <span class="font-small fw-bold">{{ product.price | currency }}</span>
+        <span class="product-buttons d-flex mt-2">
+            <span class="product-details-btn font-small" (click)="openDialog(product.id)">Details</span>
+        </span>
+    </div>
+    <div class="product-image" [ngStyle]="{backgroundImage: 'url(assets/images/products/' + product.image + ')'}"></div>
+</div>

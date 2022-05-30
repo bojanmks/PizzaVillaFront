@@ -1,0 +1,21 @@
+@import "../../../../shared/css/variable";
+
+.product-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-text {
+    width: 70%;
+}
+
+.product-image {
+    background-position: center;
+    background-size: cover;
+    width: 30%;
+}
+
+.product-details-btn {
+    color: $color-primary;
+    cursor: pointer;
+}

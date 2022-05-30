@@ -1,0 +1,17 @@
+<nav aria-label="Page navigation example" *ngIf="totalPages > 1" class="mb-5">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" aria-label="Previous" [ngClass]="{'disabled' : currentPage === 1}" (click)="previousPage()">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+            </li>
+            <ng-container *ngFor="let el of [].constructor(totalPages); let i = index">
+                <li class="page-item" [ngClass]="{'active' : i + 1 === currentPage}"><a class="page-link" (click)="changeToPage(i + 1)">{{ i + 1 }}</a></li>
+            </ng-container>
+            <li class="page-item">
+            <a class="page-link" [ngClass]="{'disabled' : currentPage === totalPages}" aria-label="Next" (click)="nextPage()">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

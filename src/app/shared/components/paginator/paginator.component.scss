@@ -1,0 +1,17 @@
+@import "../../../shared/css/variable";
+
+.page-item {
+    &.active {
+        .page-link {
+            background-color: $color-primary !important;
+        }
+    }
+}
+
+.page-link {
+    cursor: pointer;
+    &.disabled {
+        pointer-events: none;
+        opacity: .7;
+    }
+}

@@ -1,1 +1,41 @@
-<p>menu works!</p>
+<div class="header-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-3 mb-5 mb-lg-0">
+                <form class="full-width-form" [formGroup]="filterFormService.form">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Search by name</mat-label>
+                        <input matInput placeholder="Pizza name" formControlName="keyword" (keyup)="prepareForUpdate()">
+                        <mat-icon matSuffix>search</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Sort by</mat-label>
+                        <mat-select value="name-asc" formControlName="sortOrder" (selectionChange)="loadProducts()">
+                          <mat-option value="name-asc">Name ascending</mat-option>
+                          <mat-option value="name-desc">Name descending</mat-option>
+                          <mat-option value="price-asc">Price ascending</mat-option>
+                          <mat-option value="price-desc">Price descending</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div id="product-categories">
+                        <span class="font-medium">Filter by category:</span>
+                        <br/>
+                        <ng-container *ngFor="let c of productCategories">
+                            <mat-checkbox formArrayName="categories" class="category-chb font-small" (change)="onCategoryCheckboxClick($event)" [value]="$any(c.id)">{{ c.name }} ({{ c.amount }})</mat-checkbox><br/>
+                        </ng-container>
+                      </div>
+                </form>
+            </div>
+            <div class="col-12 col-lg-9">
+                <div class="row">
+                    <ng-container *ngFor="let p of displayedProducts">
+                        <div class="col-12 col-md-6 mb-5">
+                            <app-product [product]="p"></app-product>
+                        </div>
+                    </ng-container>
+                </div>
+                <app-paginator [totalElements]="products.length" [elementsPerPage]="productsPerPage" (pageChange)="loadProducts($event)"></app-paginator>
+            </div>
+        </div>
+    </div>
+</div>
