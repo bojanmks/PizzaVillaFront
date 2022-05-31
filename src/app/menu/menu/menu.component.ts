@@ -73,6 +73,11 @@ export class MenuComponent implements OnInit {
   }
 
   loadProducts(page:number = 1): void {
+    if(this.updateTimer) {
+      page = 1;
+      clearTimeout(this.updateTimer);
+    }
+
     const requests: Observable<any>[] = [
       this.productsService.getAll(),
       this.ingredientsService.getAll()
@@ -86,10 +91,12 @@ export class MenuComponent implements OnInit {
           p.ingredients = data[1].filter((i: IIngredient) => p.ingredients_ids.includes(i.id));
         });
         this.products = data[0];
+
         this.filterByKeyword();
         this.applySortOrder();
         this.calculateProductAmountPerCategory();
         this.filterByCategory();
+        
         this.displayedProducts = this.products.slice((page - 1) * this.productsPerPage, page * this.productsPerPage);
       },
       error: (err) => {
