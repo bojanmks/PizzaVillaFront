@@ -73,9 +73,10 @@ export class MenuComponent implements OnInit {
   }
 
   loadProducts(page:number = 1): void {
-    if(this.updateTimer) {
+    if(this.updateTimer !== null) {
       page = 1;
       clearTimeout(this.updateTimer);
+      this.updateTimer = null;
     }
 
     const requests: Observable<any>[] = [
@@ -170,6 +171,7 @@ export class MenuComponent implements OnInit {
     clearTimeout(this.updateTimer);
     this.updateTimer = setTimeout(() => {
       this.loadProducts();
+      this.updateTimer = null;
     }, waitTime);
   }
 
