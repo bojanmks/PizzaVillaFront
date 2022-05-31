@@ -28,11 +28,18 @@
             </div>
             <div class="col-12 col-lg-9">
                 <div class="row">
-                    <ng-container *ngFor="let p of displayedProducts">
-                        <div class="col-12 col-md-6 mb-5">
-                            <app-product [product]="p"></app-product>
-                        </div>
+                    <ng-container *ngIf="displayedProducts.length; else noProducts">
+                        <ng-container *ngFor="let p of displayedProducts">
+                            <div class="col-12 col-md-6 mb-5">
+                                <app-product [product]="p"></app-product>
+                            </div>
+                        </ng-container>
                     </ng-container>
+                    <ng-template #noProducts>
+                        <div class="col-12 font-medium">
+                            No products match your search criteria.
+                        </div>
+                    </ng-template>
                 </div>
                 <app-paginator [totalElements]="products.length" [elementsPerPage]="productsPerPage" (pageChange)="loadProducts($event)"></app-paginator>
             </div>
