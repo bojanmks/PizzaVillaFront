@@ -10,6 +10,7 @@ import { IngredientsService } from './services/ingredients/ingredients.service';
 import { ProductCategoriesService } from './services/categories/product-categories.service';
 import { ProductsService } from './services/products/products.service';
 import { FilterFormService } from './services/form/filter-form.service';
+import { CONFIG } from 'src/app/shared/constants/config';
 
 @Component({
   selector: 'app-menu',
@@ -48,12 +49,16 @@ export class MenuComponent implements OnInit {
     SpinnerFunctions.showSpinner();
     forkJoin(requests).subscribe({
       next: (data: any) => {
+        console.log(data[0]);
         SpinnerFunctions.hideSpinner();
-        data[0].sort((a: IProductDetailed, b: IProductDetailed) => a.name.localeCompare(b.name));
-        data[0].forEach((p: IProductDetailed) => {
-          p.ingredients = data[1].filter((i: IIngredient) => p.ingredients_ids.includes(i.id));
+        // data[0].sort((a: IProductDetailed, b: IProductDetailed) => a.name.localeCompare(b.name));
+        // data[0].forEach((p: IProductDetailed) => {
+        //   p.ingredients = data[1].filter((i: IIngredient) => p.ingredients_ids.includes(i.id));
+        // });
+        this.products = data[0].data;
+        this.products.forEach(p => {
+          p.image = CONFIG.SERVER + 'images/' + p.image;
         });
-        this.products = data[0];
         this.displayedProducts = this.products.slice(0, this.productsPerPage);
         data[2].sort((a: IProductCategory, b: IProductCategory) => a.name.localeCompare(b.name));
         this.productCategories = data[2];
