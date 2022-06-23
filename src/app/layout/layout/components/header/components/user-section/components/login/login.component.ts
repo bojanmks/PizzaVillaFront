@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit {
     SpinnerFunctions.showSpinner();
 
     this.loginFormService.submitForm().subscribe({
-      next: () => {
+      next: (data) => {
         SpinnerFunctions.hideSpinner();
         this.loginFormService.initializeForm();
         this.loginFormService.buttonIsDisabled = false;
-        this.dialogRef.close();
+        this.dialogRef.close(data.token);
       },
       error: (err) => {
         SpinnerFunctions.hideSpinner();

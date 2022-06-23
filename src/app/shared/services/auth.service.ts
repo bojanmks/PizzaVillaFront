@@ -23,6 +23,8 @@ export class AuthService {
     const token = localStorage.getItem(this.localStorageTokenKey);
     if (!this.jwtHelper.isTokenExpired(token)) {
       this._isLoggedIn$.next(!!token);
+    } else {
+      localStorage.removeItem(this.localStorageTokenKey);
     }
   }
 
@@ -46,7 +48,7 @@ export class AuthService {
 
   logout(): void {
     this._isLoggedIn$.next(false);
-    localStorage.removeItem('pv_auth');
+    localStorage.removeItem(this.localStorageTokenKey);
     this.router.navigateByUrl('/home');
   }
 }

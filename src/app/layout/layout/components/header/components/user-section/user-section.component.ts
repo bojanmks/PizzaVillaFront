@@ -30,8 +30,11 @@ export class UserSectionComponent implements OnInit {
     this.decodeJwt();
   }
 
-  decodeJwt(): void {
-    const token = localStorage.getItem('pv_auth');
+  decodeJwt(token: string = null): void {
+    if(token === null) {
+      token = localStorage.getItem('pv_auth');
+    }
+
     if(token) {
       this.user = this.jwtHelperService.decodeToken(token);
     }
@@ -40,6 +43,10 @@ export class UserSectionComponent implements OnInit {
   openLoginDialog(): void {
     this.dialog.open(LoginComponent, {
       width: 'auto'
+    }).afterClosed().subscribe((data: string) => {
+      if(data) {
+        this.decodeJwt(data);
+      }
     });
   }
 
