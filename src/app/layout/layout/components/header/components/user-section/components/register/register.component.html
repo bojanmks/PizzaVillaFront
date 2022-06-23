@@ -1,1 +1,40 @@
-<p>register works!</p>
+<mat-dialog-content class="mat-typography">
+    <h2 class="text-center font-medium">Sign up</h2>
+    <form class="full-width-form" [formGroup]="registerFormService.form">
+        <div class="row mb-3">
+            <div class="col-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Username" formControlName="username"/>
+                    <mat-error *ngIf="registerFormService.form.get('username')?.hasError('required')">Username is required</mat-error>
+                    <mat-error *ngIf="registerFormService.form.get('username')?.hasError('pattern')">Username needs to be at least 6 but no more than 20 characters long, and can contain only letters, numbers, . and _</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" placeholder="name@example.com" formControlName="email"/>
+                    <mat-error *ngIf="registerFormService.form.get('email')?.hasError('required')">Email is required</mat-error>
+                    <mat-error *ngIf="registerFormService.form.get('email')?.hasError('email')">Invalid email format</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" placeholder="Password" formControlName="password"/>
+                    <mat-error *ngIf="registerFormService.form.get('password')?.hasError('required')">Password is required</mat-error>
+                    <mat-error *ngIf="registerFormService.form.get('password')?.hasError('pattern')">Password needs to be at least 8 characters long and contain at least one: Uppercase character, Lowercase character, Number, Special character.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 text-center">
+                <button mat-raised-button color="primary" class="font-small" [disabled]="registerFormService.form.invalid || registerFormService.buttonIsDisabled" (click)="submit()">Register</button>
+            </div>
+        </div>
+        <p *ngIf="errorMessage !== ''" class="text-center font-small text-danger">{{ errorMessage }}</p>
+        <p *ngIf="successMessage !== ''" class="text-center font-small text-success">{{ successMessage }}</p>
+    </form>
+    <span class="font-small text-primary login-link" (click)="redirectToLogin()">Already have an account? Log in instead.</span>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+<button mat-button mat-dialog-close class="font-small">Close</button>
+</mat-dialog-actions>

@@ -1,19 +1,22 @@
 <nav #navbar id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top" [ngClass]="{'transparent-navbar' : isTransparent}">
     <div class="container">
-      <a class="navbar-brand font-large text-primary" routerLink="/home">Pizza<span class="text-secondary">Villa</span></a>
-      <button
-        #navbarToggler
-        class="navbar-toggler"
-        type="button"
-        (click)="basicNav.toggle()"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i id="hamburger-menu" class="fas fa-bars"></i>
-      </button>
+      <a class="navbar-brand font-large text-primary order-0" routerLink="/home">Pizza<span class="text-secondary">Villa</span></a>
+      <div class="order-2 order-lg-3 d-flex align-items-center">
+        <app-user-section class="ms-4"></app-user-section>
+        <button
+          #navbarToggler
+          class="navbar-toggler ms-3"
+          type="button"
+          (click)="basicNav.toggle()"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i id="hamburger-menu" class="fas fa-bars"></i>
+        </button>
+      </div>
       <div
         #navbarNav
-        class="collapse navbar-collapse justify-content-end"
+        class="collapse navbar-collapse justify-content-end order-3 order-lg-2"
         id="navbarNav"
         mdbCollapse
         #basicNav="mdbCollapse"
@@ -26,6 +29,5 @@
           </ng-container>
         </ul>
       </div>
-      <app-user-section class="ms-4"></app-user-section>
     </div>
   </nav>
