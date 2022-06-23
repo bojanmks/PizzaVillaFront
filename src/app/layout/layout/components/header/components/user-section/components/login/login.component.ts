@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
 import { LoginFormService } from '../../services/forms/login-form.service';
 
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public loginFormService: LoginFormService,
-    private dialog: MatDialog
+    private dialogRef: MatDialogRef<LoginComponent>
   ) { }
 
   ngOnInit(): void {
@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit {
     SpinnerFunctions.showSpinner();
 
     this.loginFormService.submitForm().subscribe({
-      next: (data) => {
+      next: () => {
         SpinnerFunctions.hideSpinner();
         this.loginFormService.initializeForm();
         this.loginFormService.buttonIsDisabled = false;
-        this.dialog.closeAll();
+        this.dialogRef.close();
       },
       error: (err) => {
         SpinnerFunctions.hideSpinner();

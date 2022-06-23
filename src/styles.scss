@@ -165,3 +165,18 @@ body {
 .cdk-overlay-container {
     z-index: 50 !important;
 }
+
+// header
+#navbar {
+    .cart-icon {
+        color: $color-black;
+    }
+}
+
+.transparent-navbar {
+    @media screen and (min-width: ($screen-md + 1)) {
+        .cart-icon {
+            color: $color-white !important;
+        }
+    }
+}

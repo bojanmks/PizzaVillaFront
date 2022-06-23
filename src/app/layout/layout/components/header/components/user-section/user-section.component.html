@@ -1,5 +1,14 @@
 <ng-container *ngIf="authService.isLoggedIn$ | async; else notLoggedIn">
-    username
+    <div class="d-flex align-items-center">
+        <span *ngIf="user !== undefined" class="user-username text-small text-primary" (click)="toggleDropdownVisibility($event)">{{ user.Username }} <i class="fa fa-caret-down"></i>
+            <div class="user-dropdown bg-white text-black rounded overflow-hidden shadow" [ngClass]="{ 'd-none' : !dropdownIsVisible }">
+                <ul class="font-small">
+                    <li class="p-2" (click)="authService.logout()">Log out</li>
+                </ul>
+            </div>
+        </span>
+        <span class="ms-3"><i class="cart-icon font-xm fas fa-shopping-cart" matBadge="15" matBadgeColor="primary" matBadgeSize="small"></i></span>
+    </div>
 </ng-container>
 <ng-template #notLoggedIn>
     <button class="rounded-pill font-small text-black" mat-raised-button color="primary" (click)="openLoginDialog()">Sign in</button>

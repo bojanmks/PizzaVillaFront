@@ -31,6 +31,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatBadgeModule } from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
@@ -108,6 +109,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatBadgeModule,
     ReactiveFormsModule
   ],
   exports: [
@@ -157,6 +159,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatBadgeModule,
     ReactiveFormsModule,
     PageSpinnerComponent,
     PaginatorComponent

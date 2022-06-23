@@ -1,0 +1,21 @@
+@import "../../../../../../shared/css/variable";
+
+.user-username {
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-icon {
+    cursor: pointer;
+}
+
+.user-dropdown {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    li {
+        &:hover {
+            background-color: $color-grey;
+        }
+    }
+}

@@ -6,6 +6,9 @@
     padding-bottom: .5rem;
     transition: all .2s;
     z-index: 20;
+    i {
+        color: $color-black !important;
+    }
 }
 
 .nav-link {
@@ -28,6 +31,9 @@
         }
         #hamburger-menu {
             color: $color-white;
+        }
+        i {
+            color: $color-white !important;
         }
     }
 }
