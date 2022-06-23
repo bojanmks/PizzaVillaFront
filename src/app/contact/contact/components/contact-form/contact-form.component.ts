@@ -11,6 +11,8 @@ import { ContactMessageDialogComponent } from '../contact-message-dialog/contact
 })
 export class ContactFormComponent implements OnInit {
 
+  errorMessage: string = "";
+
   @ViewChild('spinner') spinner: ElementRef
 
   constructor(
@@ -19,6 +21,7 @@ export class ContactFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.errorMessage = "";
     this.contactFormService.initializeForm();
   }
 
@@ -29,8 +32,10 @@ export class ContactFormComponent implements OnInit {
     this.contactFormService.submitForm().subscribe({
       next: () => {
         SpinnerFunctions.hideSpinner();
+        this.contactFormService.buttonIsDisabled = false;
         this.dialog.open(ContactMessageDialogComponent);
         this.contactFormService.initializeForm();
+        this.errorMessage = "";
 
         setTimeout(() => {
           this.dialog.closeAll();
@@ -40,7 +45,19 @@ export class ContactFormComponent implements OnInit {
       },
       error: (err) => {
         SpinnerFunctions.hideSpinner();
-        console.error(err);
+        this.contactFormService.buttonIsDisabled = false;
+        this.spinner.nativeElement.classList.add('d-none');
+        
+        switch(err.status) {
+          case 422:
+            this.errorMessage = err.message;
+            break;
+          case 500:
+            this.errorMessage = "We encountered an error. Please try again.";
+            break;
+          default:
+            this.errorMessage = "";
+        }
       }
     });
   }

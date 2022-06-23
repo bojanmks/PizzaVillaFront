@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { delay, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BaseFormService } from 'src/app/shared/services/forms/base-form.service';
+import { ContactService } from '../contact.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactFormService extends BaseFormService {
 
-  constructor() {
+  constructor(
+    private contactService: ContactService
+  ) {
     super();
   }
 
@@ -20,13 +23,8 @@ export class ContactFormService extends BaseFormService {
     });
   }
 
-  submitForm(): Observable<boolean> {
+  submitForm(): Observable<any> {
     this.buttonIsDisabled = true;
-
-    setTimeout(() => {
-      this.buttonIsDisabled = false;
-    }, 2000);
-
-    return of(true).pipe(delay(2000));
+    return this.contactService.sendMessage(this.form.get('email').value, this.form.get('title').value, this.form.get('message').value);
   }
 }

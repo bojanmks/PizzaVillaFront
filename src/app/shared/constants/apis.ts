@@ -10,5 +10,6 @@ export const API = {
     productCategories: "product-categories.json",
     ingredients: "ingredients.json",
     login: "api/auth",
-    register: "api/register"
+    register: "api/register",
+    contact: "api/contact"
 };

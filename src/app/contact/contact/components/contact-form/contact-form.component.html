@@ -30,5 +30,6 @@
                 <img src="../../../../../assets/images/loader.gif" alt="Loading..." class="img-fluid"/>
             </div>
         </div>
+        <p *ngIf="errorMessage !== ''" class="font-small text-center text-danger">{{ errorMessage }}</p>
     </div>
 </form>
