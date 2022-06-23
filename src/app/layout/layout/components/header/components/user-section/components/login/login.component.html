@@ -1,0 +1,30 @@
+<mat-dialog-content class="mat-typography">
+    <h2 class="text-center font-medium">Sign in</h2>
+    <form class="full-width-form" [formGroup]="loginFormService.form">
+        <div class="row mb-3">
+            <div class="col-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" placeholder="name@example.com" formControlName="email"/>
+                    <mat-error *ngIf="loginFormService.form.get('email')?.hasError('required')">Email is required</mat-error>
+                    <mat-error *ngIf="loginFormService.form.get('email')?.hasError('email')">Invalid email format</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" placeholder="Your password" formControlName="password"/>
+                    <mat-error *ngIf="loginFormService.form.get('password')?.hasError('required')">Password is required</mat-error>
+                    <mat-error *ngIf="loginFormService.form.get('password')?.hasError('pattern')">Password needs to be at least 8 characters long and contain at least one: Uppercase character, Lowercase character, Number, Special character.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 text-center">
+                <button mat-raised-button color="primary" class="font-small" [disabled]="loginFormService.form.invalid || loginFormService.buttonIsDisabled" (click)="submit()">Log in</button>
+            </div>
+        </div>
+        <p class="text-center font-small text-danger">{{ message }}</p>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+<button mat-button mat-dialog-close class="font-small">Close</button>
+</mat-dialog-actions>

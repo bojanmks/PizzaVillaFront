@@ -39,6 +39,7 @@ export class ContactFormComponent implements OnInit {
         this.spinner.nativeElement.classList.add('d-none');
       },
       error: (err) => {
+        SpinnerFunctions.hideSpinner();
         console.error(err);
       }
     });

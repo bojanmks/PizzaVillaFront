@@ -161,3 +161,7 @@ body {
 .mat-raised-button {
     color: $color-white !important;
 }
+
+.cdk-overlay-container {
+    z-index: 50 !important;
+}

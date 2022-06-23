@@ -11,6 +11,8 @@ import { ContactInfoComponent } from './layout/components/footer/components/cont
 import { QuickLinksComponent } from './layout/components/footer/components/quick-links/quick-links.component';
 import { OtherUsefulLinksComponent } from './layout/components/footer/components/other-useful-links/other-useful-links.component';
 import { UserSectionComponent } from './layout/components/header/components/user-section/user-section.component';
+import { LoginComponent } from './layout/components/header/components/user-section/components/login/login.component';
+import { RegisterComponent } from './layout/components/header/components/user-section/components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { UserSectionComponent } from './layout/components/header/components/user
     ContactInfoComponent,
     QuickLinksComponent,
     OtherUsefulLinksComponent,
-    UserSectionComponent
+    UserSectionComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
