@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
 import { LoginFormService } from '../../services/forms/login-form.service';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public loginFormService: LoginFormService,
-    private dialogRef: MatDialogRef<LoginComponent>
+    private dialogRef: MatDialogRef<LoginComponent>,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +49,13 @@ export class LoginComponent implements OnInit {
             this.message = "";
         }
       }
+    });
+  }
+
+  redirectToRegister(): void {
+    this.dialogRef.close();
+    this.dialog.open(RegisterComponent, {
+      width: 'auto'
     });
   }
 
