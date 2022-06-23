@@ -50,6 +50,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PageSpinnerComponent } from './components/page-spinner/page-spinner.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -159,6 +160,10 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     ReactiveFormsModule,
     PageSpinnerComponent,
     PaginatorComponent
+  ],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
   ]
 })
 export class SharedModule { }

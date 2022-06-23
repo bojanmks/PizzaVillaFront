@@ -1,1 +1,6 @@
-<p>user-section works!</p>
+<ng-container *ngIf="authService.isLoggedIn$ | async; else notLoggedIn">
+    username
+</ng-container>
+<ng-template #notLoggedIn>
+    log in
+</ng-template>

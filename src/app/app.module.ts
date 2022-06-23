@@ -60,7 +60,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
     LayoutModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

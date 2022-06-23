@@ -8,5 +8,7 @@ export const API = {
     //products: "products.json",
     products: "api/products",
     productCategories: "product-categories.json",
-    ingredients: "ingredients.json"
+    ingredients: "ingredients.json",
+    login: "api/auth",
+    register: "api/register"
 };
