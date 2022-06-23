@@ -10,6 +10,7 @@ import { ScrollTopComponent } from './layout/components/scroll-top/scroll-top.co
 import { ContactInfoComponent } from './layout/components/footer/components/contact-info/contact-info.component';
 import { QuickLinksComponent } from './layout/components/footer/components/quick-links/quick-links.component';
 import { OtherUsefulLinksComponent } from './layout/components/footer/components/other-useful-links/other-useful-links.component';
+import { UserSectionComponent } from './layout/components/header/components/user-section/user-section.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { OtherUsefulLinksComponent } from './layout/components/footer/components
     ScrollTopComponent,
     ContactInfoComponent,
     QuickLinksComponent,
-    OtherUsefulLinksComponent
+    OtherUsefulLinksComponent,
+    UserSectionComponent
   ],
   imports: [
     CommonModule,
