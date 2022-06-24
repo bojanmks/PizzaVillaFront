@@ -30,7 +30,7 @@
                 <button mat-raised-button color="primary" class="font-small" [disabled]="registerFormService.form.invalid || registerFormService.buttonIsDisabled" (click)="submit()">Register</button>
             </div>
         </div>
-        <p *ngIf="errorMessage !== ''" class="text-center font-small text-danger">{{ errorMessage }}</p>
+        <p *ngIf="errorMessage !== ''" class="text-center font-small text-danger" [innerHTML]="errorMessage"></p>
         <p *ngIf="successMessage !== ''" class="text-center font-small text-success">{{ successMessage }}</p>
     </form>
     <span class="font-small text-primary login-link" (click)="redirectToLogin()">Already have an account? Log in instead.</span>

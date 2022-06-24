@@ -42,6 +42,9 @@ export class LoginComponent implements OnInit {
           case 401:
             this.message = "User with those credentials doesn't exist.";
             break;
+          case 422:
+            this.message = err.error.errors.map((x: any) => x.error).join('<br/>');
+            break;
           case 500:
             this.message = "We encountered an error. Please try again later.";
             break;

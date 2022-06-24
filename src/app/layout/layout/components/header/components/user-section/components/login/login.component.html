@@ -22,7 +22,7 @@
                 <button mat-raised-button color="primary" class="font-small" [disabled]="loginFormService.form.invalid || loginFormService.buttonIsDisabled" (click)="submit()">Log in</button>
             </div>
         </div>
-        <p class="text-center font-small text-danger">{{ message }}</p>
+        <p *ngIf="message !== ''" class="text-center font-small text-danger" [innerHTML]="message"></p>
     </form>
     <span class="font-small text-primary register-link" (click)="redirectToRegister()">Don't have an account? Register instead.</span>
 </mat-dialog-content>

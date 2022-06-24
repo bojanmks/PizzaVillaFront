@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
         
         switch(err.status) {
           case 422:
-            this.errorMessage = err.message;
+            this.errorMessage = err.error.errors.map((x: any) => x.error).join('<br/>');
             break;
           case 500:
             this.errorMessage = "We encountered an error. Please try again later.";
