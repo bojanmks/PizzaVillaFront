@@ -1,12 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { forkJoin, Observable } from 'rxjs';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
-import { IIngredient } from '../../interfaces/i-ingredient';
+import { CONFIG } from 'src/app/shared/constants/config';
 import { IProduct } from '../../interfaces/i-product';
-import { IProductCategory } from '../../interfaces/i-product-category';
-import { ProductCategoriesService } from '../../services/categories/product-categories.service';
-import { IngredientsService } from '../../services/ingredients/ingredients.service';
 import { ProductsService } from '../../services/products/products.service';
 
 @Component({
@@ -20,9 +16,7 @@ export class DetailsDialogComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private productsService: ProductsService,
-    private ingredientsService: IngredientsService,
-    private productCategoryService: ProductCategoriesService
+    private productsService: ProductsService
     ) { }
 
   ngOnInit(): void {
@@ -30,17 +24,12 @@ export class DetailsDialogComponent implements OnInit {
   }
 
   getProduct(): void {
-    const requests: Observable<any>[] = [
-      this.productsService.getAll(),
-      this.ingredientsService.getAll(),
-      this.productCategoryService.getAll()
-    ];
-
     SpinnerFunctions.showSpinner();
-    forkJoin(requests).subscribe({
+    this.productsService.get(this.data.id).subscribe({
       next: (data) => {
         SpinnerFunctions.hideSpinner();
-        this.product = data[0].find((p: IProduct) => p.id === this.data.id);
+        this.product = data;
+        this.product.image = CONFIG.SERVER + 'images/' + this.product.image;
       },
       error: (err) => {
         SpinnerFunctions.hideSpinner();

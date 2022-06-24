@@ -3,13 +3,13 @@
     <div class="row">
         <div class="col-12 col-md-6 mb-5 mb-md-0">
             <div id="product-image" class="w-100 text-center">
-                <img [src]="'assets/images/products/' + product.image" [alt]="product.name" class="img-fluid rounded"/>
+                <img [src]="product.image" [alt]="product.name" class="img-fluid rounded"/>
             </div>
         </div>
         <div class="col-12 col-md-6">
             <span id="product-name" class="font-small"><span class="fw-bold">Name:</span> {{ product.name }}</span>
             <br/>
-            <span id="product-category" class="font-small"><span class="fw-bold">Category:</span> {{ product.category }}</span>
+            <span id="product-category" class="font-small"><span class="fw-bold">Category:</span> {{ product.category.name }}</span>
             <br/>
             <span id="product-price" class="font-small"><span class="fw-bold">Price:</span> {{ product.price | currency }}</span>
             <hr/>

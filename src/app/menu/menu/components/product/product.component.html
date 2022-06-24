@@ -4,7 +4,7 @@
         <p class="font-small m-0">{{ getProductIngerdientsAsString(product.id) }}</p>
         <span class="font-small fw-bold">{{ product.price | currency }}</span>
         <span class="product-buttons d-flex mt-2">
-            <span class="product-details-btn font-small" (click)="openDialog(product.id)">Details</span>
+            <span class="product-details-btn font-small" (click)="openDialog(product.id)">Details / Add to cart</span>
         </span>
     </div>
     <div class="product-image" [ngStyle]="{backgroundImage: 'url(' + product.image + ')'}"></div>
