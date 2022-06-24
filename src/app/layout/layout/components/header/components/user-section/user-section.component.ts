@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subscription } from 'rxjs';
 import { ICartItemGet } from 'src/app/shared/interfaces/i-cart-item';
@@ -29,7 +30,8 @@ export class UserSectionComponent implements OnInit {
     public authService: AuthService,
     private dialog: MatDialog,
     private jwtHelperService: JwtHelperService,
-    public cartService: CartService
+    public cartService: CartService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
