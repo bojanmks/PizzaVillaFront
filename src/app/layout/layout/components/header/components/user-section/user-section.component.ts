@@ -74,7 +74,6 @@ export class UserSectionComponent implements OnInit {
     }).afterClosed().subscribe((data: string) => {
       if(data) {
         this.decodeJwt(data);
-        this.cartService.notifySubscribers();
       }
     });
   }
