@@ -7,7 +7,7 @@
                 </ul>
             </div>
         </span>
-        <span class="ms-3"><i class="cart-icon font-xm fas fa-shopping-cart" matBadge="15" matBadgeColor="primary" matBadgeSize="small"></i></span>
+        <span class="ms-3"><i class="cart-icon font-xm fas fa-shopping-cart" [matBadge]="cartAmount" matBadgeColor="primary" matBadgeSize="small"></i></span>
     </div>
 </ng-container>
 <ng-template #notLoggedIn>

@@ -1,7 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Subscription } from 'rxjs';
+import { ICartItemGet } from 'src/app/shared/interfaces/i-cart-item';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 import { LoginComponent } from './components/login/login.component';
 import { ITokenData } from './interfaces/i-token-data';
 
@@ -14,6 +17,8 @@ export class UserSectionComponent implements OnInit {
 
   user: ITokenData;
   dropdownIsVisible: boolean = false;
+  cartAmount: number = 0;
+  private subscription: Subscription;
 
   @HostListener("window:click", [])
   onWindowClick(): void {
@@ -23,11 +28,34 @@ export class UserSectionComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private dialog: MatDialog,
-    private jwtHelperService: JwtHelperService
+    private jwtHelperService: JwtHelperService,
+    public cartService: CartService
   ) { }
 
   ngOnInit(): void {
     this.decodeJwt();
+
+    this.authService.isLoggedIn$.subscribe((data) => {
+      if(data) {
+        this.addCartServiceSubscription();
+        this.cartService.notifySubscribers();
+      }
+    });
+  }
+
+  private addCartServiceSubscription(): void {
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    
+    this.subscription = this.cartService.getAllSubject$.subscribe({
+      next: (data) => {
+        this.cartAmount = Object.values(data as ICartItemGet[]).reduce((t, { amount }) => t + amount, 0);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
   }
 
   decodeJwt(token: string = null): void {
@@ -46,6 +74,7 @@ export class UserSectionComponent implements OnInit {
     }).afterClosed().subscribe((data: string) => {
       if(data) {
         this.decodeJwt(data);
+        this.cartService.notifySubscribers();
       }
     });
   }

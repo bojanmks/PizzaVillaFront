@@ -56,6 +56,7 @@ export class DetailsDialogComponent implements OnInit {
         this.snackBar.open('Item was added to cart.', 'Close', {
           duration: 5000
         });
+        this.cartService.notifySubscribers();
       },
       error: (err) => {
         SpinnerFunctions.hideSpinner();

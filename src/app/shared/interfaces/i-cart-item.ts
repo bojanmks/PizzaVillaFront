@@ -11,6 +11,7 @@ export interface ICartItemGet extends ICartItem {
     priceWhenOrdered?: number;
     ingredients?: IIngredient[],
     product?: IProduct,
+    amount: number;
 }
 
 export interface ICartItemCreate extends ICartItem {
