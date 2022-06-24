@@ -22,5 +22,7 @@
   </ng-container>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close class="font-small">Close</button>
+  <label *ngIf="!(authService.isLoggedIn$ | async)" class="font-small text-danger me-3">Please log in.</label>
+  <button class="font-small" mat-raised-button color="primary" [disabled]="!(authService.isLoggedIn$ | async) || buttonIsDisabled" (click)="addToCart({ productId: data.id })">Add to cart</button>
+  <button mat-button mat-dialog-close class="font-small ms-3">Close</button>
 </mat-dialog-actions>

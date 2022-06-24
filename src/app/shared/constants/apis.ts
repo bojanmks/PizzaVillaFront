@@ -13,5 +13,6 @@ export const API = {
     ingredients: "api/ingredients",
     login: "api/auth",
     register: "api/register",
-    contact: "api/contact"
+    contact: "api/contact",
+    cart: "api/cart"
 };
