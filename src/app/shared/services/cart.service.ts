@@ -13,8 +13,6 @@ export class CartService extends ApiService<ICartItem> {
   private _getAllSubject$: BehaviorSubject<ICartItem[]> = new BehaviorSubject<ICartItem[]>([]);
   getAllSubject$ = this._getAllSubject$.asObservable();
 
-  private subscription: Subscription;
-
   constructor(
     http: HttpClient
   ) {
@@ -22,10 +20,9 @@ export class CartService extends ApiService<ICartItem> {
   }
 
   notifySubscribers(): void {
-    this.subscription = this.getAll().subscribe({
+    this.getAll().subscribe({
       next: (data) => {
         this._getAllSubject$.next(data);
-        this.subscription.unsubscribe();
       },
       error: (err) => {
         console.error(err);
