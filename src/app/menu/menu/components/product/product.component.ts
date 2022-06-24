@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IIngredient } from '../../interfaces/i-ingredient';
-import { IProductDetailed } from '../../interfaces/i-product';
+import { IProduct } from '../../interfaces/i-product';
 import { DetailsDialogComponent } from '../details-dialog/details-dialog.component';
 
 @Component({
@@ -11,7 +11,7 @@ import { DetailsDialogComponent } from '../details-dialog/details-dialog.compone
 })
 export class ProductComponent implements OnInit {
 
-  @Input('product') product: IProductDetailed;
+  @Input('product') product: IProduct;
 
   constructor(
     private dialog: MatDialog
