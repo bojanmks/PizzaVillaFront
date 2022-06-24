@@ -52,13 +52,15 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PageSpinnerComponent } from './components/page-spinner/page-spinner.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { NeedToBeLoggedInDialogComponent } from './components/need-to-be-logged-in-dialog/need-to-be-logged-in-dialog.component';
 
 
 @NgModule({
   declarations: [
     NotFoundComponent,
     PageSpinnerComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    NeedToBeLoggedInDialogComponent
   ],
   imports: [
     RouterModule,
