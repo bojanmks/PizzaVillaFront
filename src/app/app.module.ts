@@ -10,6 +10,7 @@ import { LayoutModule } from './layout/layout.module';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -40,6 +41,12 @@ const routes: Routes = [
         path: "author",
         loadChildren: () => import('./author/author.module').then(m => m.AuthorModule),
         data: { title: "Author" }
+      },
+      {
+        path: "cart",
+        loadChildren: () => import('./cart/cart.module').then(m => m.CartModule),
+        canActivate: [AuthGuard],
+        data: { title: "Cart" }
       }
     ]
   },
