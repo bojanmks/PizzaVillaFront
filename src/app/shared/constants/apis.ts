@@ -7,8 +7,10 @@ export const API = {
     keyFeatures: "feature-items.json",
     //products: "products.json",
     products: "api/products",
-    productCategories: "product-categories.json",
-    ingredients: "ingredients.json",
+    //productCategories: "product-categories.json",
+    productCategories: "api/categories",
+    //ingredients: "ingredients.json",
+    ingredients: "api/ingredients",
     login: "api/auth",
     register: "api/register",
     contact: "api/contact"
