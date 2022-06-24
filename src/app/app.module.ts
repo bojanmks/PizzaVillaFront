@@ -8,7 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { LayoutModule } from './layout/layout.module';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 const routes: Routes = [
   {
@@ -60,6 +61,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
     LayoutModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ]
 })
 export class AppModule { }
