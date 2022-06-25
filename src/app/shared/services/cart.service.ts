@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { API } from '../constants/apis';
+import { CONFIG } from '../constants/config';
 import { ICartItem } from '../interfaces/i-cart-item';
 import { ApiService } from './api.service';
 
@@ -28,5 +29,13 @@ export class CartService extends ApiService<ICartItem> {
         console.error(err);
       }
     });
+  }
+
+  increase(id: number | string): Observable<any> {
+    return this.http.put(CONFIG.SERVER + API.cart + `/${id}/` + 'increase', {});
+  }
+
+  decrease(id: number | string): Observable<any> {
+    return this.http.put(CONFIG.SERVER + API.cart + `/${id}/` + 'decrease', {});
   }
 }

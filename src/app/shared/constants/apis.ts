@@ -14,5 +14,6 @@ export const API = {
     login: "api/auth",
     register: "api/register",
     contact: "api/contact",
-    cart: "api/cart"
+    cart: "api/cart",
+    orders: "api/orders"
 };

@@ -1,0 +1,19 @@
+<div class="p-4 shadow rounded">
+    <h3 class="text-center font-mx">Order</h3>
+    <form [formGroup]="orderFormService.form" class="w-100 full-width-form font-small">
+        <div class="row">
+            <div class="col-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Delivery address</mat-label>
+                    <input matInput placeholder="3344 W Alameda Avenue, Lakewood, CO 80222" formControlName="deliveryAddress"/>
+                    <mat-error *ngIf="orderFormService.form.get('deliveryAddress')?.hasError('required')">Delivery address is required</mat-error>
+                    <mat-error *ngIf="orderFormService.form.get('deliveryAddress')?.hasError('pattern')">Invalid address format</mat-error>
+                </mat-form-field>
+            </div>
+            <span class="font-small mb-3">Total price: <span class="fw-bold">{{ totalPrice | currency }}</span></span>
+            <div class="col-12 text-center">
+                <button mat-raised-button color="primary" class="font-small" [disabled]="orderFormService.form.invalid || orderFormService.buttonIsDisabled || !hasItems" (click)="submit()">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
