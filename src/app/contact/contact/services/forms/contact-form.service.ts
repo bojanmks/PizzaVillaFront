@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { BaseFormService } from 'src/app/shared/services/forms/base-form.service';
+import { IContactMessage } from '../../interfaces/i-contact-message';
 import { ContactService } from '../contact.service';
 
 @Injectable({
@@ -25,6 +26,13 @@ export class ContactFormService extends BaseFormService {
 
   submitForm(): Observable<any> {
     this.buttonIsDisabled = true;
-    return this.contactService.sendMessage(this.form.get('email').value, this.form.get('title').value, this.form.get('message').value);
+
+    const dataToSend: IContactMessage = {
+      email: this.form.get('email').value,
+      title: this.form.get('title').value,
+      message: this.form.get('message').value
+    };
+
+    return this.contactService.create(dataToSend);
   }
 }
