@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
 import { CONFIG } from 'src/app/shared/constants/config';
-import { ICartItemGet } from 'src/app/shared/interfaces/i-cart-item';
+import { ICartItemGet } from 'src/app/cart/cart/interfaces/i-cart-item';
 import { IErrorMessage } from 'src/app/shared/interfaces/i-error-message';
 import { CartService } from 'src/app/shared/services/cart.service';
 

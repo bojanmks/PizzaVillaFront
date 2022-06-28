@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
 import { CONFIG } from 'src/app/shared/constants/config';
-import { ICartItemCreate } from 'src/app/shared/interfaces/i-cart-item';
+import { ICartItemCreate } from 'src/app/cart/cart/interfaces/i-cart-item';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { IProduct } from '../../interfaces/i-product';

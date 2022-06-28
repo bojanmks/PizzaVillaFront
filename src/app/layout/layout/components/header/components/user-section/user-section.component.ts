@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subscription } from 'rxjs';
-import { ICartItemGet } from 'src/app/shared/interfaces/i-cart-item';
+import { ICartItemGet } from 'src/app/cart/cart/interfaces/i-cart-item';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { LoginComponent } from './components/login/login.component';
