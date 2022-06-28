@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
@@ -8,6 +8,9 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { IProduct } from '../../interfaces/i-product';
 import { ProductsService } from '../../services/products/products.service';
+import { AddonsService } from '../../services/addons/addons.service';
+import { MultipleSelectComponent } from '../multiple-select/multiple-select.component';
+import { IAddon } from '../../interfaces/i-addon';
 
 @Component({
   selector: 'app-details-dialog',
@@ -16,15 +19,19 @@ import { ProductsService } from '../../services/products/products.service';
 })
 export class DetailsDialogComponent implements OnInit {
 
+  @ViewChild('addons') addonsSelect: MultipleSelectComponent;
+
   product: IProduct;
   buttonIsDisabled: boolean = false;
+  totalPrice: number = 0;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private productsService: ProductsService,
     public authService: AuthService,
     public cartService: CartService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public addonsService: AddonsService
     ) { }
 
   ngOnInit(): void {
@@ -38,6 +45,7 @@ export class DetailsDialogComponent implements OnInit {
         SpinnerFunctions.hideSpinner();
         this.product = data;
         this.product.image = CONFIG.SERVER + 'images/' + this.product.image;
+        this.updateTotalPrice();
       },
       error: (err) => {
         SpinnerFunctions.hideSpinner();
@@ -46,7 +54,16 @@ export class DetailsDialogComponent implements OnInit {
     });
   }
 
-  addToCart(item: ICartItemCreate): void {
+  updateTotalPrice(addonsPrice: number = 0): void {
+    this.totalPrice = this.product.price + addonsPrice;
+  }
+
+  addToCart(): void {
+    let item: ICartItemCreate = {
+      productId: this.data.id,
+      addonIds: this.addonsSelect.multipleSelectFormService.form.get('data').value.map((x: IAddon) => x.id)
+    };
+
     SpinnerFunctions.showSpinner();
     this.buttonIsDisabled = true;
     this.cartService.create(item).subscribe({

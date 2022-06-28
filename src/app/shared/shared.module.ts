@@ -53,6 +53,7 @@ import { PageSpinnerComponent } from './components/page-spinner/page-spinner.com
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { NeedToBeLoggedInDialogComponent } from './components/need-to-be-logged-in-dialog/need-to-be-logged-in-dialog.component';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 
 @NgModule({
@@ -112,6 +113,7 @@ import { NeedToBeLoggedInDialogComponent } from './components/need-to-be-logged-
     MatSortModule,
     MatPaginatorModule,
     MatBadgeModule,
+    NgxMatSelectSearchModule,
     ReactiveFormsModule
   ],
   exports: [
@@ -162,6 +164,7 @@ import { NeedToBeLoggedInDialogComponent } from './components/need-to-be-logged-
     MatSortModule,
     MatPaginatorModule,
     MatBadgeModule,
+    NgxMatSelectSearchModule,
     ReactiveFormsModule,
     PageSpinnerComponent,
     PaginatorComponent

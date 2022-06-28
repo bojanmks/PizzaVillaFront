@@ -17,12 +17,17 @@
             <ul class="font-small">
                 <li *ngFor="let i of product.ingredients">- {{ i.name }}</li>
             </ul>
+            <hr/>
+            <app-multiple-select #addons class="d-block mt-4" label="Addons" [service]="addonsService" (onChange)="updateTotalPrice($event)"></app-multiple-select>
+            <span class="font-small d-block text-end">
+              <span class="fw-bold">Total price:</span> {{ totalPrice | currency }}
+            </span>
         </div>
     </div>
   </ng-container>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <label *ngIf="!(authService.isLoggedIn$ | async)" class="font-small text-danger me-3">Please log in.</label>
-  <button class="font-small" mat-raised-button color="primary" [disabled]="!(authService.isLoggedIn$ | async) || buttonIsDisabled" (click)="addToCart({ productId: data.id })">Add to cart</button>
+  <button class="font-small" mat-raised-button color="primary" [disabled]="!(authService.isLoggedIn$ | async) || buttonIsDisabled" (click)="addToCart()">Add to cart</button>
   <button mat-button mat-dialog-close class="font-small ms-3">Close</button>
 </mat-dialog-actions>
