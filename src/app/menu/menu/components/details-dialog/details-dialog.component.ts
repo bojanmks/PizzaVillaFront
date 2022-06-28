@@ -59,9 +59,11 @@ export class DetailsDialogComponent implements OnInit {
   }
 
   addToCart(): void {
+    const addons: IAddon[] = this.addonsSelect.multipleSelectFormService.form.get('data').value;
+
     let item: ICartItemCreate = {
       productId: this.data.id,
-      addonIds: this.addonsSelect.multipleSelectFormService.form.get('data').value.map((x: IAddon) => x.id)
+      addonIds: addons ? addons.map((x: IAddon) => x.id) : []
     };
 
     SpinnerFunctions.showSpinner();
