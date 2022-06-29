@@ -85,6 +85,7 @@ a {
     }
 }
 
+// colors
 .text-primary {
     color: $color-primary !important;
 }
@@ -122,6 +123,25 @@ a {
 
 .bg-grey {
     background-color: $color-grey !important;
+}
+
+// admin colors
+.alt-theme {
+    .text-primary {
+        color: $admin-color-primary !important;
+    }
+    
+    .bg-primary {
+        background-color: $admin-color-primary !important;
+    }
+    
+    .text-secondary {
+        color: $admin-color-secondary !important;
+    }
+    
+    .bg-secondary {
+        background-color: $admin-color-secondary !important;
+    }
 }
 
 body {
