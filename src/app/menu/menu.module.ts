@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ProductComponent } from './menu/components/product/product.component';
 import { DetailsDialogComponent } from './menu/components/details-dialog/details-dialog.component';
 import { MultipleSelectComponent } from './menu/components/multiple-select/multiple-select.component';
+import { CustomOrderComponent } from './menu/components/custom-order/custom-order.component';
+import { CustomOrderDialogComponent } from './menu/components/custom-order/components/custom-order-dialog/custom-order-dialog.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { MultipleSelectComponent } from './menu/components/multiple-select/multi
     MenuComponent,
     ProductComponent,
     DetailsDialogComponent,
-    MultipleSelectComponent
+    MultipleSelectComponent,
+    CustomOrderComponent,
+    CustomOrderDialogComponent
   ],
   imports: [
     CommonModule,

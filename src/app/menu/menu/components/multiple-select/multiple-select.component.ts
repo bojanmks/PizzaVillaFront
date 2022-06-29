@@ -1,29 +1,33 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { IAddon } from '../../interfaces/i-addon';
-import { MultipleSelectFormService } from './services/forms/multiple-select-form.service';
 
 @Component({
   selector: 'app-multiple-select',
   templateUrl: './multiple-select.component.html',
   styleUrls: ['./multiple-select.component.scss']
 })
-export class MultipleSelectComponent implements OnInit {
+export class MultipleSelectComponent implements OnInit, OnChanges {
 
   @Input('label') label: string;
   @Input('service') service: ApiService<any>;
+  @Input('minLength') minLength: number;
+  @Input('maxLength') maxLength: number;
 
-  @Output('onChange') onChange: EventEmitter<number> = new EventEmitter<number>();
+  @Output('onChange') onChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   allData: any = [];
   filteredData: any = [];
   selectedItemsText: string = "";
 
-  constructor(
-    public multipleSelectFormService: MultipleSelectFormService
-  ) { }
+  form: FormGroup = null;
+
+  constructor() { }
 
   ngOnInit(): void {
+    this.initializeForm();
+
     this.service.getAll().subscribe({
       next: (data) => {
         this.allData = data;
@@ -35,16 +39,41 @@ export class MultipleSelectComponent implements OnInit {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.initializeForm();
+  }
+
+  private initializeForm(): void {
+    const dataFormControl = new FormControl('');
+
+    let validators: ValidatorFn[] = [];
+
+    if(this.minLength) {
+      validators.push(Validators.required);
+      validators.push(Validators.minLength(this.minLength));
+    }
+    if(this.maxLength) {
+      validators.push(Validators.maxLength(this.maxLength));
+    }
+
+    dataFormControl.addValidators(validators);
+
+    this.form = new FormGroup({
+      data: dataFormControl,
+      dataFilter: new FormControl('')
+    });
+
+    this.form.markAllAsTouched();
+  }
+
   filterData(): void {
-    let search = this.multipleSelectFormService.form.get('dataFilter').value.toLowerCase();
+    let search = this.form.get('dataFilter').value.toLowerCase();
     this.filteredData = this.allData.filter((x: any) => x.name.toLowerCase().includes(search));
   }
 
   updateSelectedItems(): void {
-    this.selectedItemsText = this.multipleSelectFormService.form.get('data').value.map((x: any) => x.name).join(', ');
-
-    const totalPrice: number = this.multipleSelectFormService.form.get('data').value.reduce((a: number, b: IAddon) => a + b.price, 0);
-    this.onChange.emit(totalPrice);
+    this.selectedItemsText = this.form.get('data').value.map((x: any) => x.name).join(', ');
+    this.onChange.emit(true);
   }
 
 }

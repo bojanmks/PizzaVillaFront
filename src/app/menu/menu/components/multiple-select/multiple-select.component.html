@@ -1,7 +1,7 @@
 <span class="font-small d-block mb-1 fw-bold">Choose {{ label.toLowerCase() }}</span>
 <div class="row">
   <div class="col-12">
-    <form [formGroup]="multipleSelectFormService.form" class="full-width-form">
+    <form [formGroup]="form" class="full-width-form">
       <mat-form-field appearance="outline">
           <mat-label>{{ label }}</mat-label>
           <mat-select formControlName="data" (selectionChange)="updateSelectedItems()" multiple>
@@ -13,6 +13,8 @@
               {{ el.name }} ({{ el.price | currency }})
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="form.get('data')?.hasError('minlength') || form.get('data')?.hasError('required')">You need to select at least {{ minLength }} options.</mat-error>
+          <mat-error *ngIf="form.get('data')?.hasError('maxlength')">You can't select more than {{ maxLength }} options.</mat-error>
       </mat-form-field>
     </form>
   </div>

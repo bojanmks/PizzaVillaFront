@@ -18,7 +18,7 @@
                 <li *ngFor="let i of product.ingredients">- {{ i.name }}</li>
             </ul>
             <hr/>
-            <app-multiple-select #addons class="d-block mt-4" label="Addons" [service]="addonsService" (onChange)="updateTotalPrice($event)"></app-multiple-select>
+            <app-multiple-select #addons class="d-block mt-4" label="Addons" [service]="addonsService" (onChange)="updateTotalPrice()"></app-multiple-select>
             <span class="font-small d-block text-end">
               <span class="fw-bold">Total price:</span> {{ totalPrice | currency }}
             </span>

@@ -1,0 +1,15 @@
+<mat-dialog-content class="mat-typography">
+    <h2 class="font-xm text-center">Make your own</h2>
+    <ng-container *ngIf="orderConstants">
+        <app-multiple-select #ingredients [minLength]="orderConstants.MinIngredients" [maxLength]="orderConstants.MaxIngredients" class="d-block mt-4" label="Ingredients" [service]="ingredientsService" (onChange)="updateTotalPrice()"></app-multiple-select>
+        <app-multiple-select #addons [maxLength]="orderConstants.MaxAddons" class="d-block mt-4" label="Addons" [service]="addonsService" (onChange)="updateTotalPrice()"></app-multiple-select>
+        <span class="font-small d-block text-end">
+            <span class="fw-bold">Total price:</span> {{ totalPrice | currency }}
+        </span>
+    </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <label *ngIf="!(authService.isLoggedIn$ | async)" class="font-small text-danger me-3">Please log in.</label>
+    <button class="font-small" mat-raised-button color="primary" [disabled]="!(authService.isLoggedIn$ | async) || (!this.addonsSelect || this.addonsSelect.form.invalid) || (!this.ingredientsSelect || this.ingredientsSelect.form.invalid)" (click)="addToCart()">Add to cart</button>
+    <button mat-button mat-dialog-close class="font-small ms-3">Close</button>
+</mat-dialog-actions>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
@@ -11,13 +11,14 @@ import { ProductsService } from '../../services/products/products.service';
 import { AddonsService } from '../../services/addons/addons.service';
 import { MultipleSelectComponent } from '../multiple-select/multiple-select.component';
 import { IAddon } from '../../interfaces/i-addon';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-details-dialog',
   templateUrl: './details-dialog.component.html',
   styleUrls: ['./details-dialog.component.scss']
 })
-export class DetailsDialogComponent implements OnInit {
+export class DetailsDialogComponent implements OnInit, AfterViewInit {
 
   @ViewChild('addons') addonsSelect: MultipleSelectComponent;
 
@@ -35,6 +36,9 @@ export class DetailsDialogComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
     this.getProduct();
   }
 
@@ -45,7 +49,7 @@ export class DetailsDialogComponent implements OnInit {
         SpinnerFunctions.hideSpinner();
         this.product = data;
         this.product.image = CONFIG.SERVER + 'images/' + this.product.image;
-        this.updateTotalPrice();
+        this.totalPrice = this.product.price;
       },
       error: (err) => {
         SpinnerFunctions.hideSpinner();
@@ -54,12 +58,12 @@ export class DetailsDialogComponent implements OnInit {
     });
   }
 
-  updateTotalPrice(addonsPrice: number = 0): void {
-    this.totalPrice = this.product.price + addonsPrice;
+  updateTotalPrice(): void {
+    this.totalPrice = this.product.price + this.addonsSelect.form.get('data').value.reduce((a: number, b: IAddon) => a + b.price, 0);
   }
 
   addToCart(): void {
-    const addons: IAddon[] = this.addonsSelect.multipleSelectFormService.form.get('data').value;
+    const addons: IAddon[] = this.addonsSelect.form.get('data').value;
 
     let item: ICartItemCreate = {
       productId: this.data.id,
