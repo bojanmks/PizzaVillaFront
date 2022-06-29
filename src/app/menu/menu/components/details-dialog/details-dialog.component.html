@@ -1,5 +1,5 @@
 <mat-dialog-content class="mat-typography">
-  <ng-container *ngIf="product !== undefined">
+  <ng-container *ngIf="product !== undefined && orderConstants">
     <div class="row">
         <div class="col-12 col-md-6 mb-5 mb-md-0">
             <div id="product-image" class="w-100 text-center">
@@ -18,7 +18,7 @@
                 <li *ngFor="let i of product.ingredients">- {{ i.name }}</li>
             </ul>
             <hr/>
-            <app-multiple-select #addons class="d-block mt-4" label="Addons" [service]="addonsService" (onChange)="updateTotalPrice()"></app-multiple-select>
+            <app-multiple-select #addons [maxLength]="orderConstants.MaxAddons" class="d-block mt-4" label="Addons" [service]="addonsService" (onChange)="updateTotalPrice()"></app-multiple-select>
             <span class="font-small d-block text-end">
               <span class="fw-bold">Total price:</span> {{ totalPrice | currency }}
             </span>
@@ -28,6 +28,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <label *ngIf="!(authService.isLoggedIn$ | async)" class="font-small text-danger me-3">Please log in.</label>
-  <button class="font-small" mat-raised-button color="primary" [disabled]="!(authService.isLoggedIn$ | async) || buttonIsDisabled" (click)="addToCart()">Add to cart</button>
+  <button class="font-small" mat-raised-button color="primary" [disabled]="!(authService.isLoggedIn$ | async) || buttonIsDisabled || (!addonsSelect || addonsSelect.form.invalid)" (click)="addToCart()">Add to cart</button>
   <button mat-button mat-dialog-close class="font-small ms-3">Close</button>
 </mat-dialog-actions>

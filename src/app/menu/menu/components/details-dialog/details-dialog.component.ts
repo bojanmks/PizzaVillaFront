@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
@@ -12,16 +12,19 @@ import { AddonsService } from '../../services/addons/addons.service';
 import { MultipleSelectComponent } from '../multiple-select/multiple-select.component';
 import { IAddon } from '../../interfaces/i-addon';
 import { FormControl } from '@angular/forms';
+import { OrderService } from 'src/app/cart/cart/services/order.service';
+import { IOrderConstants } from '../../interfaces/i-order-constants';
 
 @Component({
   selector: 'app-details-dialog',
   templateUrl: './details-dialog.component.html',
   styleUrls: ['./details-dialog.component.scss']
 })
-export class DetailsDialogComponent implements OnInit, AfterViewInit {
+export class DetailsDialogComponent implements OnInit, AfterViewInit, AfterContentChecked {
 
   @ViewChild('addons') addonsSelect: MultipleSelectComponent;
 
+  orderConstants: IOrderConstants;
   product: IProduct;
   buttonIsDisabled: boolean = false;
   totalPrice: number = 0;
@@ -32,14 +35,28 @@ export class DetailsDialogComponent implements OnInit, AfterViewInit {
     public authService: AuthService,
     public cartService: CartService,
     private snackBar: MatSnackBar,
-    public addonsService: AddonsService
+    public addonsService: AddonsService,
+    public ordersService: OrderService,
+    private cdref: ChangeDetectorRef
     ) { }
 
   ngOnInit(): void {
+    this.ordersService.constants().subscribe({
+      next: (data: IOrderConstants) => {
+        this.orderConstants = data;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
   }
 
   ngAfterViewInit(): void {
     this.getProduct();
+  }
+
+  ngAfterContentChecked(): void {
+    this.cdref.detectChanges();
   }
 
   getProduct(): void {
