@@ -1,29 +1,5 @@
 @import "../../shared/css/variable";
 
-.product-image {
-    display: inline-block;
-    width: 50px !important;
-}
-
-th {
-    font-size: .9rem;
-}
-
-td {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    font-size: 1.1rem;
-}
-
-.btn-amount, .btn-remove {
-    background: none;
-    border: none;
-    color: $color-primary;
-}
-
 .table-wrapper {
     overflow-x: auto;
-    table {
-        min-width: 500px;
-    }
 }

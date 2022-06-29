@@ -1,54 +1,18 @@
 <div class="header-padding">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-8 order-2 order-lg-1">
-                <ng-container *ngIf="dataSource && dataSource.length; else emptyCart">
-                    <div class="table-wrapper shadow">
-                      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100 rounded">
-                          <ng-container matColumnDef="Name">
-                            <th mat-header-cell *matHeaderCellDef> Name </th>
-                            <td mat-cell *matCellDef="let element">
-                              <div class="product-image me-2">
-                                  <img class="img-fluid rounded" [src]="element.product.image" [alt]="element.product.name">
-                              </div> 
-                              {{element.product.name}} 
-                            </td>
-                          </ng-container>
-                        
-                          <ng-container matColumnDef="Amount">
-                            <th mat-header-cell *matHeaderCellDef> Amount </th>
-                            <td mat-cell *matCellDef="let element">
-                              <button class="btn-amount p-1 font-xm" (click)="decrease(element.id)">-</button>
-                              {{element.amount}}
-                              <button class="btn-amount p-1 font-xm" (click)="increase(element.id)">+</button>
-                          </td>
-                          </ng-container>
-                        
-                          <ng-container matColumnDef="Price">
-                            <th mat-header-cell *matHeaderCellDef> Price </th>
-                            <td mat-cell *matCellDef="let element"> {{element.totalPrice | currency}} </td>
-                          </ng-container>
-                        
-                          <ng-container matColumnDef="Remove">
-                            <th mat-header-cell *matHeaderCellDef> Remove </th>
-                            <td mat-cell *matCellDef="let element">
-                              <button class="btn-remove" (click)="remove(element.id)">
-                                  <i class="fa fa-trash text-danger" aria-hidden="true"></i>
-                              </button>
-                            </td>
-                          </ng-container>
-                        
-                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                      </table>
-                    </div>
+            <div class="col-12 col-lg-8 order-2 order-lg-1 table-wrapper">
+                <ng-container *ngIf="cartItems && cartItems.length; else emptyCart">
+                  <ng-container *ngFor="let item of cartItems">
+                    <app-cart-item (onChange)="loadData()" [item]="item" class="d-block mb-4"></app-cart-item>
+                  </ng-container>
                 </ng-container>
                 <ng-template #emptyCart>
                     <p class="font-large">Your cart is empty.</p>
                 </ng-template>
             </div>
             <div class="col-12 col-lg-4 order-1 order-lg-2 mb-4 mb-lg-0">
-              <app-order-form [hasItems]="dataSource && dataSource.length > 0" [totalPrice]="totalPrice" (onOrderPlaced)="loadData()"></app-order-form>
+              <app-order-form [hasItems]="cartItems && cartItems.length > 0" [totalPrice]="totalPrice" (onOrderPlaced)="loadData()"></app-order-form>
             </div>
         </div>
     </div>

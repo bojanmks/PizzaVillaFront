@@ -14,8 +14,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  displayedColumns: string[] = ['Name', 'Amount', 'Price', 'Remove'];
-  dataSource: ICartItemGet[];
+  cartItems: ICartItemGet[];
   totalPrice: number = 0;
 
   constructor(
@@ -32,8 +31,12 @@ export class CartComponent implements OnInit {
     this.cartService.getAll().subscribe({
       next: (data) => {
         SpinnerFunctions.hideSpinner();
-        this.dataSource = data as ICartItemGet[];
-        this.dataSource.forEach((el: ICartItemGet) => el.product.image = CONFIG.SERVER + 'images/' + el.product.image);
+        this.cartItems = data as ICartItemGet[];
+        this.cartItems.forEach((el: ICartItemGet) => {
+          if(el.product) {
+            el.product.image = CONFIG.SERVER + 'images/' + el.product.image
+          }
+        });
         
         this.totalPrice = Object.values(data as ICartItemGet[]).reduce((t, { amount, totalPrice }) => t + (amount * totalPrice), 0);
         this.totalPrice = Math.round((this.totalPrice + Number.EPSILON) * 100) / 100;
@@ -45,49 +48,6 @@ export class CartComponent implements OnInit {
         });
       }
     });
-  }
-
-  sendRequest(request: Observable<any>, errors: IErrorMessage[] = null): void {
-    SpinnerFunctions.showSpinner();
-    request.subscribe({
-      next: () => {
-        SpinnerFunctions.hideSpinner();
-        this.loadData();
-        this.cartService.notifySubscribers();
-      },
-      error: (err) => {
-        SpinnerFunctions.hideSpinner();
-
-        const error = errors ? errors.find(x => x.statusCode === err.status) : null;
-        const messageToDisplay = error ? error.message : 'We encountered an error.';
-        
-        this.snackBar.open(messageToDisplay, 'Close', {
-          duration: 3000
-        });
-      }
-    });
-  }
-
-  remove(id: number | string): void {
-    this.sendRequest(this.cartService.delete(id));
-  }
-
-  increase(id: number | string): void {
-    this.sendRequest(this.cartService.increase(id), [
-      {
-        statusCode: 422,
-        message: "You can't have any more items in your cart."
-      }
-    ]);
-  }
-
-  decrease(id: number | string): void {
-    this.sendRequest(this.cartService.decrease(id), [
-      {
-        statusCode: 422,
-        message: "Amount can't be less than 1."
-      }
-    ]);
   }
 
 }

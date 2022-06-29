@@ -1,0 +1,66 @@
+<div class="cart-item rounded shadow">
+    <div class="row align-items-center p-3">
+        <div class="col-5">
+            <ng-container *ngIf="item.product; else makeYourOwn">
+                <div class="row">
+                    <div class="col-4 d-flex align-items-center">
+                        <div class="product-image">
+                            <img class="img-fluid rounded" [src]="item.product.image" [alt]="item.product.name">
+                        </div>
+                    </div>
+                    <div class="col-8 text-center d-flex align-items-center">
+                        {{item.product.name}}
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #makeYourOwn>
+                Make your own
+            </ng-template>
+        </div>
+        <div class="col-3">
+            <button class="btn-amount p-1 font-xm" (click)="decrease(item.id)">-</button>
+                {{item.amount}}
+            <button class="btn-amount p-1 font-xm" (click)="increase(item.id)">+</button>
+        </div>
+        <div class="col-2">
+            {{item.totalPrice | currency}}
+        </div>
+        <div class="col-2">
+            <button class="btn-remove" (click)="remove(item.id)">
+                <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <ng-container *ngIf="(item.ingredients && item.ingredients.length) || (item.addons && item.addons.length)">
+        <hr class="p-0 m-0" />
+        <div class="details p-3" [ngClass]="{ 'show-details' : showDetails }">
+            <div class="row">
+                <ng-container *ngIf="item.ingredients && item.ingredients.length">
+                    <div class="col-6">
+                        <span class="font-small">Ingredients</span>
+                        <ul class="font-xs">
+                            <ng-container *ngFor="let i of item.ingredients">
+                                <li>- {{ i.name }} ({{ i.price | currency }})</li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="item.addons && item.addons.length">
+                    <div class="col-6">
+                        <span class="font-small">Addons</span>
+                        <ul class="font-xs">
+                            <ng-container *ngFor="let a of item.addons">
+                                <li>- {{ a.name }} ({{ a.price | currency }})</li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="text-center font-xs p-1">
+            <span class="btn-details" (click)="toggleDetails()">
+                Details <i [ngClass]="showDetails ? 'fa fa-angle-up' : 'fa fa-angle-down'"></i>
+            </span>
+        </div>
+    </ng-container>
+</div>
