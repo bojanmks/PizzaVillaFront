@@ -2,7 +2,7 @@
 
 @include mat.core();
 
-/* For use in src/lib/core/theming/_palette.scss */
+// client side theme
 $md-mcgpalette0: (
     50 : #fff5e6,
     100 : #fee7c2,
@@ -36,7 +36,6 @@ $md-mcgpalette0: (
     )
 );
 
-/* For use in src/lib/core/theming/_palette.scss */
 $md-mcgpalette1: (
     50 : #eef3e2,
     100 : #d4e1b6,
@@ -80,3 +79,83 @@ $my-theme: mat.define-light-theme((
 ));
 
 @include mat.all-component-themes($my-theme);
+
+// admin panel theme
+$alt-md-mcgpalette0: (
+    50 : #e0efff,
+    100 : #b3d7ff,
+    200 : #80bdff,
+    300 : #4da3ff,
+    400 : #268fff,
+    500 : #007bff,
+    600 : #0073ff,
+    700 : #0068ff,
+    800 : #005eff,
+    900 : #004bff,
+    A100 : #ffffff,
+    A200 : #f2f5ff,
+    A400 : #bfceff,
+    A700 : #a6baff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$alt-md-mcgpalette1: (
+    50 : #e7e7e8,
+    100 : #c2c4c6,
+    200 : #9a9da0,
+    300 : #717579,
+    400 : #52585d,
+    500 : #343a40,
+    600 : #2f343a,
+    700 : #272c32,
+    800 : #21252a,
+    900 : #15181c,
+    A100 : #63b1ff,
+    A200 : #3097ff,
+    A400 : #007efc,
+    A700 : #0071e2,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$alt-my-primary: mat.define-palette($alt-md-mcgpalette0, 500);
+$alt-my-accent: mat.define-palette($alt-md-mcgpalette1, 500);
+$alt-my-theme: mat.define-light-theme((
+ color: (
+   primary: $alt-my-primary,
+   accent: $alt-my-accent
+ )
+));
+
+.alt-theme {
+    @include mat.all-component-themes($alt-my-theme);
+}
