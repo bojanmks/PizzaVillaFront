@@ -1,0 +1,15 @@
+<mat-drawer-container class="sidenav-container alt-theme" autosize>
+    <mat-drawer #drawer class="sidenav bg-secondary text-white" mode="side">
+      <p class="font-medium text-center">
+        PizzaVilla <span class="fw-bold">Admin Panel</span>
+      </p>
+    </mat-drawer>
+    <mat-toolbar>
+      <button type="button" mat-button (click)="drawer.toggle()">
+          <mat-icon>
+              menu
+          </mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</mat-drawer-container>

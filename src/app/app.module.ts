@@ -11,6 +11,8 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AdminLayoutComponent } from './admin/admin-layout/admin-layout/admin-layout.component';
+import { AdminLayoutModule } from './admin/admin-layout/admin-layout.module';
 
 const routes: Routes = [
   {
@@ -51,6 +53,14 @@ const routes: Routes = [
     ]
   },
   {
+    path: "admin",
+    component: AdminLayoutComponent,
+    children: [],
+    data: {
+      title: 'Admin Panel'
+    }
+  },
+  {
     path: "**",
     component: NotFoundComponent
   }
@@ -66,7 +76,8 @@ const routes: Routes = [
     HttpClientModule,
     SharedModule,
     RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
-    LayoutModule
+    LayoutModule,
+    AdminLayoutModule
   ],
   bootstrap: [AppComponent],
   providers: [
