@@ -4,6 +4,13 @@
         PizzaVilla <span class="fw-bold">Admin Panel</span>
       </p>
       <hr/>
+      <div class="d-flex align-items-center">
+        <div class="user-image me-2">
+          <img class="img-fluid rounded-circle" src="../../../../assets/images/user_image.jpg" alt="User's image"/>
+        </div>
+        {{ authService.getUser().Username }}
+      </div>
+      <hr/>
       <button routerLink="/home" layout="row" class="w-100 font-small text-secondary mb-2" mat-raised-button>
         <i class="fa-solid fa-arrow-left me-2"></i>Client Side
       </button>

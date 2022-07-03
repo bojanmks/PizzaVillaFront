@@ -5,6 +5,7 @@ import { API } from '../constants/apis';
 import { CONFIG } from '../constants/config';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { ITokenData } from 'src/app/layout/layout/components/header/components/user-section/interfaces/i-token-data';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class AuthService {
     } else {
       localStorage.removeItem(this.localStorageTokenKey);
     }
+  }
+
+  getUser(): ITokenData {
+    return this.jwtHelper.decodeToken(localStorage.getItem(this.localStorageTokenKey));
   }
 
   login(email: string, password: string): Observable<any> {
