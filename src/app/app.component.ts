@@ -29,12 +29,22 @@ export class AppComponent implements OnInit {
         filter(event => event instanceof NavigationEnd),
         map(() => {
           let child = this.activatedRoute.firstChild;
+
           while (child.firstChild) {
             child = child.firstChild;
           }
-          if (child.snapshot.data['title']) {
-            return child.snapshot.data['title'];
-          }
+
+          do {
+            if (child.snapshot.data['title']) {
+              return child.snapshot.data['title'];
+            }
+            else if(child.parent) {
+              child = child.parent;
+            } else {
+              break;
+            }
+          } while(true);
+
           return appTitle;
         })
       ).subscribe({
