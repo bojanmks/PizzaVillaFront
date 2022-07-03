@@ -1,6 +1,8 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -13,7 +15,9 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit {
 
   constructor(
     private observer: BreakpointObserver,
-    private cdref: ChangeDetectorRef
+    private cdref: ChangeDetectorRef,
+    public router: Router,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
