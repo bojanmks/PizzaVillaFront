@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subscription } from 'rxjs';
+import { AdminService } from 'src/app/admin/admin-layout/admin-layout/services/admin.service';
 import { ICartItemGet } from 'src/app/cart/cart/interfaces/i-cart-item';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -28,6 +29,7 @@ export class UserSectionComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
+    public adminService: AdminService,
     private dialog: MatDialog,
     private jwtHelperService: JwtHelperService,
     public cartService: CartService,
