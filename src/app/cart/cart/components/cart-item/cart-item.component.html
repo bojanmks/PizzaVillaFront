@@ -37,8 +37,8 @@
             <div class="row">
                 <ng-container *ngIf="item.ingredients && item.ingredients.length">
                     <div class="col-6">
-                        <span class="font-small">Ingredients</span>
-                        <ul class="font-xs">
+                        <span class="font-small fw-bold">Ingredients</span>
+                        <ul class="font-small">
                             <ng-container *ngFor="let i of item.ingredients">
                                 <li>- {{ i.name }} ({{ i.price | currency }})</li>
                             </ng-container>
@@ -47,8 +47,8 @@
                 </ng-container>
                 <ng-container *ngIf="item.addons && item.addons.length">
                     <div class="col-6">
-                        <span class="font-small">Addons</span>
-                        <ul class="font-xs">
+                        <span class="font-small fw-bold">Addons</span>
+                        <ul class="font-small">
                             <ng-container *ngFor="let a of item.addons">
                                 <li>- {{ a.name }} ({{ a.price | currency }})</li>
                             </ng-container>
