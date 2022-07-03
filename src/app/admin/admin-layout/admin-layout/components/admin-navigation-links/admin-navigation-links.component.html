@@ -1,0 +1,9 @@
+<ul id="admin-navigation-links">
+    <ng-container *ngFor="let l of links">
+        <li class="mb-1">
+            <button mat-button class="w-100 text-start font-small center-align-btn-vertical" [routerLink]="l.path" routerLinkActive="active">
+                <mat-icon class="font-xm me-2">{{ l.icon }}</mat-icon> {{ l.name }}
+            </button>
+        </li>
+    </ng-container>
+</ul>

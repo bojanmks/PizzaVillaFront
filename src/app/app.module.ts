@@ -56,7 +56,33 @@ const routes: Routes = [
   {
     path: "admin",
     component: AdminLayoutComponent,
-    children: [],
+    children: [
+      {
+        path: "",
+        redirectTo: "auditlog",
+        pathMatch: "full"
+      },
+      {
+        path: "auditlog",
+        loadChildren: () => import('./admin/audit-log/audit-log.module').then(m => m.AuditLogModule)
+      },
+      {
+        path: "users",
+        loadChildren: () => import('./admin/admin-users/admin-users.module').then(m => m.AdminUsersModule)
+      },
+      {
+        path: "products",
+        loadChildren: () => import('./admin/admin-products/admin-products.module').then(m => m.AdminProductsModule)
+      },
+      {
+        path: "categories",
+        loadChildren: () => import('./admin/admin-product-categories/admin-product-categories.module').then(m => m.AdminProductCategoriesModule)
+      },
+      {
+        path: "orders",
+        loadChildren: () => import('./admin/admin-orders/admin-orders.module').then(m => m.AdminOrdersModule)
+      }
+    ],
     data: {
       title: 'Admin Panel'
     },

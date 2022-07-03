@@ -7,6 +7,8 @@
       <app-admin-user-section></app-admin-user-section>
       <hr/>
       <app-admin-user-links></app-admin-user-links>
+      <hr/>
+      <app-admin-navigation-links></app-admin-navigation-links>
     </mat-drawer>
     <mat-toolbar>
       <button type="button" mat-button (click)="drawer.toggle()">
@@ -15,5 +17,7 @@
           </mat-icon>
       </button>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <div class="px-5 py-4">
+      <router-outlet></router-outlet>
+    </div>
 </mat-drawer-container>

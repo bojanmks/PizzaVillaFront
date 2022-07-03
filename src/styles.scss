@@ -207,8 +207,17 @@ mat-dialog-container {
 }
 
 // mat buttons
-.mat-button-wrapper {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center;
+.center-align-btn {
+    .mat-button-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center;
+    }
+}
+
+.center-align-btn-vertical {
+    .mat-button-wrapper {
+        display: flex !important;
+        align-items: center !important;
+    }
 }
