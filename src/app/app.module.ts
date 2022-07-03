@@ -13,6 +13,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout/admin-layout.component';
 import { AdminLayoutModule } from './admin/admin-layout/admin-layout.module';
+import { AdminGuard } from './admin/admin-layout/admin-layout/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -58,7 +59,8 @@ const routes: Routes = [
     children: [],
     data: {
       title: 'Admin Panel'
-    }
+    },
+    canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: "**",
