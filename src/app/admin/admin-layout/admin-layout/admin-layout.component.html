@@ -4,19 +4,9 @@
         PizzaVilla <span class="fw-bold">Admin Panel</span>
       </p>
       <hr/>
-      <div class="d-flex align-items-center">
-        <div class="user-image me-2">
-          <img class="img-fluid rounded-circle" src="../../../../assets/images/user_image.jpg" alt="User's image"/>
-        </div>
-        {{ authService.getUser().Username }}
-      </div>
+      <app-admin-user-section></app-admin-user-section>
       <hr/>
-      <button routerLink="/home" layout="row" class="w-100 font-small text-secondary mb-2" mat-raised-button>
-        <i class="fa-solid fa-arrow-left me-2"></i>Client Side
-      </button>
-      <button (click)="authService.logout()" class="w-100 font-small text-secondary" mat-raised-button>
-        <i class="fa fa-sign-out me-2" aria-hidden="true"></i>Logout
-      </button>
+      <app-admin-user-links></app-admin-user-links>
     </mat-drawer>
     <mat-toolbar>
       <button type="button" mat-button (click)="drawer.toggle()">
