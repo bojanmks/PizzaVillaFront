@@ -12,7 +12,12 @@
 
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
-  
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell font-small" [attr.colspan]="displayedColumns.length">
+          No results.
+        </td>
+      </tr>
+
       <ng-container *ngFor="let column of allColumns">
         <ng-container [matColumnDef]="column.index">
           <th mat-header-cell *matHeaderCellDef> {{ column.label }} </th>
