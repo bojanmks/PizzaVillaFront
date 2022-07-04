@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuditLogService } from './services/api/audit-log.service';
+import { AuditLogDataService } from './services/data/audit-log-data.service';
+import { AuditLogTableService } from './services/table/audit-log-table.service';
 
 @Component({
   selector: 'app-audit-log',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuditLogComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public apiService: AuditLogService,
+    public dataService: AuditLogDataService,
+    public tableService: AuditLogTableService
+  ) { }
 
   ngOnInit(): void {
   }

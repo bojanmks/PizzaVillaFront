@@ -1,0 +1,62 @@
+<ng-container *ngIf="showDateInputs">
+  <mat-form-field [formControl]="dateFrom" ngDefaultControl appearance="outline" class="me-3" (change)="prepareForUpdate()">
+    <mat-label>Date From</mat-label>
+    <input type="date" matInput placeholder="Date From">
+  </mat-form-field>
+  <mat-form-field [formControl]="dateTo" ngDefaultControl appearance="outline" (change)="prepareForUpdate()">
+    <mat-label>Date To</mat-label>
+    <input type="date" matInput placeholder="Date To">
+  </mat-form-field>
+</ng-container>
+
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <ng-container *ngFor="let column of allColumns">
+        <ng-container [matColumnDef]="column.index">
+          <th mat-header-cell *matHeaderCellDef> {{ column.label }} </th>
+  
+          <td mat-cell *matCellDef="let element">
+            <ng-container [ngSwitch]="column.type">
+              <ng-container *ngSwitchCase="columnTypeEnum.WithButton">
+                <button (click)="clickOnFieldWithButton(element, column)">
+                  {{ column.label }}
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                {{element[column.index] ?? 'N/A'}}
+              </ng-container>
+            </ng-container>
+          </td>
+  
+        </ng-container>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <ng-container *ngIf="tableService.hasPaginator">
+      <ng-container *ngIf="!dataService.isPagedResponse; else serverSidePagination">
+        <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons
+          aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </ng-container>
+      <ng-template #serverSidePagination>
+        <mat-paginator *ngIf="pagedResponse" [length]="pagedResponse.totalCount" [pageIndex]="pagedResponse.page - 1" [pageSize]="pagedResponse.perPage" [pageSizeOptions]="[15, 50]" showFirstLastButtons
+          aria-label="Select page of periodic elements" (page)="onPageChange($event)">
+        </mat-paginator>
+      </ng-template>
+    </ng-container>
+  
+    <hr />
+  
+  
+  
+  
+  </div>
+  
+  <div class="additional-buttons">
+    <button *ngIf="showAddButton" mat-raised-button color="primary" (click)="add()">Add</button>
+  </div>

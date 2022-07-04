@@ -16,5 +16,6 @@ export const API = {
     contact: "api/contact",
     cart: "api/cart",
     orders: "api/orders",
-    addons: "api/addons"
+    addons: "api/addons",
+    auditLog: "api/auditlog"
 };

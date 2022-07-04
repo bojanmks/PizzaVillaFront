@@ -54,6 +54,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { NeedToBeLoggedInDialogComponent } from './components/need-to-be-logged-in-dialog/need-to-be-logged-in-dialog.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { CommonTableComponent } from './components/common-table/common-table.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     NotFoundComponent,
     PageSpinnerComponent,
     PaginatorComponent,
-    NeedToBeLoggedInDialogComponent
+    NeedToBeLoggedInDialogComponent,
+    CommonTableComponent
   ],
   imports: [
     RouterModule,
@@ -167,7 +169,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     NgxMatSelectSearchModule,
     ReactiveFormsModule,
     PageSpinnerComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    CommonTableComponent
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
