@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
             child = child.firstChild;
           }
 
-          do {
+          while(true) {
             if (child.snapshot.data['title']) {
               return child.snapshot.data['title'];
             }
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
             } else {
               break;
             }
-          } while(true);
+          }
 
           return appTitle;
         })
