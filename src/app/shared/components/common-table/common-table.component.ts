@@ -50,8 +50,8 @@ export class CommonTableComponent implements OnInit, OnDestroy {
   private updateTimer: ReturnType<typeof setTimeout> = null;
 
   ngAfterViewInit(): void {
-    if(this.tableService.hasPaginator)
-      this.dataSource.paginator = this.paginator;
+    // if(this.tableService.hasPaginator)
+    //   this.dataSource.paginator = this.paginator;
   }
 
   ngOnInit(): void {
@@ -110,12 +110,12 @@ export class CommonTableComponent implements OnInit, OnDestroy {
 
   onPageChange(event: PageEvent) {
     const search: IBasePagedDateSearch = {
-      keyword: '',
+      keyword: this.keyword.value,
       page: event.pageIndex + 1,
       perPage: event.pageSize,
       dateFrom: this.dateFrom.value,
       dateTo: this.dateTo.value
-    } 
+    }
 
     this.sendRequestWithSearch(search);
   }
@@ -131,12 +131,12 @@ export class CommonTableComponent implements OnInit, OnDestroy {
 
   private applyFilterServer(): void {
     const search: IBasePagedDateSearch = {
-      keyword: '',
+      keyword: this.keyword.value,
       page: this.paginator.pageIndex + 1,
       perPage: this.paginator.pageSize,
       dateFrom: this.dateFrom.value,
       dateTo: this.dateTo.value
-    } 
+    }
 
     this.sendRequestWithSearch(search, true);
   }
