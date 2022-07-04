@@ -28,7 +28,8 @@ export class AuditLogTableService extends BaseTableService {
     },
     {
       index: "executionDateTime",
-      label: "Date"
+      label: "Date",
+      type: ColumnType.Date
     },
     {
       index: "isAuthorized",

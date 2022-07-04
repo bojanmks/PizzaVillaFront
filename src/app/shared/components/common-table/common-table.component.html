@@ -29,6 +29,9 @@
                   {{ column.label }}
                 </button>
               </ng-container>
+              <ng-container *ngSwitchCase="columnTypeEnum.Date">
+                {{(element[column.index] | date) ?? 'N/A'}}
+              </ng-container>
               <ng-container *ngSwitchDefault>
                 {{element[column.index] ?? 'N/A'}}
               </ng-container>
