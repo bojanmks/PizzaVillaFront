@@ -186,6 +186,10 @@ body {
     z-index: 50 !important;
 }
 
+.table-wrapper {
+    overflow-x: auto;
+}
+
 // header
 #navbar {
     .cart-icon {
