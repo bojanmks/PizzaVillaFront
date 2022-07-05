@@ -13,6 +13,7 @@ import { IPagedResponse } from '../../interfaces/i-paged-response';
 import { ApiService } from '../../services/api.service';
 import { BaseDataService } from '../../services/base-data.service';
 import { BaseTableService } from '../../services/base-table.service';
+import { AreYouSureDialogComponent } from '../are-you-sure-dialog/are-you-sure-dialog.component';
 
 @Component({
   selector: 'app-common-table',
@@ -154,12 +155,18 @@ export class CommonTableComponent implements OnInit, OnDestroy {
   }
 
   delete(id: number | string): void {
-    this.apiService.delete(id).subscribe({
-      next: (data) => {
-        this.getAll();
-      },
-      error: (err) => {
-        console.error(err);
+    this.matDialog.open(AreYouSureDialogComponent).afterClosed().subscribe({
+      next: (data: boolean) => {
+        if(data) {
+          this.apiService.delete(id).subscribe({
+            next: (data) => {
+              this.getAll();
+            },
+            error: (err) => {
+              console.error(err);
+            }
+          });
+        }
       }
     });
   }

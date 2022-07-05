@@ -32,7 +32,12 @@
           <td mat-cell *matCellDef="let element">
             <ng-container [ngSwitch]="column.type">
               <ng-container *ngSwitchCase="columnTypeEnum.WithButton">
-                <button mat-raised-button color="{{ column.index === 'delete' ? 'warn' : 'accent' }}" (click)="clickOnFieldWithButton(element, column)">
+                <button mat-raised-button color="accent" (click)="clickOnFieldWithButton(element, column)">
+                  {{ column.label }}
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchCase="columnTypeEnum.Delete">
+                <button mat-raised-button color="warn" (click)="delete(element.id)">
                   {{ column.label }}
                 </button>
               </ng-container>

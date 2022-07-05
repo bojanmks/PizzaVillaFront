@@ -55,10 +55,7 @@ export class UsersTableService extends BaseTableService {
     {
       index: "delete",
       label: "Delete",
-      type: ColumnType.WithButton,
-      method: (el: IUserGet) => {
-        console.log(el);
-      }
+      type: ColumnType.Delete
     }
   ];
 }

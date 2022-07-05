@@ -55,6 +55,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { NeedToBeLoggedInDialogComponent } from './components/need-to-be-logged-in-dialog/need-to-be-logged-in-dialog.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { CommonTableComponent } from './components/common-table/common-table.component';
+import { AreYouSureDialogComponent } from './components/are-you-sure-dialog/are-you-sure-dialog.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { CommonTableComponent } from './components/common-table/common-table.com
     PageSpinnerComponent,
     PaginatorComponent,
     NeedToBeLoggedInDialogComponent,
-    CommonTableComponent
+    CommonTableComponent,
+    AreYouSureDialogComponent
   ],
   imports: [
     RouterModule,
