@@ -5,5 +5,6 @@ export enum ColumnType {
     Date,
     LocalImage,
     ServerImage,
-    Currency
+    Currency,
+    User
 }

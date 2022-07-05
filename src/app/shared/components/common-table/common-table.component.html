@@ -69,6 +69,9 @@
               <ng-container *ngSwitchCase="columnTypeEnum.Currency">
                 {{(element[column.index] | currency) ?? 'N/A'}}
               </ng-container>
+              <ng-container *ngSwitchCase="columnTypeEnum.User">
+                {{element[column.index].username ?? 'N/A'}}
+              </ng-container>
               <ng-container *ngSwitchDefault>
                 {{element[column.index] ?? 'N/A'}}
               </ng-container>
