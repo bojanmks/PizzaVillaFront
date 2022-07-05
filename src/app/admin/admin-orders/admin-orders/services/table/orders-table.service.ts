@@ -19,14 +19,14 @@ export class OrdersTableService extends BaseTableService {
       label: "ID"
     },
     {
-      index: "totalPrice",
-      label: "Total Price",
-      type: ColumnType.Currency
-    },
-    {
       index: "user",
       label: "User",
       type: ColumnType.User
+    },
+    {
+      index: "totalPrice",
+      label: "Total Price",
+      type: ColumnType.Currency
     },
     {
       index: "createdAt",
