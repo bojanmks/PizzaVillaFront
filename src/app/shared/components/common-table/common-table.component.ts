@@ -50,8 +50,8 @@ export class CommonTableComponent implements OnInit, OnDestroy {
   private updateTimer: ReturnType<typeof setTimeout> = null;
 
   ngAfterViewInit(): void {
-    // if(this.tableService.hasPaginator)
-    //   this.dataSource.paginator = this.paginator;
+    if(this.tableService.hasPaginator && !this.dataService.isPagedResponse)
+      this.dataSource.paginator = this.paginator;
   }
 
   ngOnInit(): void {
