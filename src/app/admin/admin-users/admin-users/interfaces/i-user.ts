@@ -1,3 +1,5 @@
+import { IBaseAdminInterface } from "src/app/shared/interfaces/i-base-admin-interface";
+
 export interface IUser {
     username: string;
     email: string;
@@ -5,7 +7,7 @@ export interface IUser {
     useCaseIds: number[];
 }
 
-export interface IUserGet extends IUser {
+export interface IUserGet extends IUser, IBaseAdminInterface {
     id: number;
 }
 
