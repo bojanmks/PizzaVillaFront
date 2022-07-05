@@ -31,6 +31,7 @@ export class CommonTableComponent implements OnInit, OnDestroy {
 
   @Input('showAddButton') showAddButton: boolean = true;
   @Input('showDateInputs') showDateInputs: boolean = false;
+  @Input('showKeywordInput') showKeywordInput: boolean = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

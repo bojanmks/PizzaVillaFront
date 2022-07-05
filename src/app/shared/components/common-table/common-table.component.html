@@ -3,12 +3,19 @@
     <mat-label>Date From</mat-label>
     <input type="date" matInput placeholder="Date From">
   </mat-form-field>
-  <mat-form-field [formControl]="dateTo" ngDefaultControl appearance="outline" (change)="prepareForUpdate()">
+  <mat-form-field [formControl]="dateTo" ngDefaultControl appearance="outline" class="me-3" (change)="prepareForUpdate()">
     <mat-label>Date To</mat-label>
     <input type="date" matInput placeholder="Date To">
   </mat-form-field>
 </ng-container>
 
+<ng-container *ngIf="showKeywordInput">
+  <mat-form-field [formControl]="keyword" ngDefaultControl appearance="outline" (change)="prepareForUpdate()">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="Search">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</ng-container>
 
 <div class="mat-elevation-z8 table-wrapper">
     <table mat-table [dataSource]="dataSource">
