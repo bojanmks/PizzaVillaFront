@@ -29,7 +29,8 @@ export class ProductsTableService extends BaseTableService {
     },
     {
       index: "price",
-      label: "Price"
+      label: "Price",
+      type: ColumnType.Currency
     },
     {
       index: "createdAt",

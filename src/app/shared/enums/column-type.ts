@@ -4,5 +4,6 @@ export enum ColumnType {
     Delete,
     Date,
     LocalImage,
-    ServerImage
+    ServerImage,
+    Currency
 }
