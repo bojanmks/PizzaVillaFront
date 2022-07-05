@@ -12,6 +12,9 @@ import { IProductSearch } from '../../interfaces/i-product-search';
 })
 export class ProductsService extends ApiService<IProduct> {
 
+  public override hasAdminSuffixGetAll: boolean = true;
+  public override hasAdminSuffixGet: boolean = true;
+
   constructor(
     http: HttpClient
   ) {

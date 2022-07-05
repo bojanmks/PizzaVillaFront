@@ -1,19 +1,18 @@
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ICartItemCreate } from 'src/app/cart/cart/interfaces/i-cart-item';
+import { OrderService } from 'src/app/cart/cart/services/order.service';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
 import { CONFIG } from 'src/app/shared/constants/config';
-import { ICartItemCreate } from 'src/app/cart/cart/interfaces/i-cart-item';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
-import { IProduct } from '../../interfaces/i-product';
-import { ProductsService } from '../../services/products/products.service';
-import { AddonsService } from '../../services/addons/addons.service';
-import { MultipleSelectComponent } from '../multiple-select/multiple-select.component';
 import { IAddon } from '../../interfaces/i-addon';
-import { FormControl } from '@angular/forms';
-import { OrderService } from 'src/app/cart/cart/services/order.service';
 import { IOrderConstants } from '../../interfaces/i-order-constants';
+import { IProductGet } from '../../interfaces/i-product';
+import { AddonsService } from '../../services/addons/addons.service';
+import { ProductsService } from '../../services/products/products.service';
+import { MultipleSelectComponent } from '../multiple-select/multiple-select.component';
 
 @Component({
   selector: 'app-details-dialog',
@@ -25,7 +24,7 @@ export class DetailsDialogComponent implements OnInit, AfterViewInit, AfterConte
   @ViewChild('addons') addonsSelect: MultipleSelectComponent;
 
   orderConstants: IOrderConstants;
-  product: IProduct;
+  product: IProductGet;
   buttonIsDisabled: boolean = false;
   totalPrice: number = 0;
 
@@ -64,7 +63,7 @@ export class DetailsDialogComponent implements OnInit, AfterViewInit, AfterConte
     this.productsService.get(this.data.id).subscribe({
       next: (data) => {
         SpinnerFunctions.hideSpinner();
-        this.product = data;
+        this.product = data as IProductGet;
         this.product.image = CONFIG.SERVER + 'images/' + this.product.image;
         this.totalPrice = this.product.price;
       },

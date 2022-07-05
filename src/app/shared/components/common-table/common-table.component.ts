@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { SpinnerFunctions } from '../../classes/spinner-functions';
+import { CONFIG } from '../../constants/config';
 import { ColumnType } from '../../enums/column-type';
 import { IBasePagedDateSearch } from '../../interfaces/i-base-search';
 import { IColumn } from '../../interfaces/i-column';
@@ -40,6 +41,7 @@ export class CommonTableComponent implements OnInit, OnDestroy {
 
   dataSource = new MatTableDataSource<any>([]);
 
+  readonly serverPath: string = CONFIG.SERVER;
   displayedColumns: any = [];
   allColumns: any = [];
   columnTypeEnum: typeof ColumnType = ColumnType;

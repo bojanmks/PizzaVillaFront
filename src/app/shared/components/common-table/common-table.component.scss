@@ -11,6 +11,17 @@ table {
     min-width: 800px;
 }
 
-tr.mat-row:hover {
-    background: whitesmoke;
+tr.mat-row {
+    &:hover {
+        background: whitesmoke;
+    }
+}
+
+td {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.image {
+    width: 50px;
 }

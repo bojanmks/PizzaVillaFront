@@ -43,6 +43,26 @@
                   {{ column.label }}
                 </button>
               </ng-container>
+              <ng-container *ngSwitchCase="columnTypeEnum.LocalImage">
+                <ng-container *ngIf="element[column.index]; else noLocalImage">
+                  <div class="image">
+                    <img [src]="element[column.index]" alt="Element image"/>
+                  </div>
+                </ng-container>
+                <ng-template #noLocalImage>
+                  N/A
+                </ng-template>
+              </ng-container>
+              <ng-container *ngSwitchCase="columnTypeEnum.ServerImage">
+                <ng-container *ngIf="element[column.index]; else noServerImage">
+                  <div class="image">
+                    <img class="img-fluid rounded" [src]="serverPath + 'images/' + element[column.index]" alt="Element image"/>
+                  </div>
+                </ng-container>
+                <ng-template #noServerImage>
+                  N/A
+                </ng-template>
+              </ng-container>
               <ng-container *ngSwitchCase="columnTypeEnum.Date">
                 {{(element[column.index] | date) ?? 'N/A'}}
               </ng-container>

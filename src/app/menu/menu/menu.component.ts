@@ -4,7 +4,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { forkJoin, Observable } from 'rxjs';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
 import { CONFIG } from 'src/app/shared/constants/config';
-import { IProduct } from './interfaces/i-product';
+import { IProduct, IProductGet } from './interfaces/i-product';
 import { IProductCategory } from './interfaces/i-product-category';
 import { ProductCategoriesService } from './services/categories/product-categories.service';
 import { FilterFormService } from './services/form/filter-form.service';
@@ -17,7 +17,7 @@ import { ProductsService } from './services/products/products.service';
 })
 export class MenuComponent implements OnInit {
   
-  products: IProduct[] = [];
+  products: IProductGet[] = [];
   productCategories: IProductCategory[] = [];
   totalCount: number = 0;
 
