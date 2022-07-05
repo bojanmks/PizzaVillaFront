@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { SpinnerFunctions } from '../../classes/spinner-functions';
@@ -23,7 +24,8 @@ import { AreYouSureDialogComponent } from '../are-you-sure-dialog/are-you-sure-d
 export class CommonTableComponent implements OnInit, OnDestroy {
 
   constructor(
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private snackBar: MatSnackBar
   ){}
 
   @Input() apiService: ApiService<any>;
@@ -42,6 +44,7 @@ export class CommonTableComponent implements OnInit, OnDestroy {
   allColumns: any = [];
   columnTypeEnum: typeof ColumnType = ColumnType;
   pagedResponse: IPagedResponse<any> = null;
+  errorMessage: string = "";
 
   dateFrom: FormControl = new FormControl(null);
   dateTo: FormControl = new FormControl(null);
@@ -72,8 +75,11 @@ export class CommonTableComponent implements OnInit, OnDestroy {
         SpinnerFunctions.hideSpinner();
       },
       error: (data: any) => {
-        console.error(data);
         SpinnerFunctions.hideSpinner();
+        console.error(data);
+        this.snackBar.open('We encountered an error while loading the data.', 'Close', {
+          duration: 3000
+        });
       }
     });
   }
@@ -104,8 +110,11 @@ export class CommonTableComponent implements OnInit, OnDestroy {
         SpinnerFunctions.hideSpinner();
       },
       error: (data: any) => {
-        console.error(data);
         SpinnerFunctions.hideSpinner();
+        console.error(data);
+        this.snackBar.open('We encountered an error while loading the data.', 'Close', {
+          duration: 3000
+        });
       }
     });
   }
@@ -158,12 +167,27 @@ export class CommonTableComponent implements OnInit, OnDestroy {
     this.matDialog.open(AreYouSureDialogComponent).afterClosed().subscribe({
       next: (data: boolean) => {
         if(data) {
+          SpinnerFunctions.showSpinner();
           this.apiService.delete(id).subscribe({
             next: (data) => {
+              SpinnerFunctions.hideSpinner();
               this.getAll();
+              this.errorMessage = "";
+              this.snackBar.open('Successful deletion.', 'Close', {
+                duration: 3000
+              })
             },
             error: (err) => {
+              SpinnerFunctions.hideSpinner();
               console.error(err);
+
+              switch(err.status) {
+                case 422:
+                  this.errorMessage = err.error.errors.map((x: any) => x.error).join('<br/>');
+                  break;
+                default:
+                  this.errorMessage = 'We encountered an error.'
+              }
             }
           });
         }

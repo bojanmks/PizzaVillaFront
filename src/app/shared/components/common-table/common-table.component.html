@@ -1,3 +1,5 @@
+<p class="text-danger font-small text-center" *ngIf="errorMessage !== ''" [innerHTML]="errorMessage"></p>
+
 <ng-container *ngIf="showDateInputs">
   <mat-form-field [formControl]="dateFrom" ngDefaultControl appearance="outline" class="me-3" (change)="prepareForUpdate()">
     <mat-label>Date From</mat-label>
