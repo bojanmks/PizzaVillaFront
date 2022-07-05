@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IProductGet } from 'src/app/menu/menu/interfaces/i-product';
+import { IProductGetAdmin } from 'src/app/menu/menu/interfaces/i-product';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
 import { BaseTableService } from 'src/app/shared/services/base-table.service';
@@ -50,7 +50,7 @@ export class ProductsTableService extends BaseTableService {
       index: "edit",
       label: "Edit",
       type: ColumnType.WithButton,
-      method: (el: IProductGet) => {
+      method: (el: IProductGetAdmin) => {
         console.log(el);
       }
     },
