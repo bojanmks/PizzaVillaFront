@@ -12,7 +12,7 @@
 </ng-container>
 
 <ng-container *ngIf="showKeywordInput">
-  <mat-form-field [formControl]="keyword" ngDefaultControl appearance="outline" (change)="prepareForUpdate()">
+  <mat-form-field [formControl]="keyword" ngDefaultControl appearance="outline" (keyup)="prepareForUpdate()">
     <mat-label>Search</mat-label>
     <input matInput placeholder="Search">
     <mat-icon matSuffix>search</mat-icon>
