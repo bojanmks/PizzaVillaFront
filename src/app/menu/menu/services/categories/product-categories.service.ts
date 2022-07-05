@@ -9,6 +9,8 @@ import { IProductCategory } from '../../interfaces/i-product-category';
 })
 export class ProductCategoriesService extends ApiService<IProductCategory> {
 
+  public override hasAdminSuffixGetAll: boolean = true;
+
   constructor(
     http: HttpClient
   ) {
