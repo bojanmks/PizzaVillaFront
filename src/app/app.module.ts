@@ -79,6 +79,14 @@ const routes: Routes = [
         loadChildren: () => import('./admin/admin-product-categories/admin-product-categories.module').then(m => m.AdminProductCategoriesModule)
       },
       {
+        path: "ingredients",
+        loadChildren: () => import('./admin/admin-ingredients/admin-ingredients.module').then(m => m.AdminIngredientsModule)
+      },
+      {
+        path: "addons",
+        loadChildren: () => import('./admin/admin-addons/admin-addons.module').then(m => m.AdminAddonsModule)
+      },
+      {
         path: "orders",
         loadChildren: () => import('./admin/admin-orders/admin-orders.module').then(m => m.AdminOrdersModule)
       }

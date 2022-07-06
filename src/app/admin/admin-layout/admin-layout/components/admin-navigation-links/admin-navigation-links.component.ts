@@ -22,11 +22,21 @@ export class AdminNavigationLinksComponent implements OnInit {
     {
       name: "Products",
       path: "/admin/products",
-      icon: "restaurant"
+      icon: "local_pizza"
     },
     {
       name: "Product Categories",
       path: "/admin/categories",
+      icon: "sort"
+    },
+    {
+      name: "Ingredients",
+      path: "/admin/ingredients",
+      icon: "restaurant"
+    },
+    {
+      name: "Addons",
+      path: "/admin/addons",
       icon: "restaurant_menu"
     },
     {
