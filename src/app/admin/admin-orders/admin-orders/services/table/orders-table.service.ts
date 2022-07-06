@@ -39,6 +39,17 @@ export class OrdersTableService extends BaseTableService {
       type: ColumnType.Date
     },
     {
+      index: "markDelivered",
+      label: "Mark Delivered",
+      type: ColumnType.WithButton,
+      method: (el: IOrderGet) => {
+        console.log(el);
+      },
+      disabled: (el: IOrderGet): boolean => {
+        return el.deliveredAt !== null;
+      }
+    },
+    {
       index: "details",
       label: "Details",
       type: ColumnType.WithButton,
@@ -49,7 +60,10 @@ export class OrdersTableService extends BaseTableService {
     {
       index: "cancel",
       label: "Cancel",
-      type: ColumnType.Delete
+      type: ColumnType.Delete,
+      disabled: (el: IOrderGet): boolean => {
+        return el.deliveredAt !== null;
+      }
     }
   ];
 }

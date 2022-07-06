@@ -5,4 +5,5 @@ export interface IColumn {
     label: string;
     type?: ColumnType;
     method?: Function;
+    disabled?: Function;
 }
