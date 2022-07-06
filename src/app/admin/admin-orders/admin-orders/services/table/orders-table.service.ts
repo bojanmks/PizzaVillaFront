@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IOrderGet } from 'src/app/cart/cart/interfaces/i-order';
 import { OrderService } from 'src/app/cart/cart/services/order.service';
+import { AreYouSureDialogComponent } from 'src/app/shared/components/are-you-sure-dialog/are-you-sure-dialog.component';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
 import { BaseTableService } from 'src/app/shared/services/base-table.service';
@@ -53,16 +54,22 @@ export class OrdersTableService extends BaseTableService {
       label: "Mark Delivered",
       type: ColumnType.WithButton,
       method: (el: IOrderGet) => {
-        this.ordersService.markDelivered(el.id).subscribe({
+        this.matDialog.open(AreYouSureDialogComponent).afterClosed().subscribe({
           next: (data) => {
-            this.snackBar.open('Order was marked as delivered.', 'Close', {
-              duration: 3000
-            });
-            this.ordersService.getAllAdmin().subscribe({
-              next: (allData) => {
-                this.ordersDataService.setStorage(allData);
-              }
-            });
+            if(data) {
+              this.ordersService.markDelivered(el.id).subscribe({
+                next: (data) => {
+                  this.snackBar.open('Order was marked as delivered.', 'Close', {
+                    duration: 3000
+                  });
+                  this.ordersService.getAllAdmin().subscribe({
+                    next: (allData) => {
+                      this.ordersDataService.setStorage(allData);
+                    }
+                  });
+                }
+              });
+            }
           }
         });
       },
