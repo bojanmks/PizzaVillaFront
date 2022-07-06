@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { BaseTableService } from 'src/app/shared/services/base-table.service';
 import { IUserGet } from '../../interfaces/i-user';
 
@@ -9,7 +10,9 @@ import { IUserGet } from '../../interfaces/i-user';
 })
 export class UsersTableService extends BaseTableService {
 
-  constructor() {
+  constructor(
+    private authService: AuthService
+  ) {
     super();
   }
 
@@ -55,7 +58,10 @@ export class UsersTableService extends BaseTableService {
     {
       index: "delete",
       label: "Delete",
-      type: ColumnType.Delete
+      type: ColumnType.Delete,
+      disabled: (el: IUserGet): boolean => {
+        return el.id === parseInt(this.authService.getUser().UserId);
+      }
     }
   ];
 }
