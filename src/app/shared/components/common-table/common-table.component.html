@@ -72,6 +72,14 @@
               <ng-container *ngSwitchCase="columnTypeEnum.User">
                 {{element[column.index].username ?? 'N/A'}}
               </ng-container>
+              <ng-container *ngSwitchCase="columnTypeEnum.Boolean">
+                <ng-container *ngIf="element[column.index] !== null; else booleanIsNull">
+                  {{ element[column.index] ? 'Yes' : 'No' }}
+                </ng-container>
+                <ng-template #booleanIsNull>
+                  N/A
+                </ng-template>
+              </ng-container>
               <ng-container *ngSwitchDefault>
                 {{element[column.index] ?? 'N/A'}}
               </ng-container>

@@ -31,7 +31,8 @@ export class UsersTableService extends BaseTableService {
     },
     {
       index: "isActive",
-      label: "Is Active"
+      label: "Is Active",
+      type: ColumnType.Boolean
     },
     {
       index: "createdAt",
