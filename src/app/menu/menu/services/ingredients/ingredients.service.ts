@@ -9,6 +9,8 @@ import { IIngredient } from '../../interfaces/i-ingredient';
 })
 export class IngredientsService extends ApiService<IIngredient> {
 
+  public override hasAdminSuffixGetAll: boolean = true;
+
   constructor(
     http: HttpClient
   ) {

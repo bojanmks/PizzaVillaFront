@@ -7,7 +7,7 @@ import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
 import { CONFIG } from 'src/app/shared/constants/config';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
-import { IAddon } from '../../interfaces/i-addon';
+import { IAddon, IAddonGet } from '../../interfaces/i-addon';
 import { IOrderConstants } from '../../interfaces/i-order-constants';
 import { IProductGet } from '../../interfaces/i-product';
 import { AddonsService } from '../../services/addons/addons.service';
@@ -79,11 +79,11 @@ export class DetailsDialogComponent implements OnInit, AfterViewInit, AfterConte
   }
 
   addToCart(): void {
-    const addons: IAddon[] = this.addonsSelect.form.get('data').value;
+    const addons: IAddonGet[] = this.addonsSelect.form.get('data').value;
 
     let item: ICartItemCreate = {
       productId: this.data.id,
-      addonIds: addons ? addons.map((x: IAddon) => x.id) : []
+      addonIds: addons ? addons.map((x: IAddonGet) => x.id) : []
     };
 
     SpinnerFunctions.showSpinner();

@@ -9,6 +9,8 @@ import { IAddon } from '../../interfaces/i-addon';
 })
 export class AddonsService extends ApiService<IAddon> {
 
+  public override hasAdminSuffixGetAll: boolean = true;
+
   constructor(
     http: HttpClient
   ) {

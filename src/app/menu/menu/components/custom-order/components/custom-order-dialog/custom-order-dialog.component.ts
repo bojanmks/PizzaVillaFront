@@ -2,8 +2,8 @@ import { AfterContentChecked, ChangeDetectorRef, Component, OnInit, ViewChild } 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ICartItemCreate } from 'src/app/cart/cart/interfaces/i-cart-item';
 import { OrderService } from 'src/app/cart/cart/services/order.service';
-import { IAddon } from 'src/app/menu/menu/interfaces/i-addon';
-import { IIngredient } from 'src/app/menu/menu/interfaces/i-ingredient';
+import { IAddon, IAddonGet } from 'src/app/menu/menu/interfaces/i-addon';
+import { IIngredient, IIngredientGet } from 'src/app/menu/menu/interfaces/i-ingredient';
 import { IOrderConstants } from 'src/app/menu/menu/interfaces/i-order-constants';
 import { AddonsService } from 'src/app/menu/menu/services/addons/addons.service';
 import { IngredientsService } from 'src/app/menu/menu/services/ingredients/ingredients.service';
@@ -55,8 +55,8 @@ export class CustomOrderDialogComponent implements OnInit, AfterContentChecked {
   }
 
   updateTotalPrice(): void {
-    const ingredientsData: IIngredient[] = this.ingredientsSelect.form.get('data').value;
-    const addonsData: IAddon[] = this.addonsSelect.form.get('data').value;
+    const ingredientsData: IIngredientGet[] = this.ingredientsSelect.form.get('data').value;
+    const addonsData: IAddonGet[] = this.addonsSelect.form.get('data').value;
 
     if(ingredientsData && ingredientsData.length > this.orderConstants.MaxIngredients) {
       this.ingredientsError = `You can't select more than ${this.orderConstants.MaxIngredients} ingredients.`;
@@ -73,12 +73,12 @@ export class CustomOrderDialogComponent implements OnInit, AfterContentChecked {
   }
 
   addToCart(): void {
-    const ingredients: IAddon[] = this.ingredientsSelect.form.get('data').value;
-    const addons: IAddon[] = this.addonsSelect.form.get('data').value;
+    const ingredients: IIngredientGet[] = this.ingredientsSelect.form.get('data').value;
+    const addons: IAddonGet[] = this.addonsSelect.form.get('data').value;
 
     let item: ICartItemCreate = {
-      ingredientIds: ingredients ? ingredients.map((x: IIngredient) => x.id) : [],
-      addonIds: addons ? addons.map((x: IAddon) => x.id) : []
+      ingredientIds: ingredients ? ingredients.map((x: IIngredientGet) => x.id) : [],
+      addonIds: addons ? addons.map((x: IAddonGet) => x.id) : []
     };
 
     SpinnerFunctions.showSpinner();

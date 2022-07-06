@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IngredientsService } from 'src/app/menu/menu/services/ingredients/ingredients.service';
+import { IngredientsDataService } from './services/data/ingredients-data.service';
+import { IngredientsTableService } from './services/table/ingredients-table.service';
 
 @Component({
   selector: 'app-admin-ingredients',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminIngredientsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public apiService: IngredientsService,
+    public dataService: IngredientsDataService,
+    public tableService: IngredientsTableService
+  ) { }
 
   ngOnInit(): void {
   }
