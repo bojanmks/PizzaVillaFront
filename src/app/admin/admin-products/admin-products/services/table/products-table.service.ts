@@ -33,6 +33,10 @@ export class ProductsTableService extends BaseTableService {
       type: ColumnType.Currency
     },
     {
+      index: "isActive",
+      label: "Is Active"
+    },
+    {
       index: "createdAt",
       label: "Created At",
       type: ColumnType.Date

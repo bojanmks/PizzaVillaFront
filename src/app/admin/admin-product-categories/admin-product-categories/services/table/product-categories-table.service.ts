@@ -23,6 +23,10 @@ export class ProductCategoriesTableService extends BaseTableService {
       label: "Name"
     },
     {
+      index: "isActive",
+      label: "Is Active"
+    },
+    {
       index: "createdAt",
       label: "Created At",
       type: ColumnType.Date

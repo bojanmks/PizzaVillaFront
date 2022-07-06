@@ -15,16 +15,18 @@ export interface IProductGet extends IProduct {
 }
 
 export interface IProductGetAdmin extends IProductGet, IBaseAdminInterface {
-    
+    isActive: boolean;
 }
 
 export interface IProductCreate extends IProduct {
     categoryId: number;
     ingredientIds: number[];
+    isActive: boolean;
 }
 
 export interface IProductUpdate extends IProduct {
     id: number;
     categoryId: number;
     ingredientIds: number[];
+    isActive: boolean;
 }

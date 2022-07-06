@@ -9,13 +9,14 @@ export interface IProductCategoryGet extends IProductCategory {
 }
 
 export interface IProductCategoryGetAdmin extends IProductCategoryGet, IBaseAdminInterface {
-
+    isActive: boolean;
 }
 
 export interface IProductCategoryCreate extends IProductCategory {
-
+    isActive: boolean;
 }
 
 export interface IProductCategoryUpdate extends IProductCategory {
     id: number;
+    isActive: boolean;
 }
