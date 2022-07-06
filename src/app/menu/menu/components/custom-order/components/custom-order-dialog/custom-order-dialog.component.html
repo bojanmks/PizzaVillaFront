@@ -1,4 +1,4 @@
-<mat-dialog-content class="mat-typography">
+<mat-dialog-content class="wrapper mat-typography">
     <h2 class="font-xm text-center">Make your own</h2>
     <ng-container *ngIf="orderConstants">
         <app-multiple-select #ingredients [minLength]="orderConstants.MinIngredients" [maxLength]="orderConstants.MaxIngredients" class="d-block mt-4" label="Ingredients" [service]="ingredientsService" (onChange)="updateTotalPrice()"></app-multiple-select>
