@@ -7,5 +7,7 @@ export enum ColumnType {
     ServerImage,
     Currency,
     User,
-    Boolean
+    Boolean,
+    Amount,
+    Product
 }

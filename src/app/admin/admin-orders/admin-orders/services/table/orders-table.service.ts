@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IOrderGet } from 'src/app/cart/cart/interfaces/i-order';
 import { OrderService } from 'src/app/cart/cart/services/order.service';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
 import { BaseTableService } from 'src/app/shared/services/base-table.service';
+import { OrderDetailsDialogComponent } from '../../components/order-details-dialog/order-details-dialog.component';
 import { OrdersDataService } from '../data/orders-data.service';
 
 @Injectable({
@@ -15,7 +17,8 @@ export class OrdersTableService extends BaseTableService {
   constructor(
     private ordersService: OrderService,
     private ordersDataService: OrdersDataService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private matDialog: MatDialog
   ) {
     super();
   }
@@ -72,7 +75,12 @@ export class OrdersTableService extends BaseTableService {
       label: "Details",
       type: ColumnType.WithButton,
       method: (el: IOrderGet) => {
-        console.log(el);
+        this.matDialog.open(OrderDetailsDialogComponent, {
+          width: 'auto',
+          data: {
+            id: el.id
+          }
+        });
       }
     },
     {

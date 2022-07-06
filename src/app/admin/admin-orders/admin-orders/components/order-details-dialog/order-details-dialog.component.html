@@ -1,0 +1,82 @@
+<mat-dialog-content>
+    <div class="table-wrapper mb-4">
+        <table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8"
+       *ngIf="dataSource">
+  <ng-container [matColumnDef]="column.index" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column.label}} </th>
+    <ng-container [ngSwitch]="column.type">
+        <ng-container *ngSwitchCase="columnTypeEnum.Currency">
+            <td mat-cell *matCellDef="let element"> {{ (element[column.index] | currency) ?? 'N/A' }} </td>
+        </ng-container>
+        <ng-container *ngSwitchCase="columnTypeEnum.Product">
+            <td mat-cell *matCellDef="let element"> {{ element[column.index] ? element[column.index].name : 'N/A' }} </td>
+        </ng-container>
+        <ng-container *ngSwitchCase="columnTypeEnum.Amount">
+            <td mat-cell *matCellDef="let element"> {{ element[column.index] ? 'x' + element[column.index] : 'N/A' }} </td>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <td mat-cell *matCellDef="let element"> {{ element[column.index] ?? 'N/A'}} </td>
+        </ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+        <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div *ngIf="expandedElement" class="w-100 pb-3">
+            <div *ngIf="(expandedElement.ingredients && expandedElement.ingredients.length) || (expandedElement.addons && expandedElement.addons.length); else noDetails" class="row">
+                <ng-container *ngIf="expandedElement.ingredients && expandedElement.ingredients.length">
+                    <div class="col-6">
+                        <span class="fw-bold">Ingredients</span>
+                        <ul>
+                            <ng-container *ngFor="let i of expandedElement.ingredients">
+                                <li>- {{ i.name }} ({{ i.priceWhenOrdered | currency }})</li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="expandedElement.addons && expandedElement.addons.length">
+                    <div class="col-6">
+                        <span class="fw-bold">Addons</span>
+                        <ul>
+                            <ng-container *ngFor="let a of expandedElement.addons">
+                                <li>- {{ a.name }} ({{ a.priceWhenOrdered | currency }})</li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </ng-container>
+            </div>
+            <ng-template #noDetails>
+                <span class="fw-bold">No details</span>
+            </ng-template>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="getColumnsWithExpandIndexes()"></tr>
+  <tr mat-row *matRowDef="let element; columns: getColumnsWithExpandIndexes();"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

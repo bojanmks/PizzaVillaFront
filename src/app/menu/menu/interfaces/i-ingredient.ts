@@ -13,6 +13,10 @@ export interface IIngredientGetAdmin extends IIngredientGet, IBaseAdminInterface
     isActive: boolean;
 }
 
+export interface IIngredientOrdered extends IIngredientGetAdmin {
+    priceWhenOrdered?: number;
+}
+
 export interface IIngredientCreate extends IIngredient {
     isActive: boolean;
 }

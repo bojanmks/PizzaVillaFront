@@ -13,6 +13,10 @@ export interface IAddonGetAdmin extends IAddonGet, IBaseAdminInterface {
     isActive: boolean;
 }
 
+export interface IAddonGetOrdered extends IAddonGetAdmin {
+    priceWhenOrdered?: number;
+}
+
 export interface IAddonCreate extends IAddon {
     isActive: boolean;
 }
