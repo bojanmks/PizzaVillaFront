@@ -39,4 +39,8 @@ export class OrderService extends ApiService<IOrder> {
 
     return this.http.get<IPagedResponse<IOrder>>(this.apiPrefix + this.apiPath + queryString);
   }
+
+  markDelivered(id: number | string): Observable<any> {
+    return this.http.put(CONFIG.SERVER + this.apiPath + "/" + id + "/delivered", {});
+  }
 }

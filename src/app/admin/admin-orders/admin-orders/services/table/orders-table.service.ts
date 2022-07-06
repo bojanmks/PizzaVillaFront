@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { IOrderGet } from 'src/app/cart/cart/interfaces/i-order';
+import { OrderService } from 'src/app/cart/cart/services/order.service';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
 import { BaseTableService } from 'src/app/shared/services/base-table.service';
+import { OrdersDataService } from '../data/orders-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersTableService extends BaseTableService {
 
-  constructor() {
+  constructor(
+    private ordersService: OrderService,
+    private ordersDataService: OrdersDataService,
+    private snackBar: MatSnackBar
+  ) {
     super();
   }
 
@@ -43,7 +50,18 @@ export class OrdersTableService extends BaseTableService {
       label: "Mark Delivered",
       type: ColumnType.WithButton,
       method: (el: IOrderGet) => {
-        console.log(el);
+        this.ordersService.markDelivered(el.id).subscribe({
+          next: (data) => {
+            this.snackBar.open('Order was marked as delivered.', 'Close', {
+              duration: 3000
+            });
+            this.ordersService.getAllAdmin().subscribe({
+              next: (allData) => {
+                this.ordersDataService.setStorage(allData);
+              }
+            });
+          }
+        });
       },
       disabled: (el: IOrderGet): boolean => {
         return el.deliveredAt !== null;

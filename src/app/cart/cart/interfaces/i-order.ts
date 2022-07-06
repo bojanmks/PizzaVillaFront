@@ -5,6 +5,7 @@ export interface IOrder {
 }
 
 export interface IOrderGet {
+    id: number;
     user: IUser;
     totalPrice: number;
     createdAt: Date;
