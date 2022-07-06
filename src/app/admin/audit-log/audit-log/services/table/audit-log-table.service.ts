@@ -33,7 +33,8 @@ export class AuditLogTableService extends BaseTableService {
     },
     {
       index: "isAuthorized",
-      label: "Is Authorized"
+      label: "Is Authorized",
+      type: ColumnType.Boolean
     }
   ];
 
