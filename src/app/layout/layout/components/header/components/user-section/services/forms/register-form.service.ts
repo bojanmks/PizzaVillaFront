@@ -17,7 +17,7 @@ export class RegisterFormService extends BaseFormService {
 
   initializeForm(): void {
     this.form = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.pattern(/^(?=[a-zA-Z0-9\._]{3,12}$)(?!.*[_.]{2})[^_.].*[^_.]$/)]),
+      username: new FormControl('', [Validators.required, Validators.pattern(/^(?=[a-zA-Z0-9\._]{6,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\@\$\!\%\*\?\&\#])[A-Za-z\d\@\$\!\%\*\?\&]{8,}$/)])
     });
