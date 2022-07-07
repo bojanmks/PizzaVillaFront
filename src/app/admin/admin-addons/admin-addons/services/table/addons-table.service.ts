@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { IAddonGetAdmin } from 'src/app/menu/menu/interfaces/i-addon';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
@@ -10,7 +11,9 @@ import { FormAddonsComponent } from '../../components/form-addons/form-addons.co
 })
 export class AddonsTableService extends BaseTableService {
 
-  constructor() {
+  constructor(
+    private matDialog: MatDialog
+  ) {
     super();
   }
 
@@ -60,7 +63,11 @@ export class AddonsTableService extends BaseTableService {
       label: "Edit",
       type: ColumnType.WithButton,
       method: (el: IAddonGetAdmin) => {
-        console.log(el);
+        this.matDialog.open(this.dialog.component, {
+          data: el,
+          width: this.dialog.configuration.width,
+          height: this.dialog.configuration.height
+        })
       }
     },
     {

@@ -59,7 +59,7 @@ export abstract class ApiService<T> {
   }
 
   update(id: number | string, dataToSend: T): Observable<any>  {
-    return this.http.patch<T>(this.apiPrefix + this.apiPath + "/" + id, dataToSend);
+    return this.http.put<T>(this.apiPrefix + this.apiPath + "/" + id, dataToSend);
   }
 
   delete(id: number | string): Observable<any>  {
