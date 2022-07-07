@@ -17,7 +17,7 @@ import { ITokenData } from './interfaces/i-token-data';
 })
 export class UserSectionComponent implements OnInit {
 
-  user: ITokenData;
+  tokenData: ITokenData;
   dropdownIsVisible: boolean = false;
   cartAmount: number = 0;
   private subscription: Subscription;
@@ -31,16 +31,13 @@ export class UserSectionComponent implements OnInit {
     public authService: AuthService,
     public adminService: AdminService,
     private dialog: MatDialog,
-    private jwtHelperService: JwtHelperService,
-    public cartService: CartService,
-    private router: Router
+    public cartService: CartService
   ) { }
 
   ngOnInit(): void {
-    this.decodeJwt();
-
     this.authService.isLoggedIn$.subscribe((data) => {
       if(data) {
+        this.tokenData = this.authService.getUser();
         this.addCartServiceSubscription();
         this.cartService.notifySubscribers();
       }
@@ -62,23 +59,9 @@ export class UserSectionComponent implements OnInit {
     });
   }
 
-  decodeJwt(token: string = null): void {
-    if(token === null) {
-      token = localStorage.getItem('pv_auth');
-    }
-
-    if(token) {
-      this.user = this.jwtHelperService.decodeToken(token);
-    }
-  }
-
   openLoginDialog(): void {
     this.dialog.open(LoginComponent, {
       width: 'auto'
-    }).afterClosed().subscribe((data: string) => {
-      if(data) {
-        this.decodeJwt(data);
-      }
     });
   }
 

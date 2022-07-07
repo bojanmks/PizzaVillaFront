@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         SpinnerFunctions.hideSpinner();
         this.loginFormService.initializeForm();
         this.loginFormService.buttonIsDisabled = false;
-        this.dialogRef.close(data.token);
+        this.dialogRef.close();
       },
       error: (err) => {
         SpinnerFunctions.hideSpinner();

@@ -1,6 +1,6 @@
 <ng-container *ngIf="authService.isLoggedIn$ | async; else notLoggedIn">
     <div class="d-flex align-items-center">
-        <span *ngIf="user !== undefined" class="user-username text-small text-primary" (click)="toggleDropdownVisibility($event)">{{ user.Username }} <i class="fa fa-caret-down"></i>
+        <span *ngIf="tokenData" class="user-username text-small text-primary" (click)="toggleDropdownVisibility($event)">{{ tokenData.Username }} <i class="fa fa-caret-down"></i>
             <div class="user-dropdown bg-white text-black rounded overflow-hidden shadow" [ngClass]="{ 'd-none' : !dropdownIsVisible }">
                 <ul class="font-small">
                     <li class="p-2" *ngIf="adminService.isAdmin()" routerLink="/admin">Admin</li>
