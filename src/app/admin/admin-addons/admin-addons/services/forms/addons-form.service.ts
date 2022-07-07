@@ -26,7 +26,7 @@ export class AddonsFormService extends BaseAdminFormService {
   override initializeForm(): void {
     this.form = new FormGroup({
       name: new FormControl("", Validators.required),
-      price: new FormControl(0, Validators.required),
+      price: new FormControl(0, [Validators.required, Validators.min(0)]),
       isActive: new FormControl(true, Validators.required)
     });
     this.validateForm();

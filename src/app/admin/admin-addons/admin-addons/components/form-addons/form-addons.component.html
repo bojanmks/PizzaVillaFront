@@ -28,7 +28,7 @@
                     </mat-form-field>
                 </div>
 
-                <div *ngIf="errorMessage != ''" class="errors p-3 text-danger text-center" [innerHTML]="errorMessage"></div>
+                <div *ngIf="errorMessage != ''" class="errors p-3 text-danger text-center" [innerHTML]="errorMessage"e></div>
 
                 <div class="text-center">
                     <button mat-raised-button color="primary" (click)="save()" [disabled]="formService.form.invalid">Save</button>
