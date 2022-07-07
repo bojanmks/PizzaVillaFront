@@ -40,7 +40,12 @@ export class LoginComponent implements OnInit {
         
         switch(err.status) {
           case 401:
-            this.message = err.error.message;
+            if(err.error) {
+              this.message = err.error.message;
+            }
+            else {
+              this.message = "We encountered an error. Please try again later.";
+            }
             break;
           case 422:
             this.message = err.error.errors.map((x: any) => x.error).join('<br/>');
