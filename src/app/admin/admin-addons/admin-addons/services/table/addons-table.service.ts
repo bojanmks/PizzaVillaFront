@@ -67,7 +67,7 @@ export class AddonsTableService extends BaseTableService {
           data: el,
           width: this.dialog.configuration.width,
           height: this.dialog.configuration.height
-        })
+        });
       }
     },
     {

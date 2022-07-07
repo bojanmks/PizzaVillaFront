@@ -1,16 +1,28 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { IIngredientGetAdmin } from 'src/app/menu/menu/interfaces/i-ingredient';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
 import { BaseTableService } from 'src/app/shared/services/base-table.service';
+import { FormIngredientsComponent } from '../../components/form-ingredients/form-ingredients.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IngredientsTableService extends BaseTableService {
 
-  constructor() {
+  constructor(
+    private matDialog: MatDialog
+  ) {
     super();
+  }
+
+  override dialog = {
+    component: FormIngredientsComponent,
+    configuration: {
+      width: "auto",
+      height: "auto"
+    }
   }
 
   override columns: IColumn[] = [
@@ -51,7 +63,11 @@ export class IngredientsTableService extends BaseTableService {
       label: "Edit",
       type: ColumnType.WithButton,
       method: (el: IIngredientGetAdmin) => {
-        console.log(el);
+        this.matDialog.open(this.dialog.component, {
+          data: el,
+          width: this.dialog.configuration.width,
+          height: this.dialog.configuration.height
+        });
       }
     },
     {
