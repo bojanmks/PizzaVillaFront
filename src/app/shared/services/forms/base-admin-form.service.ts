@@ -15,9 +15,11 @@ export abstract class BaseAdminFormService {
     private matDialog: MatDialog
   ) { }
 
-  protected abstract form: FormGroup;
-  protected abstract initializeForm(): void;
-  protected abstract prepareDataToSend(): any;
+  public abstract form: FormGroup;
+  public abstract initializeForm(): void;
+  public abstract prepareDataToSend(): any;
+
+  originalObj: any;
 
   validateForm(): void {
     this.form.markAllAsTouched();
@@ -43,7 +45,7 @@ export abstract class BaseAdminFormService {
         this.matDialog.closeAll();
 
         if (dataService) {
-          this.apiService.getAll().subscribe({
+          this.apiService.getAllAdmin().subscribe({
             next: (allData) => {
               dataService.setStorage(allData);
             }
@@ -51,6 +53,10 @@ export abstract class BaseAdminFormService {
         }
       }
     })
+  }
+
+  reset(): void {
+    this.form.reset();
   }
 
 

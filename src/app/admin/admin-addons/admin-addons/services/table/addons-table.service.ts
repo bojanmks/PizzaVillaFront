@@ -3,6 +3,7 @@ import { IAddonGetAdmin } from 'src/app/menu/menu/interfaces/i-addon';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
 import { BaseTableService } from 'src/app/shared/services/base-table.service';
+import { FormAddonsComponent } from '../../components/form-addons/form-addons.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,14 @@ export class AddonsTableService extends BaseTableService {
 
   constructor() {
     super();
+  }
+
+  override dialog = {
+    component: FormAddonsComponent,
+    configuration: {
+      width: "auto",
+      height: "auto"
+    }
   }
 
   override columns: IColumn[] = [
