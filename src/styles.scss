@@ -225,3 +225,12 @@ body {
         align-items: center !important;
     }
 }
+
+// admin theme
+.alt-theme {
+    .mat-selected {
+        .mat-option-text {
+            color: $admin-color-primary;
+        }
+    }
+}
