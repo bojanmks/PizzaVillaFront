@@ -8,6 +8,7 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Name</mat-label>
                         <input matInput formControlName="name" />
+                        <mat-error *ngIf="formService.form.get('name').hasError('required')">Name is required</mat-error>
                     </mat-form-field>
                 </div>
 
