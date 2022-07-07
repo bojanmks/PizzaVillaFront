@@ -8,6 +8,7 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Name</mat-label>
                         <input matInput formControlName="name" />
+                        <mat-error *ngIf="formService.form.get('name').hasError('required')">Name is required</mat-error>
                     </mat-form-field>
                 </div>
 
@@ -15,6 +16,8 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Price</mat-label>
                         <input type="number" matInput formControlName="price" />
+                        <mat-error *ngIf="formService.form.get('price').hasError('required')">Price is required</mat-error>
+                        <mat-error *ngIf="formService.form.get('price').hasError('min')">Price cannot be less than 0</mat-error>
                     </mat-form-field>
                 </div>
 
