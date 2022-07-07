@@ -21,10 +21,11 @@ export class FormAddonsComponent implements OnInit {
 
   isEdit: boolean = false;
   isFormReady: boolean = false;
+  errorMessage: string = "";
 
   ngOnInit(): void {
     this.isEdit = this.data && this.data.id;
-
+    
     this.formService.initializeForm();
 
     if(this.isEdit) {
@@ -62,6 +63,14 @@ export class FormAddonsComponent implements OnInit {
         error: (err) => {
           SpinnerFunctions.hideSpinner();
           console.error(err);
+
+          switch(err.status) {
+            case 422:
+              this.errorMessage = err.error.errors.map((x: any) => x.error).join('<br/>');
+              break;
+            default:
+              this.errorMessage = "We encountered an error";
+          }
         }
       });
     }
@@ -73,6 +82,14 @@ export class FormAddonsComponent implements OnInit {
         error: (err) => {
           SpinnerFunctions.hideSpinner();
           console.error(err);
+
+          switch(err.status) {
+            case 422:
+              this.errorMessage = err.error.errors.map((x: any) => x.error).join('<br/>');
+              break;
+            default:
+              this.errorMessage = "We encountered an error";
+          }
         }
       });
     }
