@@ -1,0 +1,63 @@
+<div class="admin-form-wrapper alt-theme">
+    <h4 class="text-center"t>{{ isEdit ? "Edit" : "Add"}} User</h4>
+
+    <ng-container *ngIf="isFormReady">
+        <form class="form-horizontal full-width-form" [formGroup]="formService.form">
+            <fieldset>
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Username</mat-label>
+                        <input matInput formControlName="username" />
+                        <mat-error *ngIf="formService.form.get('username').hasError('required')">Username is required</mat-error>
+                        <mat-error *ngIf="formService.form.get('username').hasError('pattern')">Username needs to be at least 6 but no more than 20 characters long, and can contain only letters, numbers, . and _</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput formControlName="email" />
+                        <mat-error *ngIf="formService.form.get('email').hasError('required')">Email is required</mat-error>
+                        <mat-error *ngIf="formService.form.get('email').hasError('email')">Invalid email format</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password" />
+                        <mat-error *ngIf="formService.form.get('password').hasError('required')">Password is required</mat-error>
+                        <mat-error *ngIf="formService.form.get('password').hasError('pattern')">Password needs to be at least 8 characters long and contain at least one: Uppercase character, Lowercase character, Number, Special character</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Role</mat-label>
+                        <mat-select panelClass="alt-theme" [value]="userRolesEnum.Regular" formControlName="role">
+                          <mat-option [value]="userRolesEnum.Regular">Regular</mat-option>
+                          <mat-option [value]="userRolesEnum.Admin">Admin</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Is Active</mat-label>
+                        <mat-select panelClass="alt-theme" [value]="true" formControlName="isActive">
+                          <mat-option [value]="true">Yes</mat-option>
+                          <mat-option [value]="false">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="errorMessage != ''" class="errors p-3 text-danger text-center" [innerHTML]="errorMessage"></div>
+
+                <div class="text-center">
+                    <button mat-raised-button color="primary" (click)="save()" [disabled]="formService.form.invalid">Save</button>
+                </div>
+
+            </fieldset>
+        </form>
+    </ng-container>
+</div>

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { BaseTableService } from 'src/app/shared/services/base-table.service';
+import { FormUsersComponent } from '../../components/form-users/form-users.component';
 import { IUserGet } from '../../interfaces/i-user';
 
 @Injectable({
@@ -11,9 +13,18 @@ import { IUserGet } from '../../interfaces/i-user';
 export class UsersTableService extends BaseTableService {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private matDialog: MatDialog
   ) {
     super();
+  }
+
+  override dialog = {
+    component: FormUsersComponent,
+    configuration: {
+      width: "auto",
+      height: "auto"
+    }
   }
 
   override columns: IColumn[] = [
@@ -58,7 +69,11 @@ export class UsersTableService extends BaseTableService {
       label: "Edit",
       type: ColumnType.WithButton,
       method: (el: IUserGet) => {
-        console.log(el);
+        this.matDialog.open(this.dialog.component, {
+          data: el,
+          width: this.dialog.configuration.width,
+          height: this.dialog.configuration.height
+        });
       }
     },
     {
