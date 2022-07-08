@@ -15,7 +15,7 @@
                 <div class="control-group">
                     <mat-form-field appearance="outline">
                         <mat-label>Category</mat-label>
-                        <mat-select formControlName="categoryId">
+                        <mat-select panelClass="alt-theme" formControlName="categoryId">
                           <mat-option>
                             <ngx-mat-select-search placeholderLabel="Search" noEntriesFoundLabel="No matches found" [formControl]="formService.categoriesFilter" (input)="formService.filterCategories()" (click)="formService.filterCategories()"></ngx-mat-select-search>
                           </mat-option>
@@ -31,7 +31,7 @@
                 <div class="control-group">
                     <mat-form-field appearance="outline">
                         <mat-label>Ingredients</mat-label>
-                        <mat-select formControlName="ingredientIds" multiple>
+                        <mat-select panelClass="alt-theme" formControlName="ingredientIds" multiple>
                           <mat-option>
                             <ngx-mat-select-search placeholderLabel="Search" noEntriesFoundLabel="No matches found" [formControl]="formService.ingredientsFilter" (input)="formService.filterIngredients()" (click)="formService.filterIngredients()"></ngx-mat-select-search>
                           </mat-option>
