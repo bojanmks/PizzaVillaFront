@@ -68,7 +68,13 @@ export class FormProductsComponent implements OnInit {
 
           switch(err.status) {
             case 422:
-              this.errorMessage = err.error.errors.map((x: any) => x.error).join('<br/>');
+              if(err.error.errors) {
+                this.errorMessage = err.error.errors.map((x: any) => x.error).join('<br/>');
+              } 
+              else {
+                this.errorMessage = err.error.message;
+              }
+              
               break;
             default:
               this.errorMessage = "We encountered an error";
@@ -87,7 +93,13 @@ export class FormProductsComponent implements OnInit {
 
           switch(err.status) {
             case 422:
-              this.errorMessage = err.error.errors.map((x: any) => x.error).join('<br/>');
+              if(err.error.errors) {
+                this.errorMessage = err.error.errors.map((x: any) => x.error).join('<br/>');
+              } 
+              else {
+                this.errorMessage = err.error.message;
+              }  
+            
               break;
             default:
               this.errorMessage = "We encountered an error";
