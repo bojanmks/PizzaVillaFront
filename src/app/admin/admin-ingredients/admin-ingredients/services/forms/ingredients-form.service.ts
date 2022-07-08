@@ -32,10 +32,10 @@ export class IngredientsFormService extends BaseAdminFormService {
     this.validateForm();
   }
 
-  fillForm(addon: IIngredientGetAdmin): void {
-    this.form.get('name').setValue(addon.name);
-    this.form.get('price').setValue(addon.price);
-    this.form.get('isActive').setValue(addon.isActive);
+  fillForm(ingredient: IIngredientGetAdmin): void {
+    this.form.get('name').setValue(ingredient.name);
+    this.form.get('price').setValue(ingredient.price);
+    this.form.get('isActive').setValue(ingredient.isActive);
   }
 
   override submitInsert(): Observable<any> {

@@ -31,9 +31,9 @@ export class ProductCategoriesFormService extends BaseAdminFormService {
     this.validateForm();
   }
 
-  fillForm(addon: IProductCategoryGetAdmin): void {
-    this.form.get('name').setValue(addon.name);
-    this.form.get('isActive').setValue(addon.isActive);
+  fillForm(category: IProductCategoryGetAdmin): void {
+    this.form.get('name').setValue(category.name);
+    this.form.get('isActive').setValue(category.isActive);
   }
 
   override submitInsert(): Observable<any> {
