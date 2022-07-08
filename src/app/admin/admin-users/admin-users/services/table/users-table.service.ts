@@ -83,7 +83,7 @@ export class UsersTableService extends BaseTableService {
       label: "Delete",
       type: ColumnType.Delete,
       disabled: (el: IUserGet): boolean => {
-        return el.id === parseInt(this.authService.getUser().UserId);
+        return el.id === parseInt(this.authService.getUser()?.UserId);
       }
     }
   ];
