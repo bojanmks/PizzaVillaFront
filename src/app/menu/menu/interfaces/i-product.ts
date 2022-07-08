@@ -1,17 +1,18 @@
+import { FormGroup } from "@angular/forms";
 import { IBaseAdminInterface } from "src/app/shared/interfaces/i-base-admin-interface";
-import { IIngredient } from "./i-ingredient";
-import { IProductCategory } from "./i-product-category";
+import { IIngredient, IIngredientGet } from "./i-ingredient";
+import { IProductCategory, IProductCategoryGet } from "./i-product-category";
 
 export interface IProduct {
     name: string;
-    image: string;
     price: number;
 }
 
 export interface IProductGet extends IProduct {
     id: number;
-    category: IProductCategory;
-    ingredients: IIngredient[];
+    image: string;
+    category: IProductCategoryGet;
+    ingredients: IIngredientGet[];
 }
 
 export interface IProductGetAdmin extends IProductGet, IBaseAdminInterface {
@@ -22,6 +23,7 @@ export interface IProductCreate extends IProduct {
     categoryId: number;
     ingredientIds: number[];
     isActive: boolean;
+    image: FormGroup;
 }
 
 export interface IProductUpdate extends IProduct {
@@ -29,4 +31,5 @@ export interface IProductUpdate extends IProduct {
     categoryId: number;
     ingredientIds: number[];
     isActive: boolean;
+    image?: FormGroup;
 }

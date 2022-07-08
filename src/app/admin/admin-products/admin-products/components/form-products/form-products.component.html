@@ -1,0 +1,84 @@
+<div class="admin-form-wrapper alt-theme">
+    <h4 class="text-center"t>{{ isEdit ? "Edit" : "Add"}} Product</h4>
+
+    <ng-container *ngIf="isFormReady">
+        <form class="form-horizontal full-width-form" [formGroup]="formService.form">
+            <fieldset>
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" />
+                        <mat-error *ngIf="formService.form.get('name').hasError('required')">Name is required</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="categoryId">
+                          <mat-option>
+                            <ngx-mat-select-search placeholderLabel="Search" noEntriesFoundLabel="No matches found" [formControl]="formService.categoriesFilter" (input)="formService.filterCategories()" (click)="formService.filterCategories()"></ngx-mat-select-search>
+                          </mat-option>
+                      
+                          <mat-option *ngFor="let el of formService.filteredCategories" [value]="el.id">
+                            {{ el.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formService.form.get('categoryId')?.hasError('required')">Category is required</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ingredients</mat-label>
+                        <mat-select formControlName="ingredientIds" multiple>
+                          <mat-option>
+                            <ngx-mat-select-search placeholderLabel="Search" noEntriesFoundLabel="No matches found" [formControl]="formService.ingredientsFilter" (input)="formService.filterIngredients()" (click)="formService.filterIngredients()"></ngx-mat-select-search>
+                          </mat-option>
+                      
+                          <mat-option *ngFor="let el of formService.filteredIngredients" [value]="el.id">
+                            {{ el.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formService.form.get('ingredientIds')?.hasError('required') || formService.form.get('ingredientIds')?.hasError('minlength')">You need to choose at least 2 ingredients</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Price</mat-label>
+                        <input type="number" matInput formControlName="price" />
+                        <mat-error *ngIf="formService.form.get('price').hasError('required')">Price is required</mat-error>
+                        <mat-error *ngIf="formService.form.get('price').hasError('min')">Price cannot be less than 0</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="control-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Is Active</mat-label>
+                        <mat-select panelClass="alt-theme" [value]="true" formControlName="isActive">
+                          <mat-option [value]="true">Yes</mat-option>
+                          <mat-option [value]="false">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="control-group mb-4">
+                    <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">Choose File</button>
+                    <input hidden (change)="formService.onFileSelected($event)" #fileInput type="file">
+                    <span class="file-name ms-2 font-small" *ngIf="formService.form.get('imageFile').value; else imageIsRequired">{{formService.form.get('imageFile').value.name}}</span>
+                    <ng-template #imageIsRequired>
+                        <span class="ms-2 font-small" [ngClass]="{ 'text-danger': !isEdit }">Product image</span>
+                    </ng-template>
+                </div>
+
+                <div *ngIf="errorMessage != ''" class="errors p-3 text-danger text-center" [innerHTML]="errorMessage"e></div>
+
+                <div class="text-center">
+                    <button mat-raised-button color="primary" (click)="save()" [disabled]="formService.form.invalid">Save</button>
+                </div>
+
+            </fieldset>
+        </form>
+    </ng-container>
+</div>
