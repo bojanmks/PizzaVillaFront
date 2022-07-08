@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AdminService } from 'src/app/admin/admin-layout/admin-layout/services/admin.service';
 import { ColumnType } from 'src/app/shared/enums/column-type';
 import { IColumn } from 'src/app/shared/interfaces/i-column';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -14,7 +15,8 @@ export class UsersTableService extends BaseTableService {
 
   constructor(
     private authService: AuthService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    public adminService: AdminService
   ) {
     super();
   }

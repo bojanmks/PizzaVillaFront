@@ -80,7 +80,7 @@
               </ng-container>
               
               <ng-container *ngSwitchCase="columnTypeEnum.UserRole">
-                <ng-container *ngIf="adminService.isAdmin(element[column.index]); else regularUser">
+                <ng-container *ngIf="$any(tableService).adminService.isAdmin(element[column.index]); else regularUser">
                   Admin
                 </ng-container>
                 <ng-template #regularUser>
