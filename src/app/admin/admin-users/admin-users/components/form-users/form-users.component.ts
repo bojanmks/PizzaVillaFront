@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SpinnerFunctions } from 'src/app/shared/classes/spinner-functions';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserRoles } from '../../enums/user-roles';
 import { UsersService } from '../../services/api/users.service';
 import { UsersDataService } from '../../services/data/users-data.service';
@@ -17,7 +18,8 @@ export class FormUsersComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public formService: UsersFormService,
     private apiService: UsersService,
-    public dataService: UsersDataService
+    public dataService: UsersDataService,
+    private authService: AuthService
   ) { }
 
   isEdit: boolean = false;
@@ -87,6 +89,10 @@ export class FormUsersComponent implements OnInit {
       this.formService.submitUpdate(this.data.id).subscribe({
         next: (data) => {
           SpinnerFunctions.hideSpinner();
+
+          if(this.data.id === parseInt(this.authService.getUser().UserId)) {
+            this.authService.logout();
+          }
         },
         error: (err) => {
           SpinnerFunctions.hideSpinner();
