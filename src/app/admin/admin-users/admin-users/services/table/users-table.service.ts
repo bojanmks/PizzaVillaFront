@@ -30,6 +30,11 @@ export class UsersTableService extends BaseTableService {
       label: "Email"
     },
     {
+      index: "useCaseIds",
+      label: "Role",
+      type: ColumnType.UserRole
+    },
+    {
       index: "isActive",
       label: "Is Active",
       type: ColumnType.Boolean

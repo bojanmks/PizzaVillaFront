@@ -11,10 +11,12 @@ export class AdminService {
     private jwtHelper: JwtHelperService
   ) { }
 
-  isAdmin(): boolean {
-    const token: string = localStorage.getItem('pv_auth');
-    const tokenData: ITokenData = this.jwtHelper.decodeToken(token);
-    const useCaseIds: number[] = JSON.parse(tokenData.UseCases);
+  isAdmin(useCaseIds: number[] = null): boolean {
+    if(!useCaseIds) {
+      const token: string = localStorage.getItem('pv_auth');
+      const tokenData: ITokenData = this.jwtHelper.decodeToken(token);
+      useCaseIds = JSON.parse(tokenData.UseCases);
+    }
 
     return useCaseIds.includes(17);
   }

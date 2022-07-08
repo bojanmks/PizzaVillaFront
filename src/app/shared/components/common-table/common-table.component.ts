@@ -1,11 +1,11 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatFormField } from '@angular/material/form-field';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
+import { AdminService } from 'src/app/admin/admin-layout/admin-layout/services/admin.service';
 import { SpinnerFunctions } from '../../classes/spinner-functions';
 import { CONFIG } from '../../constants/config';
 import { ColumnType } from '../../enums/column-type';
@@ -25,6 +25,7 @@ import { AreYouSureDialogComponent } from '../are-you-sure-dialog/are-you-sure-d
 export class CommonTableComponent implements OnInit, OnDestroy {
 
   constructor(
+    public adminService: AdminService,
     private matDialog: MatDialog,
     private snackBar: MatSnackBar
   ){}

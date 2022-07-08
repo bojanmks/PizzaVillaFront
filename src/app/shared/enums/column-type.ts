@@ -9,5 +9,6 @@ export enum ColumnType {
     User,
     Boolean,
     Amount,
-    Product
+    Product,
+    UserRole
 }

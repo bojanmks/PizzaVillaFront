@@ -38,11 +38,13 @@
                   {{ column.label }}
                 </button>
               </ng-container>
+
               <ng-container *ngSwitchCase="columnTypeEnum.Delete">
                 <button mat-raised-button color="warn" [disabled]="column.disabled ? column.disabled(element) : false" (click)="delete(element.id)">
                   {{ column.label }}
                 </button>
               </ng-container>
+
               <ng-container *ngSwitchCase="columnTypeEnum.LocalImage">
                 <ng-container *ngIf="element[column.index]; else noLocalImage">
                   <div class="image">
@@ -53,6 +55,7 @@
                   N/A
                 </ng-template>
               </ng-container>
+
               <ng-container *ngSwitchCase="columnTypeEnum.ServerImage">
                 <ng-container *ngIf="element[column.index]; else noServerImage">
                   <div class="image">
@@ -63,15 +66,28 @@
                   N/A
                 </ng-template>
               </ng-container>
+
               <ng-container *ngSwitchCase="columnTypeEnum.Date">
                 {{(element[column.index] | date : 'short') ?? 'N/A'}}
               </ng-container>
+
               <ng-container *ngSwitchCase="columnTypeEnum.Currency">
                 {{(element[column.index] | currency) ?? 'N/A'}}
               </ng-container>
+
               <ng-container *ngSwitchCase="columnTypeEnum.User">
                 {{element[column.index].username ?? 'N/A'}}
               </ng-container>
+              
+              <ng-container *ngSwitchCase="columnTypeEnum.UserRole">
+                <ng-container *ngIf="adminService.isAdmin(element[column.index]); else regularUser">
+                  Admin
+                </ng-container>
+                <ng-template #regularUser>
+                  Regular
+                </ng-template>
+              </ng-container>
+
               <ng-container *ngSwitchCase="columnTypeEnum.Boolean">
                 <ng-container *ngIf="element[column.index] !== null; else booleanIsNull">
                   {{ element[column.index] ? 'Yes' : 'No' }}
