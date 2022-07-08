@@ -125,8 +125,8 @@ export class CommonTableComponent implements OnInit, OnDestroy {
       keyword: this.keyword.value,
       page: event.pageIndex + 1,
       perPage: event.pageSize,
-      dateFrom: this.dateFrom.value,
-      dateTo: this.dateTo.value
+      dateFrom: this.dateFrom.value ? new Date(this.dateFrom.value).toISOString() : '',
+      dateTo: this.dateTo.value ? new Date(this.dateTo.value).toISOString() : ''
     }
 
     this.sendRequestWithSearch(search);
@@ -146,8 +146,8 @@ export class CommonTableComponent implements OnInit, OnDestroy {
       keyword: this.keyword.value,
       page: this.paginator.pageIndex + 1,
       perPage: this.paginator.pageSize,
-      dateFrom: this.dateFrom.value,
-      dateTo: this.dateTo.value
+      dateFrom: this.dateFrom.value ? new Date(this.dateFrom.value).toISOString() : '',
+      dateTo: this.dateTo.value ? new Date(this.dateTo.value).toISOString() : ''
     }
 
     this.sendRequestWithSearch(search, true);

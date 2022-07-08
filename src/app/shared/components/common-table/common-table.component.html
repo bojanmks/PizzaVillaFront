@@ -1,13 +1,21 @@
 <p class="text-danger font-small text-center" *ngIf="errorMessage !== ''" [innerHTML]="errorMessage"></p>
 
 <ng-container *ngIf="showDateInputs">
-  <mat-form-field [formControl]="dateFrom" ngDefaultControl appearance="outline" class="me-3" (change)="prepareForUpdate()">
+
+  <mat-form-field appearance="outline" class="me-3">
     <mat-label>Date From</mat-label>
-    <input type="date" matInput placeholder="Date From">
+    <input [formControl]="dateFrom" matInput [matDatepicker]="dateFromPicker" (dateChange)="prepareForUpdate()">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="dateFromPicker"></mat-datepicker-toggle>
+    <mat-datepicker panelClass="alt-theme" #dateFromPicker></mat-datepicker>
   </mat-form-field>
-  <mat-form-field [formControl]="dateTo" ngDefaultControl appearance="outline" class="me-3" (change)="prepareForUpdate()">
+
+  <mat-form-field appearance="outline" class="me-3">
     <mat-label>Date To</mat-label>
-    <input type="date" matInput placeholder="Date To">
+    <input [formControl]="dateTo" matInput [matDatepicker]="dateToPicker" (dateChange)="prepareForUpdate()">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="dateToPicker"></mat-datepicker-toggle>
+    <mat-datepicker panelClass="alt-theme" #dateToPicker></mat-datepicker>
   </mat-form-field>
 </ng-container>
 

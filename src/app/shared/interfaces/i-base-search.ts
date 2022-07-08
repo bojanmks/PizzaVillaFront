@@ -12,8 +12,8 @@ export interface IBasePagedSearch extends IBaseSearch, IPagedSearch {
 }
 
 export interface IDateSearch {
-    dateFrom?: Date;
-    dateTo?: Date;
+    dateFrom?: string;
+    dateTo?: string;
 }
 
 export interface IPagedDateSearch extends IPagedSearch, IDateSearch {

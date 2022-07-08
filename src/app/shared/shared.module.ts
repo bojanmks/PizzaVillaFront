@@ -32,6 +32,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatNativeDateModule } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
@@ -117,6 +118,7 @@ import { AreYouSureDialogComponent } from './components/are-you-sure-dialog/are-
     MatSortModule,
     MatPaginatorModule,
     MatBadgeModule,
+    MatNativeDateModule,
     NgxMatSelectSearchModule,
     ReactiveFormsModule
   ],
@@ -168,6 +170,7 @@ import { AreYouSureDialogComponent } from './components/are-you-sure-dialog/are-
     MatSortModule,
     MatPaginatorModule,
     MatBadgeModule,
+    MatNativeDateModule,
     NgxMatSelectSearchModule,
     ReactiveFormsModule,
     PageSpinnerComponent,
